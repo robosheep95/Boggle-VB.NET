@@ -72,6 +72,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Board.vb" />
+    <Compile Include="Dice.vb" />
     <Compile Include="GameWindow.vb">
       <SubType>Form</SubType>
     </Compile>

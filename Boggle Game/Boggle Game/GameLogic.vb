@@ -1,3 +1,8 @@
 ﻿Public Class GameLogic
+    Private DefaultDice As String = "AAAFRS AAEEEE AAFIRS ADENNN AEEEEM AEEGMU AEGMNN AFIRSY BJKQXZ CCNSTW CEIILT CEILPT CEIPST DHHNOT DHHLOR DHLNOR DDLNOR EIIITT EMOTTT ENSSSU FIPRSY GORRVW HIPRRY NOOTUW OOOTTU"
 
+    Public Sub New()
+        'TO DO: Make Game Constructor
+    End Sub
+    'TO DO: Make Timer System
 End Class
