@@ -2,28 +2,32 @@
 The Game of Boggle Created in Visual Basic
 ## Game Logic
 - Dice
-  - CreateDice(String diceConfig)
-  - GetTopLetter() as char
-  - ScrambleLetter()
+  - createDice(String diceConfig)
+  - getTopLetter() as char
+  - scrambleLetter()
 - Board
-  - GetBoard() as Char[]
-  - ScrambleBoard()
-  - GetNeighbors(int pos) as Dict{}
+  - getUnusedDice() as String[]
+  - setUnusedDice(String[] unused)
+  - getBoard() as Char[]
+  - scrambleBoard()
+  - getNeighbors(int pos) as Dict{}
 - Timer
-  - GetTime() as Int
-  - StartTime()
-  - SetTimeLimit (int sec, Default 180)
-- Players
-  - SetName(String name)
-  - GetName() as String
-  - 
+  - getTime() as Int
+  - startTime()
+  - setTimeLimit (int sec, Default 180)
+- Player(s)
+  - setName(String name)
+  - getName() as String
+  - setScore(Integer score)
+  - getScore() as Integer
 - Valadator(String) as Boolean
 - SearchDict(string input) as Boolean
 - CompareAnswers(Players[] players)
-## Game Windows
-- Draw Board
-- Input Anwsers
-- Number of Players 1-4
+## Game Window
+- Start Screen  - Set # of Players and start game
+- Game Screen   - Display the Boggle Board and Timer
+- Input Screen  - Each Player Individually Inputs the words they have found
+- Score Screen  - Display the scores for each player and allow players to continue playing or start a new game
 ## Scoring
 - Fewer than 3 Letters: no score
 - 3 Letters: 1 point
@@ -38,7 +42,7 @@ The Game of Boggle Created in Visual Basic
 - If two or more players find the same word, it will not be scored
 ## Dice
 AAAFRS	AAEEEE	AAFIRS	ADENNN	AEEEEM
-AEEGMU	AEGMNN	AFIRSY	BJKQXZ	CCNSTW
-CEIILT	CEILPT	CEIPST	DHHNOT	DHHLOR
-DHLNOR	DDLNOR	EIIITT	EMOTTT	ENSSSU
+AEE**G**MU	AE**G**MNN	AFIRSY	**B**JKQXZ	CCNSTW
+CEIILT	CEILPT	CEIPST	DHHNOT	DHH**L**OR
+DHLNOR	DDLNOR	EIIITT	**E**MOTTT	ENSSSU
 FIPRSY	GORRVW	HIPRRY	NOOTUW	OOOTTU
