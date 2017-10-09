@@ -1,5 +1,5 @@
 ﻿Public Class frmMain
-
+    Private numberOfPlayers = 2
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -13,31 +13,49 @@
     End Sub
 
     Private Sub gotoStartScreen()
-        StartScreen.Visible = True
-        GameScreen.Visible = False
-        ScoreScreen.Visible = False
-        StartScreen.Left = 265 - (StartScreen.Width / 2)
+        startScreen.Visible = True
+        gameScreen.Visible = False
+        inputScreen.Visible = False
+        scoreScreen.Visible = False
+        startScreen.Left = 265 - (startScreen.Width / 2)
+        Me.AcceptButton = btnStartGame
+        btnStartGame.Focus()
     End Sub
 
+
     Private Sub gotoGameScreen()
-        StartScreen.Visible = False
-        GameScreen.Visible = True
-        ScoreScreen.Visible = False
-        GameScreen.Left = 265 - (GameScreen.Width / 2)
+        startScreen.Visible = False
+        gameScreen.Visible = True
+        inputScreen.Visible = False
+        scoreScreen.Visible = False
+        gameScreen.Left = 265 - (gameScreen.Width / 2)
+    End Sub
+
+    Private Sub gotoInputScreen()
+        startScreen.Visible = False
+        gameScreen.Visible = False
+        inputScreen.Visible = True
+        scoreScreen.Visible = False
+        inputScreen.Left = 265 - (inputScreen.Width / 2)
+        Me.AcceptButton = btnAddWord
+        txtPlayerX.Focus()
     End Sub
 
     Private Sub gotoScoreScreen()
-        StartScreen.Visible = False
-        GameScreen.Visible = False
-        ScoreScreen.Visible = True
-        ScoreScreen.Left = 265 - (ScoreScreen.Width / 2)
+        startScreen.Visible = False
+        gameScreen.Visible = False
+        inputScreen.Visible = False
+        scoreScreen.Visible = True
+        scoreScreen.Left = 265 - (scoreScreen.Width / 2)
     End Sub
 
-    Private Sub LblAllenRetzler_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LblAllenRetzler.LinkClicked
+
+
+    Private Sub LblAllenRetzler_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblAllenRetzler.LinkClicked
         Process.Start("https://github.com/allenretz")
     End Sub
 
-    Private Sub LblTaylorScafe_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LblTaylorScafe.LinkClicked
+    Private Sub LblTaylorScafe_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblTaylorScafe.LinkClicked
         Process.Start("https://github.com/robosheep95")
     End Sub
 
@@ -51,5 +69,22 @@
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         gotoScoreScreen()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        gotoInputScreen()
+    End Sub
+
+    Private Sub btnStartGame_Click(sender As Object, e As EventArgs) Handles btnStartGame.Click
+        If radio1Player.Checked() Then
+            numberOfPlayers = 1
+        ElseIf Radio2Players.Checked() Then
+            numberOfPlayers = 2
+        ElseIf radio3Players.Checked() Then
+            numberOfPlayers = 3
+        Else
+            numberOfPlayers = 4
+        End If
+        gotoGameScreen()
     End Sub
 End Class

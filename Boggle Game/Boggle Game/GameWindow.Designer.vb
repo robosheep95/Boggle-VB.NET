@@ -22,97 +22,106 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.LblP1Name = New System.Windows.Forms.Label()
-        Me.LblP2Name = New System.Windows.Forms.Label()
-        Me.LstP1Unique = New System.Windows.Forms.ListBox()
-        Me.LstP2Unique = New System.Windows.Forms.ListBox()
+        Me.lblP1Name = New System.Windows.Forms.Label()
+        Me.lblP2Name = New System.Windows.Forms.Label()
+        Me.lstP1Unique = New System.Windows.Forms.ListBox()
+        Me.lstP2Unique = New System.Windows.Forms.ListBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.LstP4Unique = New System.Windows.Forms.ListBox()
-        Me.LstP3Unique = New System.Windows.Forms.ListBox()
-        Me.LblP4Name = New System.Windows.Forms.Label()
-        Me.LblP3Name = New System.Windows.Forms.Label()
-        Me.StartScreen = New System.Windows.Forms.Panel()
-        Me.BtnQuit = New System.Windows.Forms.Button()
-        Me.BtnStartGame = New System.Windows.Forms.Button()
-        Me.GrpNumOfPlayers = New System.Windows.Forms.GroupBox()
-        Me.Radio4Players = New System.Windows.Forms.RadioButton()
-        Me.Radio3Players = New System.Windows.Forms.RadioButton()
+        Me.lstP4Unique = New System.Windows.Forms.ListBox()
+        Me.lstP3Unique = New System.Windows.Forms.ListBox()
+        Me.lblP4Name = New System.Windows.Forms.Label()
+        Me.lblP3Name = New System.Windows.Forms.Label()
+        Me.startScreen = New System.Windows.Forms.Panel()
+        Me.btnQuit = New System.Windows.Forms.Button()
+        Me.btnStartGame = New System.Windows.Forms.Button()
+        Me.grpNumOfPlayers = New System.Windows.Forms.GroupBox()
+        Me.radio4Players = New System.Windows.Forms.RadioButton()
+        Me.radio3Players = New System.Windows.Forms.RadioButton()
         Me.Radio2Players = New System.Windows.Forms.RadioButton()
-        Me.Radio1Player = New System.Windows.Forms.RadioButton()
-        Me.LblTaylorScafe = New System.Windows.Forms.LinkLabel()
+        Me.radio1Player = New System.Windows.Forms.RadioButton()
+        Me.lblTaylorScafe = New System.Windows.Forms.LinkLabel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.LblAllenRetzler = New System.Windows.Forms.LinkLabel()
+        Me.lblAllenRetzler = New System.Windows.Forms.LinkLabel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GameScreen = New System.Windows.Forms.Panel()
-        Me.BoggleTable = New System.Windows.Forms.TableLayoutPanel()
-        Me.LblDie16 = New System.Windows.Forms.Label()
-        Me.LblDie15 = New System.Windows.Forms.Label()
-        Me.LblDie14 = New System.Windows.Forms.Label()
-        Me.LblDie13 = New System.Windows.Forms.Label()
-        Me.LblDie12 = New System.Windows.Forms.Label()
-        Me.LblDie11 = New System.Windows.Forms.Label()
-        Me.LblDie10 = New System.Windows.Forms.Label()
-        Me.LblDie9 = New System.Windows.Forms.Label()
-        Me.LblDie8 = New System.Windows.Forms.Label()
-        Me.LblDie7 = New System.Windows.Forms.Label()
-        Me.LblDie6 = New System.Windows.Forms.Label()
-        Me.LblDie5 = New System.Windows.Forms.Label()
-        Me.LblDie4 = New System.Windows.Forms.Label()
-        Me.LblDie3 = New System.Windows.Forms.Label()
-        Me.LblDie2 = New System.Windows.Forms.Label()
-        Me.LblDie1 = New System.Windows.Forms.Label()
-        Me.Timer = New System.Windows.Forms.ProgressBar()
-        Me.ScoreScreen = New System.Windows.Forms.Panel()
-        Me.LblP4Score = New System.Windows.Forms.Label()
-        Me.LblP3Score = New System.Windows.Forms.Label()
-        Me.LblP2Score = New System.Windows.Forms.Label()
-        Me.LblP1Score = New System.Windows.Forms.Label()
+        Me.gameScreen = New System.Windows.Forms.Panel()
+        Me.boggleTable = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblDie16 = New System.Windows.Forms.Label()
+        Me.lblDie15 = New System.Windows.Forms.Label()
+        Me.lblDie14 = New System.Windows.Forms.Label()
+        Me.lblDie13 = New System.Windows.Forms.Label()
+        Me.lblDie12 = New System.Windows.Forms.Label()
+        Me.lblDie11 = New System.Windows.Forms.Label()
+        Me.lblDie10 = New System.Windows.Forms.Label()
+        Me.lblDie9 = New System.Windows.Forms.Label()
+        Me.lblDie8 = New System.Windows.Forms.Label()
+        Me.lblDie7 = New System.Windows.Forms.Label()
+        Me.lblDie6 = New System.Windows.Forms.Label()
+        Me.lblDie5 = New System.Windows.Forms.Label()
+        Me.lblDie4 = New System.Windows.Forms.Label()
+        Me.lblDie3 = New System.Windows.Forms.Label()
+        Me.lblDie2 = New System.Windows.Forms.Label()
+        Me.lblDie1 = New System.Windows.Forms.Label()
+        Me.timer = New System.Windows.Forms.ProgressBar()
+        Me.scoreScreen = New System.Windows.Forms.Panel()
+        Me.lblP4Score = New System.Windows.Forms.Label()
+        Me.lblP3Score = New System.Windows.Forms.Label()
+        Me.lblP2Score = New System.Windows.Forms.Label()
+        Me.lblP1Score = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.StartScreen.SuspendLayout()
-        Me.GrpNumOfPlayers.SuspendLayout()
-        Me.GameScreen.SuspendLayout()
-        Me.BoggleTable.SuspendLayout()
-        Me.ScoreScreen.SuspendLayout()
+        Me.inputScreen = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lstPlayerXWords = New System.Windows.Forms.ListBox()
+        Me.btnAddWord = New System.Windows.Forms.Button()
+        Me.txtPlayerX = New System.Windows.Forms.TextBox()
+        Me.btnDone = New System.Windows.Forms.Button()
+        Me.lblPlayerX = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.startScreen.SuspendLayout()
+        Me.grpNumOfPlayers.SuspendLayout()
+        Me.gameScreen.SuspendLayout()
+        Me.boggleTable.SuspendLayout()
+        Me.scoreScreen.SuspendLayout()
+        Me.inputScreen.SuspendLayout()
         Me.SuspendLayout()
         '
-        'LblP1Name
+        'lblP1Name
         '
-        Me.LblP1Name.AutoSize = True
-        Me.LblP1Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblP1Name.Location = New System.Drawing.Point(8, 12)
-        Me.LblP1Name.Name = "LblP1Name"
-        Me.LblP1Name.Size = New System.Drawing.Size(65, 20)
-        Me.LblP1Name.TabIndex = 1
-        Me.LblP1Name.Text = "Player 1"
+        Me.lblP1Name.AutoSize = True
+        Me.lblP1Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP1Name.Location = New System.Drawing.Point(8, 12)
+        Me.lblP1Name.Name = "lblP1Name"
+        Me.lblP1Name.Size = New System.Drawing.Size(65, 20)
+        Me.lblP1Name.TabIndex = 0
+        Me.lblP1Name.Text = "Player 1"
         '
-        'LblP2Name
+        'lblP2Name
         '
-        Me.LblP2Name.AutoSize = True
-        Me.LblP2Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblP2Name.Location = New System.Drawing.Point(134, 15)
-        Me.LblP2Name.Name = "LblP2Name"
-        Me.LblP2Name.Size = New System.Drawing.Size(65, 20)
-        Me.LblP2Name.TabIndex = 2
-        Me.LblP2Name.Text = "Player 2"
+        Me.lblP2Name.AutoSize = True
+        Me.lblP2Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP2Name.Location = New System.Drawing.Point(134, 15)
+        Me.lblP2Name.Name = "lblP2Name"
+        Me.lblP2Name.Size = New System.Drawing.Size(65, 20)
+        Me.lblP2Name.TabIndex = 3
+        Me.lblP2Name.Text = "Player 2"
         '
-        'LstP1Unique
+        'lstP1Unique
         '
-        Me.LstP1Unique.FormattingEnabled = True
-        Me.LstP1Unique.Location = New System.Drawing.Point(12, 65)
-        Me.LstP1Unique.Name = "LstP1Unique"
-        Me.LstP1Unique.Size = New System.Drawing.Size(120, 277)
-        Me.LstP1Unique.TabIndex = 3
+        Me.lstP1Unique.FormattingEnabled = True
+        Me.lstP1Unique.Location = New System.Drawing.Point(12, 65)
+        Me.lstP1Unique.Name = "lstP1Unique"
+        Me.lstP1Unique.Size = New System.Drawing.Size(120, 277)
+        Me.lstP1Unique.TabIndex = 2
         '
-        'LstP2Unique
+        'lstP2Unique
         '
-        Me.LstP2Unique.FormattingEnabled = True
-        Me.LstP2Unique.Location = New System.Drawing.Point(138, 65)
-        Me.LstP2Unique.Name = "LstP2Unique"
-        Me.LstP2Unique.Size = New System.Drawing.Size(120, 277)
-        Me.LstP2Unique.TabIndex = 4
+        Me.lstP2Unique.FormattingEnabled = True
+        Me.lstP2Unique.Location = New System.Drawing.Point(138, 65)
+        Me.lstP2Unique.Name = "lstP2Unique"
+        Me.lstP2Unique.Size = New System.Drawing.Size(120, 277)
+        Me.lstP2Unique.TabIndex = 5
         '
         'Label19
         '
@@ -121,110 +130,110 @@ Partial Class frmMain
         Me.Label19.Location = New System.Drawing.Point(13, 5)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(98, 31)
-        Me.Label19.TabIndex = 5
+        Me.Label19.TabIndex = 0
         Me.Label19.Text = "Boggle"
         '
-        'LstP4Unique
+        'lstP4Unique
         '
-        Me.LstP4Unique.FormattingEnabled = True
-        Me.LstP4Unique.Location = New System.Drawing.Point(390, 65)
-        Me.LstP4Unique.Name = "LstP4Unique"
-        Me.LstP4Unique.Size = New System.Drawing.Size(120, 277)
-        Me.LstP4Unique.TabIndex = 9
+        Me.lstP4Unique.FormattingEnabled = True
+        Me.lstP4Unique.Location = New System.Drawing.Point(390, 65)
+        Me.lstP4Unique.Name = "lstP4Unique"
+        Me.lstP4Unique.Size = New System.Drawing.Size(120, 277)
+        Me.lstP4Unique.TabIndex = 11
         '
-        'LstP3Unique
+        'lstP3Unique
         '
-        Me.LstP3Unique.FormattingEnabled = True
-        Me.LstP3Unique.Location = New System.Drawing.Point(264, 65)
-        Me.LstP3Unique.Name = "LstP3Unique"
-        Me.LstP3Unique.Size = New System.Drawing.Size(120, 277)
-        Me.LstP3Unique.TabIndex = 8
+        Me.lstP3Unique.FormattingEnabled = True
+        Me.lstP3Unique.Location = New System.Drawing.Point(264, 65)
+        Me.lstP3Unique.Name = "lstP3Unique"
+        Me.lstP3Unique.Size = New System.Drawing.Size(120, 277)
+        Me.lstP3Unique.TabIndex = 8
         '
-        'LblP4Name
+        'lblP4Name
         '
-        Me.LblP4Name.AutoSize = True
-        Me.LblP4Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblP4Name.Location = New System.Drawing.Point(386, 15)
-        Me.LblP4Name.Name = "LblP4Name"
-        Me.LblP4Name.Size = New System.Drawing.Size(65, 20)
-        Me.LblP4Name.TabIndex = 7
-        Me.LblP4Name.Text = "Player 4"
+        Me.lblP4Name.AutoSize = True
+        Me.lblP4Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP4Name.Location = New System.Drawing.Point(386, 15)
+        Me.lblP4Name.Name = "lblP4Name"
+        Me.lblP4Name.Size = New System.Drawing.Size(65, 20)
+        Me.lblP4Name.TabIndex = 9
+        Me.lblP4Name.Text = "Player 4"
         '
-        'LblP3Name
+        'lblP3Name
         '
-        Me.LblP3Name.AutoSize = True
-        Me.LblP3Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblP3Name.Location = New System.Drawing.Point(260, 15)
-        Me.LblP3Name.Name = "LblP3Name"
-        Me.LblP3Name.Size = New System.Drawing.Size(65, 20)
-        Me.LblP3Name.TabIndex = 6
-        Me.LblP3Name.Text = "Player 3"
+        Me.lblP3Name.AutoSize = True
+        Me.lblP3Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP3Name.Location = New System.Drawing.Point(260, 15)
+        Me.lblP3Name.Name = "lblP3Name"
+        Me.lblP3Name.Size = New System.Drawing.Size(65, 20)
+        Me.lblP3Name.TabIndex = 6
+        Me.lblP3Name.Text = "Player 3"
         '
-        'StartScreen
+        'startScreen
         '
-        Me.StartScreen.Controls.Add(Me.BtnQuit)
-        Me.StartScreen.Controls.Add(Me.BtnStartGame)
-        Me.StartScreen.Controls.Add(Me.GrpNumOfPlayers)
-        Me.StartScreen.Controls.Add(Me.LblTaylorScafe)
-        Me.StartScreen.Controls.Add(Me.Label3)
-        Me.StartScreen.Controls.Add(Me.Label2)
-        Me.StartScreen.Controls.Add(Me.LblAllenRetzler)
-        Me.StartScreen.Controls.Add(Me.Label1)
-        Me.StartScreen.Location = New System.Drawing.Point(20, 12)
-        Me.StartScreen.Name = "StartScreen"
-        Me.StartScreen.Size = New System.Drawing.Size(189, 364)
-        Me.StartScreen.TabIndex = 10
+        Me.startScreen.Controls.Add(Me.btnQuit)
+        Me.startScreen.Controls.Add(Me.btnStartGame)
+        Me.startScreen.Controls.Add(Me.grpNumOfPlayers)
+        Me.startScreen.Controls.Add(Me.lblTaylorScafe)
+        Me.startScreen.Controls.Add(Me.Label3)
+        Me.startScreen.Controls.Add(Me.Label2)
+        Me.startScreen.Controls.Add(Me.lblAllenRetzler)
+        Me.startScreen.Controls.Add(Me.Label1)
+        Me.startScreen.Location = New System.Drawing.Point(20, 12)
+        Me.startScreen.Name = "startScreen"
+        Me.startScreen.Size = New System.Drawing.Size(189, 364)
+        Me.startScreen.TabIndex = 0
         '
-        'BtnQuit
+        'btnQuit
         '
-        Me.BtnQuit.Location = New System.Drawing.Point(14, 294)
-        Me.BtnQuit.Name = "BtnQuit"
-        Me.BtnQuit.Size = New System.Drawing.Size(160, 43)
-        Me.BtnQuit.TabIndex = 11
-        Me.BtnQuit.Text = "Quit"
-        Me.BtnQuit.UseVisualStyleBackColor = True
+        Me.btnQuit.Location = New System.Drawing.Point(14, 294)
+        Me.btnQuit.Name = "btnQuit"
+        Me.btnQuit.Size = New System.Drawing.Size(160, 43)
+        Me.btnQuit.TabIndex = 1
+        Me.btnQuit.Text = "&Quit"
+        Me.btnQuit.UseVisualStyleBackColor = True
         '
-        'BtnStartGame
+        'btnStartGame
         '
-        Me.BtnStartGame.Location = New System.Drawing.Point(13, 245)
-        Me.BtnStartGame.Name = "BtnStartGame"
-        Me.BtnStartGame.Size = New System.Drawing.Size(160, 43)
-        Me.BtnStartGame.TabIndex = 6
-        Me.BtnStartGame.Text = "Start Game"
-        Me.BtnStartGame.UseVisualStyleBackColor = True
+        Me.btnStartGame.Location = New System.Drawing.Point(13, 245)
+        Me.btnStartGame.Name = "btnStartGame"
+        Me.btnStartGame.Size = New System.Drawing.Size(160, 43)
+        Me.btnStartGame.TabIndex = 0
+        Me.btnStartGame.Text = "&Start Game"
+        Me.btnStartGame.UseVisualStyleBackColor = True
         '
-        'GrpNumOfPlayers
+        'grpNumOfPlayers
         '
-        Me.GrpNumOfPlayers.Controls.Add(Me.Radio4Players)
-        Me.GrpNumOfPlayers.Controls.Add(Me.Radio3Players)
-        Me.GrpNumOfPlayers.Controls.Add(Me.Radio2Players)
-        Me.GrpNumOfPlayers.Controls.Add(Me.Radio1Player)
-        Me.GrpNumOfPlayers.Location = New System.Drawing.Point(10, 111)
-        Me.GrpNumOfPlayers.Name = "GrpNumOfPlayers"
-        Me.GrpNumOfPlayers.Size = New System.Drawing.Size(163, 118)
-        Me.GrpNumOfPlayers.TabIndex = 5
-        Me.GrpNumOfPlayers.TabStop = False
-        Me.GrpNumOfPlayers.Text = "Number of Players"
+        Me.grpNumOfPlayers.Controls.Add(Me.radio4Players)
+        Me.grpNumOfPlayers.Controls.Add(Me.radio3Players)
+        Me.grpNumOfPlayers.Controls.Add(Me.Radio2Players)
+        Me.grpNumOfPlayers.Controls.Add(Me.radio1Player)
+        Me.grpNumOfPlayers.Location = New System.Drawing.Point(10, 111)
+        Me.grpNumOfPlayers.Name = "grpNumOfPlayers"
+        Me.grpNumOfPlayers.Size = New System.Drawing.Size(163, 118)
+        Me.grpNumOfPlayers.TabIndex = 7
+        Me.grpNumOfPlayers.TabStop = False
+        Me.grpNumOfPlayers.Text = "Number of Players"
         '
-        'Radio4Players
+        'radio4Players
         '
-        Me.Radio4Players.AutoSize = True
-        Me.Radio4Players.Location = New System.Drawing.Point(50, 88)
-        Me.Radio4Players.Name = "Radio4Players"
-        Me.Radio4Players.Size = New System.Drawing.Size(68, 17)
-        Me.Radio4Players.TabIndex = 6
-        Me.Radio4Players.Text = "4 Players"
-        Me.Radio4Players.UseVisualStyleBackColor = True
+        Me.radio4Players.AutoSize = True
+        Me.radio4Players.Location = New System.Drawing.Point(50, 88)
+        Me.radio4Players.Name = "radio4Players"
+        Me.radio4Players.Size = New System.Drawing.Size(68, 17)
+        Me.radio4Players.TabIndex = 3
+        Me.radio4Players.Text = "4 Players"
+        Me.radio4Players.UseVisualStyleBackColor = True
         '
-        'Radio3Players
+        'radio3Players
         '
-        Me.Radio3Players.AutoSize = True
-        Me.Radio3Players.Location = New System.Drawing.Point(50, 65)
-        Me.Radio3Players.Name = "Radio3Players"
-        Me.Radio3Players.Size = New System.Drawing.Size(68, 17)
-        Me.Radio3Players.TabIndex = 2
-        Me.Radio3Players.Text = "3 Players"
-        Me.Radio3Players.UseVisualStyleBackColor = True
+        Me.radio3Players.AutoSize = True
+        Me.radio3Players.Location = New System.Drawing.Point(50, 65)
+        Me.radio3Players.Name = "radio3Players"
+        Me.radio3Players.Size = New System.Drawing.Size(68, 17)
+        Me.radio3Players.TabIndex = 2
+        Me.radio3Players.Text = "3 Players"
+        Me.radio3Players.UseVisualStyleBackColor = True
         '
         'Radio2Players
         '
@@ -238,27 +247,27 @@ Partial Class frmMain
         Me.Radio2Players.Text = "2 Players"
         Me.Radio2Players.UseVisualStyleBackColor = True
         '
-        'Radio1Player
+        'radio1Player
         '
-        Me.Radio1Player.AutoSize = True
-        Me.Radio1Player.Location = New System.Drawing.Point(50, 19)
-        Me.Radio1Player.Name = "Radio1Player"
-        Me.Radio1Player.Size = New System.Drawing.Size(63, 17)
-        Me.Radio1Player.TabIndex = 0
-        Me.Radio1Player.Text = "1 Player"
-        Me.Radio1Player.UseVisualStyleBackColor = True
+        Me.radio1Player.AutoSize = True
+        Me.radio1Player.Location = New System.Drawing.Point(50, 19)
+        Me.radio1Player.Name = "radio1Player"
+        Me.radio1Player.Size = New System.Drawing.Size(63, 17)
+        Me.radio1Player.TabIndex = 0
+        Me.radio1Player.Text = "1 Player"
+        Me.radio1Player.UseVisualStyleBackColor = True
         '
-        'LblTaylorScafe
+        'lblTaylorScafe
         '
-        Me.LblTaylorScafe.AutoSize = True
-        Me.LblTaylorScafe.LinkColor = System.Drawing.Color.Blue
-        Me.LblTaylorScafe.Location = New System.Drawing.Point(106, 84)
-        Me.LblTaylorScafe.Name = "LblTaylorScafe"
-        Me.LblTaylorScafe.Size = New System.Drawing.Size(67, 13)
-        Me.LblTaylorScafe.TabIndex = 4
-        Me.LblTaylorScafe.TabStop = True
-        Me.LblTaylorScafe.Text = "Taylor Scafe"
-        Me.LblTaylorScafe.VisitedLinkColor = System.Drawing.Color.Blue
+        Me.lblTaylorScafe.AutoSize = True
+        Me.lblTaylorScafe.LinkColor = System.Drawing.Color.Blue
+        Me.lblTaylorScafe.Location = New System.Drawing.Point(106, 84)
+        Me.lblTaylorScafe.Name = "lblTaylorScafe"
+        Me.lblTaylorScafe.Size = New System.Drawing.Size(67, 13)
+        Me.lblTaylorScafe.TabIndex = 6
+        Me.lblTaylorScafe.TabStop = True
+        Me.lblTaylorScafe.Text = "Taylor Scafe"
+        Me.lblTaylorScafe.VisitedLinkColor = System.Drawing.Color.Blue
         '
         'Label3
         '
@@ -266,7 +275,7 @@ Partial Class frmMain
         Me.Label3.Location = New System.Drawing.Point(86, 84)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(25, 13)
-        Me.Label3.TabIndex = 3
+        Me.Label3.TabIndex = 5
         Me.Label3.Text = "and"
         '
         'Label2
@@ -275,20 +284,20 @@ Partial Class frmMain
         Me.Label2.Location = New System.Drawing.Point(7, 84)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(19, 13)
-        Me.Label2.TabIndex = 2
+        Me.Label2.TabIndex = 3
         Me.Label2.Text = "By"
         '
-        'LblAllenRetzler
+        'lblAllenRetzler
         '
-        Me.LblAllenRetzler.AutoSize = True
-        Me.LblAllenRetzler.LinkColor = System.Drawing.Color.Blue
-        Me.LblAllenRetzler.Location = New System.Drawing.Point(24, 84)
-        Me.LblAllenRetzler.Name = "LblAllenRetzler"
-        Me.LblAllenRetzler.Size = New System.Drawing.Size(66, 13)
-        Me.LblAllenRetzler.TabIndex = 1
-        Me.LblAllenRetzler.TabStop = True
-        Me.LblAllenRetzler.Text = "Allen Retzler"
-        Me.LblAllenRetzler.VisitedLinkColor = System.Drawing.Color.Blue
+        Me.lblAllenRetzler.AutoSize = True
+        Me.lblAllenRetzler.LinkColor = System.Drawing.Color.Blue
+        Me.lblAllenRetzler.Location = New System.Drawing.Point(24, 84)
+        Me.lblAllenRetzler.Name = "lblAllenRetzler"
+        Me.lblAllenRetzler.Size = New System.Drawing.Size(66, 13)
+        Me.lblAllenRetzler.TabIndex = 4
+        Me.lblAllenRetzler.TabStop = True
+        Me.lblAllenRetzler.Text = "Allen Retzler"
+        Me.lblAllenRetzler.VisitedLinkColor = System.Drawing.Color.Blue
         '
         'Label1
         '
@@ -297,287 +306,287 @@ Partial Class frmMain
         Me.Label1.Location = New System.Drawing.Point(3, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(181, 58)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 2
         Me.Label1.Text = "Boggle"
         '
-        'GameScreen
+        'gameScreen
         '
-        Me.GameScreen.Controls.Add(Me.BoggleTable)
-        Me.GameScreen.Controls.Add(Me.Timer)
-        Me.GameScreen.Controls.Add(Me.Label19)
-        Me.GameScreen.Location = New System.Drawing.Point(214, 12)
-        Me.GameScreen.Name = "GameScreen"
-        Me.GameScreen.Size = New System.Drawing.Size(323, 364)
-        Me.GameScreen.TabIndex = 11
+        Me.gameScreen.Controls.Add(Me.boggleTable)
+        Me.gameScreen.Controls.Add(Me.timer)
+        Me.gameScreen.Controls.Add(Me.Label19)
+        Me.gameScreen.Location = New System.Drawing.Point(214, 12)
+        Me.gameScreen.Name = "gameScreen"
+        Me.gameScreen.Size = New System.Drawing.Size(323, 364)
+        Me.gameScreen.TabIndex = 1
         '
-        'BoggleTable
+        'boggleTable
         '
-        Me.BoggleTable.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.BoggleTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble
-        Me.BoggleTable.ColumnCount = 4
-        Me.BoggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.Controls.Add(Me.LblDie16, 3, 3)
-        Me.BoggleTable.Controls.Add(Me.LblDie15, 2, 3)
-        Me.BoggleTable.Controls.Add(Me.LblDie14, 1, 3)
-        Me.BoggleTable.Controls.Add(Me.LblDie13, 0, 3)
-        Me.BoggleTable.Controls.Add(Me.LblDie12, 3, 2)
-        Me.BoggleTable.Controls.Add(Me.LblDie11, 2, 2)
-        Me.BoggleTable.Controls.Add(Me.LblDie10, 1, 2)
-        Me.BoggleTable.Controls.Add(Me.LblDie9, 0, 2)
-        Me.BoggleTable.Controls.Add(Me.LblDie8, 3, 1)
-        Me.BoggleTable.Controls.Add(Me.LblDie7, 2, 1)
-        Me.BoggleTable.Controls.Add(Me.LblDie6, 1, 1)
-        Me.BoggleTable.Controls.Add(Me.LblDie5, 0, 1)
-        Me.BoggleTable.Controls.Add(Me.LblDie4, 3, 0)
-        Me.BoggleTable.Controls.Add(Me.LblDie3, 2, 0)
-        Me.BoggleTable.Controls.Add(Me.LblDie2, 1, 0)
-        Me.BoggleTable.Controls.Add(Me.LblDie1, 0, 0)
-        Me.BoggleTable.Location = New System.Drawing.Point(13, 42)
-        Me.BoggleTable.MaximumSize = New System.Drawing.Size(300, 300)
-        Me.BoggleTable.MinimumSize = New System.Drawing.Size(300, 300)
-        Me.BoggleTable.Name = "BoggleTable"
-        Me.BoggleTable.RowCount = 4
-        Me.BoggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.BoggleTable.Size = New System.Drawing.Size(300, 300)
-        Me.BoggleTable.TabIndex = 13
+        Me.boggleTable.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.boggleTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble
+        Me.boggleTable.ColumnCount = 4
+        Me.boggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.Controls.Add(Me.lblDie16, 3, 3)
+        Me.boggleTable.Controls.Add(Me.lblDie15, 2, 3)
+        Me.boggleTable.Controls.Add(Me.lblDie14, 1, 3)
+        Me.boggleTable.Controls.Add(Me.lblDie13, 0, 3)
+        Me.boggleTable.Controls.Add(Me.lblDie12, 3, 2)
+        Me.boggleTable.Controls.Add(Me.lblDie11, 2, 2)
+        Me.boggleTable.Controls.Add(Me.lblDie10, 1, 2)
+        Me.boggleTable.Controls.Add(Me.lblDie9, 0, 2)
+        Me.boggleTable.Controls.Add(Me.lblDie8, 3, 1)
+        Me.boggleTable.Controls.Add(Me.lblDie7, 2, 1)
+        Me.boggleTable.Controls.Add(Me.lblDie6, 1, 1)
+        Me.boggleTable.Controls.Add(Me.lblDie5, 0, 1)
+        Me.boggleTable.Controls.Add(Me.lblDie4, 3, 0)
+        Me.boggleTable.Controls.Add(Me.lblDie3, 2, 0)
+        Me.boggleTable.Controls.Add(Me.lblDie2, 1, 0)
+        Me.boggleTable.Controls.Add(Me.lblDie1, 0, 0)
+        Me.boggleTable.Location = New System.Drawing.Point(13, 42)
+        Me.boggleTable.MaximumSize = New System.Drawing.Size(300, 300)
+        Me.boggleTable.MinimumSize = New System.Drawing.Size(300, 300)
+        Me.boggleTable.Name = "boggleTable"
+        Me.boggleTable.RowCount = 4
+        Me.boggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.boggleTable.Size = New System.Drawing.Size(300, 300)
+        Me.boggleTable.TabIndex = 2
         '
-        'LblDie16
+        'lblDie16
         '
-        Me.LblDie16.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie16.Location = New System.Drawing.Point(228, 225)
-        Me.LblDie16.Name = "LblDie16"
-        Me.LblDie16.Size = New System.Drawing.Size(66, 72)
-        Me.LblDie16.TabIndex = 15
-        Me.LblDie16.Text = "Qu"
-        Me.LblDie16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie16.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie16.Location = New System.Drawing.Point(228, 225)
+        Me.lblDie16.Name = "lblDie16"
+        Me.lblDie16.Size = New System.Drawing.Size(66, 72)
+        Me.lblDie16.TabIndex = 15
+        Me.lblDie16.Text = "Qu"
+        Me.lblDie16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie15
+        'lblDie15
         '
-        Me.LblDie15.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie15.Location = New System.Drawing.Point(154, 225)
-        Me.LblDie15.Name = "LblDie15"
-        Me.LblDie15.Size = New System.Drawing.Size(65, 72)
-        Me.LblDie15.TabIndex = 14
-        Me.LblDie15.Text = "Qu"
-        Me.LblDie15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie15.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie15.Location = New System.Drawing.Point(154, 225)
+        Me.lblDie15.Name = "lblDie15"
+        Me.lblDie15.Size = New System.Drawing.Size(65, 72)
+        Me.lblDie15.TabIndex = 14
+        Me.lblDie15.Text = "Qu"
+        Me.lblDie15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie14
+        'lblDie14
         '
-        Me.LblDie14.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie14.Location = New System.Drawing.Point(80, 225)
-        Me.LblDie14.Name = "LblDie14"
-        Me.LblDie14.Size = New System.Drawing.Size(65, 72)
-        Me.LblDie14.TabIndex = 13
-        Me.LblDie14.Text = "Qu"
-        Me.LblDie14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie14.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie14.Location = New System.Drawing.Point(80, 225)
+        Me.lblDie14.Name = "lblDie14"
+        Me.lblDie14.Size = New System.Drawing.Size(65, 72)
+        Me.lblDie14.TabIndex = 13
+        Me.lblDie14.Text = "Qu"
+        Me.lblDie14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie13
+        'lblDie13
         '
-        Me.LblDie13.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie13.Location = New System.Drawing.Point(6, 225)
-        Me.LblDie13.Name = "LblDie13"
-        Me.LblDie13.Size = New System.Drawing.Size(65, 72)
-        Me.LblDie13.TabIndex = 12
-        Me.LblDie13.Text = "Qu"
-        Me.LblDie13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie13.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie13.Location = New System.Drawing.Point(6, 225)
+        Me.lblDie13.Name = "lblDie13"
+        Me.lblDie13.Size = New System.Drawing.Size(65, 72)
+        Me.lblDie13.TabIndex = 12
+        Me.lblDie13.Text = "Qu"
+        Me.lblDie13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie12
+        'lblDie12
         '
-        Me.LblDie12.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie12.Location = New System.Drawing.Point(228, 151)
-        Me.LblDie12.Name = "LblDie12"
-        Me.LblDie12.Size = New System.Drawing.Size(66, 71)
-        Me.LblDie12.TabIndex = 11
-        Me.LblDie12.Text = "Qu"
-        Me.LblDie12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie12.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie12.Location = New System.Drawing.Point(228, 151)
+        Me.lblDie12.Name = "lblDie12"
+        Me.lblDie12.Size = New System.Drawing.Size(66, 71)
+        Me.lblDie12.TabIndex = 11
+        Me.lblDie12.Text = "Qu"
+        Me.lblDie12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie11
+        'lblDie11
         '
-        Me.LblDie11.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie11.Location = New System.Drawing.Point(154, 151)
-        Me.LblDie11.Name = "LblDie11"
-        Me.LblDie11.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie11.TabIndex = 10
-        Me.LblDie11.Text = "Qu"
-        Me.LblDie11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie11.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie11.Location = New System.Drawing.Point(154, 151)
+        Me.lblDie11.Name = "lblDie11"
+        Me.lblDie11.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie11.TabIndex = 10
+        Me.lblDie11.Text = "Qu"
+        Me.lblDie11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie10
+        'lblDie10
         '
-        Me.LblDie10.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie10.Location = New System.Drawing.Point(80, 151)
-        Me.LblDie10.Name = "LblDie10"
-        Me.LblDie10.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie10.TabIndex = 9
-        Me.LblDie10.Text = "Qu"
-        Me.LblDie10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie10.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie10.Location = New System.Drawing.Point(80, 151)
+        Me.lblDie10.Name = "lblDie10"
+        Me.lblDie10.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie10.TabIndex = 9
+        Me.lblDie10.Text = "Qu"
+        Me.lblDie10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie9
+        'lblDie9
         '
-        Me.LblDie9.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie9.Location = New System.Drawing.Point(6, 151)
-        Me.LblDie9.Name = "LblDie9"
-        Me.LblDie9.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie9.TabIndex = 8
-        Me.LblDie9.Text = "Qu"
-        Me.LblDie9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie9.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie9.Location = New System.Drawing.Point(6, 151)
+        Me.lblDie9.Name = "lblDie9"
+        Me.lblDie9.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie9.TabIndex = 8
+        Me.lblDie9.Text = "Qu"
+        Me.lblDie9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie8
+        'lblDie8
         '
-        Me.LblDie8.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie8.Location = New System.Drawing.Point(228, 77)
-        Me.LblDie8.Name = "LblDie8"
-        Me.LblDie8.Size = New System.Drawing.Size(66, 71)
-        Me.LblDie8.TabIndex = 7
-        Me.LblDie8.Text = "Qu"
-        Me.LblDie8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie8.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie8.Location = New System.Drawing.Point(228, 77)
+        Me.lblDie8.Name = "lblDie8"
+        Me.lblDie8.Size = New System.Drawing.Size(66, 71)
+        Me.lblDie8.TabIndex = 7
+        Me.lblDie8.Text = "Qu"
+        Me.lblDie8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie7
+        'lblDie7
         '
-        Me.LblDie7.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie7.Location = New System.Drawing.Point(154, 77)
-        Me.LblDie7.Name = "LblDie7"
-        Me.LblDie7.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie7.TabIndex = 6
-        Me.LblDie7.Text = "Qu"
-        Me.LblDie7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie7.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie7.Location = New System.Drawing.Point(154, 77)
+        Me.lblDie7.Name = "lblDie7"
+        Me.lblDie7.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie7.TabIndex = 6
+        Me.lblDie7.Text = "Qu"
+        Me.lblDie7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie6
+        'lblDie6
         '
-        Me.LblDie6.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie6.Location = New System.Drawing.Point(80, 77)
-        Me.LblDie6.Name = "LblDie6"
-        Me.LblDie6.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie6.TabIndex = 5
-        Me.LblDie6.Text = "Qu"
-        Me.LblDie6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie6.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie6.Location = New System.Drawing.Point(80, 77)
+        Me.lblDie6.Name = "lblDie6"
+        Me.lblDie6.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie6.TabIndex = 5
+        Me.lblDie6.Text = "Qu"
+        Me.lblDie6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie5
+        'lblDie5
         '
-        Me.LblDie5.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie5.Location = New System.Drawing.Point(6, 77)
-        Me.LblDie5.Name = "LblDie5"
-        Me.LblDie5.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie5.TabIndex = 4
-        Me.LblDie5.Text = "Qu"
-        Me.LblDie5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie5.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie5.Location = New System.Drawing.Point(6, 77)
+        Me.lblDie5.Name = "lblDie5"
+        Me.lblDie5.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie5.TabIndex = 4
+        Me.lblDie5.Text = "Qu"
+        Me.lblDie5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie4
+        'lblDie4
         '
-        Me.LblDie4.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie4.Location = New System.Drawing.Point(228, 3)
-        Me.LblDie4.Name = "LblDie4"
-        Me.LblDie4.Size = New System.Drawing.Size(66, 71)
-        Me.LblDie4.TabIndex = 3
-        Me.LblDie4.Text = "Qu"
-        Me.LblDie4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie4.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie4.Location = New System.Drawing.Point(228, 3)
+        Me.lblDie4.Name = "lblDie4"
+        Me.lblDie4.Size = New System.Drawing.Size(66, 71)
+        Me.lblDie4.TabIndex = 3
+        Me.lblDie4.Text = "Qu"
+        Me.lblDie4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie3
+        'lblDie3
         '
-        Me.LblDie3.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie3.Location = New System.Drawing.Point(154, 3)
-        Me.LblDie3.Name = "LblDie3"
-        Me.LblDie3.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie3.TabIndex = 2
-        Me.LblDie3.Text = "Qu"
-        Me.LblDie3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie3.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie3.Location = New System.Drawing.Point(154, 3)
+        Me.lblDie3.Name = "lblDie3"
+        Me.lblDie3.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie3.TabIndex = 2
+        Me.lblDie3.Text = "Qu"
+        Me.lblDie3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie2
+        'lblDie2
         '
-        Me.LblDie2.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie2.Location = New System.Drawing.Point(80, 3)
-        Me.LblDie2.Name = "LblDie2"
-        Me.LblDie2.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie2.TabIndex = 1
-        Me.LblDie2.Text = "Qu"
-        Me.LblDie2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie2.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie2.Location = New System.Drawing.Point(80, 3)
+        Me.lblDie2.Name = "lblDie2"
+        Me.lblDie2.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie2.TabIndex = 1
+        Me.lblDie2.Text = "Qu"
+        Me.lblDie2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'LblDie1
+        'lblDie1
         '
-        Me.LblDie1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDie1.Location = New System.Drawing.Point(6, 3)
-        Me.LblDie1.Name = "LblDie1"
-        Me.LblDie1.Size = New System.Drawing.Size(65, 71)
-        Me.LblDie1.TabIndex = 0
-        Me.LblDie1.Text = "Qu"
-        Me.LblDie1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblDie1.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDie1.Location = New System.Drawing.Point(6, 3)
+        Me.lblDie1.Name = "lblDie1"
+        Me.lblDie1.Size = New System.Drawing.Size(65, 71)
+        Me.lblDie1.TabIndex = 0
+        Me.lblDie1.Text = "Qu"
+        Me.lblDie1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Timer
+        'timer
         '
-        Me.Timer.Location = New System.Drawing.Point(162, 9)
-        Me.Timer.Name = "Timer"
-        Me.Timer.Size = New System.Drawing.Size(151, 23)
-        Me.Timer.Step = 1
-        Me.Timer.Style = System.Windows.Forms.ProgressBarStyle.Continuous
-        Me.Timer.TabIndex = 12
-        Me.Timer.Value = 30
+        Me.timer.Location = New System.Drawing.Point(162, 9)
+        Me.timer.Name = "timer"
+        Me.timer.Size = New System.Drawing.Size(151, 23)
+        Me.timer.Step = 1
+        Me.timer.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.timer.TabIndex = 1
+        Me.timer.Value = 30
         '
-        'ScoreScreen
+        'scoreScreen
         '
-        Me.ScoreScreen.Controls.Add(Me.LblP4Score)
-        Me.ScoreScreen.Controls.Add(Me.LblP3Score)
-        Me.ScoreScreen.Controls.Add(Me.LblP2Score)
-        Me.ScoreScreen.Controls.Add(Me.LblP1Score)
-        Me.ScoreScreen.Controls.Add(Me.LstP1Unique)
-        Me.ScoreScreen.Controls.Add(Me.LblP1Name)
-        Me.ScoreScreen.Controls.Add(Me.LblP2Name)
-        Me.ScoreScreen.Controls.Add(Me.LstP4Unique)
-        Me.ScoreScreen.Controls.Add(Me.LstP2Unique)
-        Me.ScoreScreen.Controls.Add(Me.LstP3Unique)
-        Me.ScoreScreen.Controls.Add(Me.LblP3Name)
-        Me.ScoreScreen.Controls.Add(Me.LblP4Name)
-        Me.ScoreScreen.Location = New System.Drawing.Point(542, 12)
-        Me.ScoreScreen.Name = "ScoreScreen"
-        Me.ScoreScreen.Size = New System.Drawing.Size(519, 364)
-        Me.ScoreScreen.TabIndex = 12
+        Me.scoreScreen.Controls.Add(Me.lblP4Score)
+        Me.scoreScreen.Controls.Add(Me.lblP3Score)
+        Me.scoreScreen.Controls.Add(Me.lblP2Score)
+        Me.scoreScreen.Controls.Add(Me.lblP1Score)
+        Me.scoreScreen.Controls.Add(Me.lstP1Unique)
+        Me.scoreScreen.Controls.Add(Me.lblP1Name)
+        Me.scoreScreen.Controls.Add(Me.lblP2Name)
+        Me.scoreScreen.Controls.Add(Me.lstP4Unique)
+        Me.scoreScreen.Controls.Add(Me.lstP2Unique)
+        Me.scoreScreen.Controls.Add(Me.lstP3Unique)
+        Me.scoreScreen.Controls.Add(Me.lblP3Name)
+        Me.scoreScreen.Controls.Add(Me.lblP4Name)
+        Me.scoreScreen.Location = New System.Drawing.Point(808, 12)
+        Me.scoreScreen.Name = "scoreScreen"
+        Me.scoreScreen.Size = New System.Drawing.Size(519, 364)
+        Me.scoreScreen.TabIndex = 3
         '
-        'LblP4Score
+        'lblP4Score
         '
-        Me.LblP4Score.AutoSize = True
-        Me.LblP4Score.Location = New System.Drawing.Point(387, 45)
-        Me.LblP4Score.Name = "LblP4Score"
-        Me.LblP4Score.Size = New System.Drawing.Size(57, 13)
-        Me.LblP4Score.TabIndex = 13
-        Me.LblP4Score.Text = "500 Points"
+        Me.lblP4Score.AutoSize = True
+        Me.lblP4Score.Location = New System.Drawing.Point(387, 45)
+        Me.lblP4Score.Name = "lblP4Score"
+        Me.lblP4Score.Size = New System.Drawing.Size(57, 13)
+        Me.lblP4Score.TabIndex = 10
+        Me.lblP4Score.Text = "500 Points"
         '
-        'LblP3Score
+        'lblP3Score
         '
-        Me.LblP3Score.AutoSize = True
-        Me.LblP3Score.Location = New System.Drawing.Point(261, 45)
-        Me.LblP3Score.Name = "LblP3Score"
-        Me.LblP3Score.Size = New System.Drawing.Size(57, 13)
-        Me.LblP3Score.TabIndex = 12
-        Me.LblP3Score.Text = "500 Points"
+        Me.lblP3Score.AutoSize = True
+        Me.lblP3Score.Location = New System.Drawing.Point(261, 45)
+        Me.lblP3Score.Name = "lblP3Score"
+        Me.lblP3Score.Size = New System.Drawing.Size(57, 13)
+        Me.lblP3Score.TabIndex = 7
+        Me.lblP3Score.Text = "500 Points"
         '
-        'LblP2Score
+        'lblP2Score
         '
-        Me.LblP2Score.AutoSize = True
-        Me.LblP2Score.Location = New System.Drawing.Point(135, 45)
-        Me.LblP2Score.Name = "LblP2Score"
-        Me.LblP2Score.Size = New System.Drawing.Size(57, 13)
-        Me.LblP2Score.TabIndex = 11
-        Me.LblP2Score.Text = "500 Points"
+        Me.lblP2Score.AutoSize = True
+        Me.lblP2Score.Location = New System.Drawing.Point(135, 45)
+        Me.lblP2Score.Name = "lblP2Score"
+        Me.lblP2Score.Size = New System.Drawing.Size(57, 13)
+        Me.lblP2Score.TabIndex = 4
+        Me.lblP2Score.Text = "500 Points"
         '
-        'LblP1Score
+        'lblP1Score
         '
-        Me.LblP1Score.AutoSize = True
-        Me.LblP1Score.Location = New System.Drawing.Point(9, 45)
-        Me.LblP1Score.Name = "LblP1Score"
-        Me.LblP1Score.Size = New System.Drawing.Size(57, 13)
-        Me.LblP1Score.TabIndex = 10
-        Me.LblP1Score.Text = "500 Points"
+        Me.lblP1Score.AutoSize = True
+        Me.lblP1Score.Location = New System.Drawing.Point(9, 45)
+        Me.lblP1Score.Name = "lblP1Score"
+        Me.lblP1Score.Size = New System.Drawing.Size(57, 13)
+        Me.lblP1Score.TabIndex = 1
+        Me.lblP1Score.Text = "500 Points"
         '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(20, 383)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 38)
-        Me.Button1.TabIndex = 13
+        Me.Button1.TabIndex = 4
         Me.Button1.Text = "TEMP START"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -586,92 +595,179 @@ Partial Class frmMain
         Me.Button2.Location = New System.Drawing.Point(101, 383)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 38)
-        Me.Button2.TabIndex = 14
+        Me.Button2.TabIndex = 5
         Me.Button2.Text = "TEMP GAME"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(182, 383)
+        Me.Button4.Location = New System.Drawing.Point(263, 383)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 38)
-        Me.Button4.TabIndex = 16
+        Me.Button4.TabIndex = 7
         Me.Button4.Text = "TEMP SCORE"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'inputScreen
+        '
+        Me.inputScreen.Controls.Add(Me.Label4)
+        Me.inputScreen.Controls.Add(Me.lstPlayerXWords)
+        Me.inputScreen.Controls.Add(Me.btnAddWord)
+        Me.inputScreen.Controls.Add(Me.txtPlayerX)
+        Me.inputScreen.Controls.Add(Me.btnDone)
+        Me.inputScreen.Controls.Add(Me.lblPlayerX)
+        Me.inputScreen.Location = New System.Drawing.Point(547, 13)
+        Me.inputScreen.Name = "inputScreen"
+        Me.inputScreen.Size = New System.Drawing.Size(243, 362)
+        Me.inputScreen.TabIndex = 2
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(17, 50)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(212, 20)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Enter the Words You Found."
+        '
+        'lstPlayerXWords
+        '
+        Me.lstPlayerXWords.FormattingEnabled = True
+        Me.lstPlayerXWords.Location = New System.Drawing.Point(21, 101)
+        Me.lstPlayerXWords.Name = "lstPlayerXWords"
+        Me.lstPlayerXWords.Size = New System.Drawing.Size(208, 186)
+        Me.lstPlayerXWords.TabIndex = 4
+        '
+        'btnAddWord
+        '
+        Me.btnAddWord.Location = New System.Drawing.Point(154, 73)
+        Me.btnAddWord.Name = "btnAddWord"
+        Me.btnAddWord.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddWord.TabIndex = 3
+        Me.btnAddWord.Text = "&Add Word"
+        Me.btnAddWord.UseVisualStyleBackColor = True
+        '
+        'txtPlayerX
+        '
+        Me.txtPlayerX.Location = New System.Drawing.Point(21, 75)
+        Me.txtPlayerX.Name = "txtPlayerX"
+        Me.txtPlayerX.Size = New System.Drawing.Size(127, 20)
+        Me.txtPlayerX.TabIndex = 2
+        '
+        'btnDone
+        '
+        Me.btnDone.Location = New System.Drawing.Point(21, 293)
+        Me.btnDone.Name = "btnDone"
+        Me.btnDone.Size = New System.Drawing.Size(208, 43)
+        Me.btnDone.TabIndex = 5
+        Me.btnDone.Text = "&Done"
+        Me.btnDone.UseVisualStyleBackColor = True
+        '
+        'lblPlayerX
+        '
+        Me.lblPlayerX.AutoSize = True
+        Me.lblPlayerX.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPlayerX.Location = New System.Drawing.Point(17, 11)
+        Me.lblPlayerX.Name = "lblPlayerX"
+        Me.lblPlayerX.Size = New System.Drawing.Size(104, 29)
+        Me.lblPlayerX.TabIndex = 0
+        Me.lblPlayerX.Text = "Player X"
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(182, 383)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 38)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "TEMP INPUT"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
-        Me.AcceptButton = Me.BtnStartGame
+        Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1072, 421)
+        Me.ClientSize = New System.Drawing.Size(1341, 421)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.inputScreen)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.ScoreScreen)
-        Me.Controls.Add(Me.GameScreen)
-        Me.Controls.Add(Me.StartScreen)
+        Me.Controls.Add(Me.scoreScreen)
+        Me.Controls.Add(Me.gameScreen)
+        Me.Controls.Add(Me.startScreen)
         Me.Name = "frmMain"
         Me.Text = "Boggle Game"
-        Me.StartScreen.ResumeLayout(False)
-        Me.StartScreen.PerformLayout()
-        Me.GrpNumOfPlayers.ResumeLayout(False)
-        Me.GrpNumOfPlayers.PerformLayout()
-        Me.GameScreen.ResumeLayout(False)
-        Me.GameScreen.PerformLayout()
-        Me.BoggleTable.ResumeLayout(False)
-        Me.ScoreScreen.ResumeLayout(False)
-        Me.ScoreScreen.PerformLayout()
+        Me.startScreen.ResumeLayout(False)
+        Me.startScreen.PerformLayout()
+        Me.grpNumOfPlayers.ResumeLayout(False)
+        Me.grpNumOfPlayers.PerformLayout()
+        Me.gameScreen.ResumeLayout(False)
+        Me.gameScreen.PerformLayout()
+        Me.boggleTable.ResumeLayout(False)
+        Me.scoreScreen.ResumeLayout(False)
+        Me.scoreScreen.PerformLayout()
+        Me.inputScreen.ResumeLayout(False)
+        Me.inputScreen.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents LblP1Name As Label
-    Friend WithEvents LblP2Name As Label
-    Friend WithEvents LstP1Unique As ListBox
-    Friend WithEvents LstP2Unique As ListBox
+    Friend WithEvents lblP1Name As Label
+    Friend WithEvents lblP2Name As Label
+    Friend WithEvents lstP1Unique As ListBox
+    Friend WithEvents lstP2Unique As ListBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents LstP4Unique As ListBox
-    Friend WithEvents LstP3Unique As ListBox
-    Friend WithEvents LblP4Name As Label
-    Friend WithEvents LblP3Name As Label
-    Friend WithEvents StartScreen As Panel
+    Friend WithEvents lstP4Unique As ListBox
+    Friend WithEvents lstP3Unique As ListBox
+    Friend WithEvents lblP4Name As Label
+    Friend WithEvents lblP3Name As Label
+    Friend WithEvents startScreen As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents LblAllenRetzler As LinkLabel
-    Friend WithEvents LblTaylorScafe As LinkLabel
-    Friend WithEvents GrpNumOfPlayers As GroupBox
-    Friend WithEvents Radio4Players As RadioButton
-    Friend WithEvents Radio3Players As RadioButton
+    Friend WithEvents lblAllenRetzler As LinkLabel
+    Friend WithEvents lblTaylorScafe As LinkLabel
+    Friend WithEvents grpNumOfPlayers As GroupBox
+    Friend WithEvents radio4Players As RadioButton
+    Friend WithEvents radio3Players As RadioButton
     Friend WithEvents Radio2Players As RadioButton
-    Friend WithEvents Radio1Player As RadioButton
-    Friend WithEvents BtnStartGame As Button
-    Friend WithEvents BtnQuit As Button
-    Friend WithEvents GameScreen As Panel
-    Friend WithEvents Timer As ProgressBar
-    Friend WithEvents BoggleTable As TableLayoutPanel
-    Friend WithEvents LblDie16 As Label
-    Friend WithEvents LblDie15 As Label
-    Friend WithEvents LblDie14 As Label
-    Friend WithEvents LblDie13 As Label
-    Friend WithEvents LblDie12 As Label
-    Friend WithEvents LblDie11 As Label
-    Friend WithEvents LblDie10 As Label
-    Friend WithEvents LblDie9 As Label
-    Friend WithEvents LblDie8 As Label
-    Friend WithEvents LblDie7 As Label
-    Friend WithEvents LblDie6 As Label
-    Friend WithEvents LblDie5 As Label
-    Friend WithEvents LblDie4 As Label
-    Friend WithEvents LblDie3 As Label
-    Friend WithEvents LblDie2 As Label
-    Friend WithEvents LblDie1 As Label
-    Friend WithEvents ScoreScreen As Panel
-    Friend WithEvents LblP4Score As Label
-    Friend WithEvents LblP3Score As Label
-    Friend WithEvents LblP2Score As Label
-    Friend WithEvents LblP1Score As Label
+    Friend WithEvents radio1Player As RadioButton
+    Friend WithEvents btnStartGame As Button
+    Friend WithEvents btnQuit As Button
+    Friend WithEvents gameScreen As Panel
+    Friend WithEvents timer As ProgressBar
+    Friend WithEvents boggleTable As TableLayoutPanel
+    Friend WithEvents lblDie16 As Label
+    Friend WithEvents lblDie15 As Label
+    Friend WithEvents lblDie14 As Label
+    Friend WithEvents lblDie13 As Label
+    Friend WithEvents lblDie12 As Label
+    Friend WithEvents lblDie11 As Label
+    Friend WithEvents lblDie10 As Label
+    Friend WithEvents lblDie9 As Label
+    Friend WithEvents lblDie8 As Label
+    Friend WithEvents lblDie7 As Label
+    Friend WithEvents lblDie6 As Label
+    Friend WithEvents lblDie5 As Label
+    Friend WithEvents lblDie4 As Label
+    Friend WithEvents lblDie3 As Label
+    Friend WithEvents lblDie2 As Label
+    Friend WithEvents lblDie1 As Label
+    Friend WithEvents scoreScreen As Panel
+    Friend WithEvents lblP4Score As Label
+    Friend WithEvents lblP3Score As Label
+    Friend WithEvents lblP2Score As Label
+    Friend WithEvents lblP1Score As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents inputScreen As Panel
+    Friend WithEvents lblPlayerX As Label
+    Friend WithEvents btnDone As Button
+    Friend WithEvents btnAddWord As Button
+    Friend WithEvents txtPlayerX As TextBox
+    Friend WithEvents lstPlayerXWords As ListBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label4 As Label
 End Class
