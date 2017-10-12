@@ -10,7 +10,10 @@
         Me.MaximumSize = New Drawing.Size(550, 464)
         gotoStartScreen()
 
-        gameLogicManager = New GameLogic(2)
+
+        'Temp Game Setup
+        Dim strPlayerList = New String(1) {"Allen", "Taylor"}
+        gameLogicManager = New GameLogic(strPlayerList)
 
     End Sub
 
