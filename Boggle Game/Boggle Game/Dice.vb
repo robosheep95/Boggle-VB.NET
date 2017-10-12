@@ -1,9 +1,11 @@
 ﻿Public Class Dice
     Private topLetter As Char
-    Private letterList As List(Of char)
+    Private letterList As List(Of Char)
+    Private specialLetter As Char
 
     Public Sub New(ByVal input As String)
         'TO DO: Make Constructor
+        specialLetter = CheckForSpecial(input)
         letterList = New List(Of Char)
         For Each letter As Char In input
             letterList.Add(letter)
@@ -11,6 +13,24 @@
         Randomize()
         ScrambleDice() 'Temp
     End Sub
+
+    Private Function CheckForSpecial(ByVal input As String) As Char
+        Select Case input
+            Case "AEEGMU" Or "AEGMNN"
+                Return "G"
+            Case "BJKQXZ"
+                Return "B"
+            Case "DHHLOR"
+                Return "L"
+            Case "EMOTTT"
+                Return "E"
+            Case "DHHNOT"
+                Return "O"
+        End Select
+        Return ""
+    End Function
+
+
     ''' <summary>
     ''' Randomaly Selects Top Letter
     ''' </summary>
@@ -32,4 +52,9 @@
         End If
     End Function
 
+    ReadOnly Property IsSpecial() As Boolean
+        Get
+            Return (specialLetter = topLetter)
+        End Get
+    End Property
 End Class

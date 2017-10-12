@@ -35,5 +35,12 @@
         Next
         Return strOuput
     End Function
+    Public Function GetSpecials() As List(Of Boolean)
+        Dim bolOutput As List(Of Boolean) = New List(Of Boolean)
+        For Each dice In DiceList
+            bolOutput.Add(dice.IsSpecial)
+        Next
+        Return bolOutput
+    End Function
 
 End Class
