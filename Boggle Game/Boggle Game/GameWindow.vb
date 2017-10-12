@@ -1,5 +1,6 @@
 ﻿Public Class frmMain
     Private numberOfPlayers = 2
+    Private gameLogicManager As GameLogic
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -9,6 +10,7 @@
         Me.MaximumSize = New Drawing.Size(550, 464)
         gotoStartScreen()
 
+        gameLogicManager = New GameLogic(2)
 
     End Sub
 
