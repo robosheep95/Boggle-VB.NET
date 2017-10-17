@@ -4,7 +4,7 @@
     ''' <summary>
     ''' Creates a board of 16 dice using a space seperated sting of dice
     ''' </summary>
-    ''' <param name="diceString"></param>
+    ''' <param name="diceString">Space Seperated List of Dice</param>
     Public Sub New(ByVal diceString As String)
         DiceList = New List(Of Dice)
         For Each sequence In Split(diceString, " ")
