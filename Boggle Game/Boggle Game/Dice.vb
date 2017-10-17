@@ -16,7 +16,9 @@
 
     Private Function CheckForSpecial(ByVal input As String) As Char
         Select Case input
-            Case "AEEGMU" Or "AEGMNN"
+            Case "AEEGMU"
+                Return "G"
+            Case "AEGMNN"
                 Return "G"
             Case "BJKQXZ"
                 Return "B"
@@ -27,7 +29,7 @@
             Case "DHHNOT"
                 Return "O"
         End Select
-        Return ""
+        Return " "
     End Function
 
 

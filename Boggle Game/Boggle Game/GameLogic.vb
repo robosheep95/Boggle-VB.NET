@@ -7,15 +7,15 @@
     ''' <summary>
     ''' Creates the game with # of players
     ''' </summary>
-    ''' <param name="intNumOfPlayers"></param>
     Public Sub New(strPlayerList As String())
-        'TO DO: Make Game Constructor
+
         gameBoard = New Board(strDefaultDice)
         playerList = New List(Of Player)
         For Each playerName In strPlayerList
             playerList.Add(New Player(playerName))
         Next
-        ListOfLetterList.AddRange({LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12})
+        ListOfLetterList = New List(Of List(Of String))
+        ListOfLetterList.AddRange(collection:={LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12})
         'Temp Game Setup
         MsgBox(gameBoard.GetBoard())
         MsgBox(playerList.ElementAt(0).GetName())
