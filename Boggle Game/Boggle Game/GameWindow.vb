@@ -90,6 +90,11 @@
         Else
             numberOfPlayers = 4
         End If
+
+        Dim PlayerList = New List(Of String)
+        For i = 1 To numberOfPlayers
+            PlayerList.Add(InputBox("Player " + CStr(i) + " Enter Your Name."))
+        Next
         gotoGameScreen()
     End Sub
 End Class
