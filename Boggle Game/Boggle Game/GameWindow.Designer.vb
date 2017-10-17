@@ -68,9 +68,6 @@ Partial Class frmMain
         Me.lblP3Score = New System.Windows.Forms.Label()
         Me.lblP2Score = New System.Windows.Forms.Label()
         Me.lblP1Score = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.inputScreen = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lstPlayerXWords = New System.Windows.Forms.ListBox()
@@ -78,13 +75,18 @@ Partial Class frmMain
         Me.txtPlayerX = New System.Windows.Forms.TextBox()
         Me.btnDone = New System.Windows.Forms.Button()
         Me.lblPlayerX = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.nameScreen = New System.Windows.Forms.Panel()
+        Me.lblEnterName = New System.Windows.Forms.Label()
+        Me.btnOk = New System.Windows.Forms.Button()
+        Me.txtPlayerName = New System.Windows.Forms.TextBox()
+        Me.btnCancel = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
         Me.boggleTable.SuspendLayout()
         Me.scoreScreen.SuspendLayout()
         Me.inputScreen.SuspendLayout()
+        Me.nameScreen.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblP1Name
@@ -181,7 +183,7 @@ Partial Class frmMain
         Me.startScreen.Controls.Add(Me.Label1)
         Me.startScreen.Location = New System.Drawing.Point(20, 12)
         Me.startScreen.Name = "startScreen"
-        Me.startScreen.Size = New System.Drawing.Size(189, 364)
+        Me.startScreen.Size = New System.Drawing.Size(189, 349)
         Me.startScreen.TabIndex = 0
         '
         'btnQuit
@@ -314,9 +316,9 @@ Partial Class frmMain
         Me.gameScreen.Controls.Add(Me.boggleTable)
         Me.gameScreen.Controls.Add(Me.timer)
         Me.gameScreen.Controls.Add(Me.Label19)
-        Me.gameScreen.Location = New System.Drawing.Point(214, 12)
+        Me.gameScreen.Location = New System.Drawing.Point(215, 87)
         Me.gameScreen.Name = "gameScreen"
-        Me.gameScreen.Size = New System.Drawing.Size(323, 364)
+        Me.gameScreen.Size = New System.Drawing.Size(323, 350)
         Me.gameScreen.TabIndex = 1
         '
         'boggleTable
@@ -540,9 +542,9 @@ Partial Class frmMain
         Me.scoreScreen.Controls.Add(Me.lstP3Unique)
         Me.scoreScreen.Controls.Add(Me.lblP3Name)
         Me.scoreScreen.Controls.Add(Me.lblP4Name)
-        Me.scoreScreen.Location = New System.Drawing.Point(808, 12)
+        Me.scoreScreen.Location = New System.Drawing.Point(940, 12)
         Me.scoreScreen.Name = "scoreScreen"
-        Me.scoreScreen.Size = New System.Drawing.Size(519, 364)
+        Me.scoreScreen.Size = New System.Drawing.Size(519, 349)
         Me.scoreScreen.TabIndex = 3
         '
         'lblP4Score
@@ -581,33 +583,6 @@ Partial Class frmMain
         Me.lblP1Score.TabIndex = 1
         Me.lblP1Score.Text = "500 Points"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(20, 383)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 38)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "TEMP START"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(101, 383)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 38)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = "TEMP GAME"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(263, 383)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 38)
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "TEMP SCORE"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
         'inputScreen
         '
         Me.inputScreen.Controls.Add(Me.Label4)
@@ -616,9 +591,9 @@ Partial Class frmMain
         Me.inputScreen.Controls.Add(Me.txtPlayerX)
         Me.inputScreen.Controls.Add(Me.btnDone)
         Me.inputScreen.Controls.Add(Me.lblPlayerX)
-        Me.inputScreen.Location = New System.Drawing.Point(547, 13)
+        Me.inputScreen.Location = New System.Drawing.Point(544, 87)
         Me.inputScreen.Name = "inputScreen"
-        Me.inputScreen.Size = New System.Drawing.Size(243, 362)
+        Me.inputScreen.Size = New System.Drawing.Size(390, 342)
         Me.inputScreen.TabIndex = 2
         '
         'Label4
@@ -636,12 +611,12 @@ Partial Class frmMain
         Me.lstPlayerXWords.FormattingEnabled = True
         Me.lstPlayerXWords.Location = New System.Drawing.Point(21, 101)
         Me.lstPlayerXWords.Name = "lstPlayerXWords"
-        Me.lstPlayerXWords.Size = New System.Drawing.Size(208, 186)
+        Me.lstPlayerXWords.Size = New System.Drawing.Size(125, 186)
         Me.lstPlayerXWords.TabIndex = 4
         '
         'btnAddWord
         '
-        Me.btnAddWord.Location = New System.Drawing.Point(154, 73)
+        Me.btnAddWord.Location = New System.Drawing.Point(300, 73)
         Me.btnAddWord.Name = "btnAddWord"
         Me.btnAddWord.Size = New System.Drawing.Size(75, 23)
         Me.btnAddWord.TabIndex = 3
@@ -652,14 +627,14 @@ Partial Class frmMain
         '
         Me.txtPlayerX.Location = New System.Drawing.Point(21, 75)
         Me.txtPlayerX.Name = "txtPlayerX"
-        Me.txtPlayerX.Size = New System.Drawing.Size(127, 20)
+        Me.txtPlayerX.Size = New System.Drawing.Size(273, 20)
         Me.txtPlayerX.TabIndex = 2
         '
         'btnDone
         '
         Me.btnDone.Location = New System.Drawing.Point(21, 293)
         Me.btnDone.Name = "btnDone"
-        Me.btnDone.Size = New System.Drawing.Size(208, 43)
+        Me.btnDone.Size = New System.Drawing.Size(354, 43)
         Me.btnDone.TabIndex = 5
         Me.btnDone.Text = "&Done"
         Me.btnDone.UseVisualStyleBackColor = True
@@ -674,26 +649,60 @@ Partial Class frmMain
         Me.lblPlayerX.TabIndex = 0
         Me.lblPlayerX.Text = "Player X"
         '
-        'Button3
+        'nameScreen
         '
-        Me.Button3.Location = New System.Drawing.Point(182, 383)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 38)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "TEMP INPUT"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.nameScreen.Controls.Add(Me.btnCancel)
+        Me.nameScreen.Controls.Add(Me.lblEnterName)
+        Me.nameScreen.Controls.Add(Me.btnOk)
+        Me.nameScreen.Controls.Add(Me.txtPlayerName)
+        Me.nameScreen.Location = New System.Drawing.Point(215, 12)
+        Me.nameScreen.Name = "nameScreen"
+        Me.nameScreen.Size = New System.Drawing.Size(379, 47)
+        Me.nameScreen.TabIndex = 8
+        '
+        'lblEnterName
+        '
+        Me.lblEnterName.AutoSize = True
+        Me.lblEnterName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEnterName.Location = New System.Drawing.Point(1, 1)
+        Me.lblEnterName.Name = "lblEnterName"
+        Me.lblEnterName.Size = New System.Drawing.Size(192, 20)
+        Me.lblEnterName.TabIndex = 1
+        Me.lblEnterName.Text = "Player 1 Enter Your Name"
+        '
+        'btnOk
+        '
+        Me.btnOk.Location = New System.Drawing.Point(303, 23)
+        Me.btnOk.Name = "btnOk"
+        Me.btnOk.Size = New System.Drawing.Size(75, 23)
+        Me.btnOk.TabIndex = 3
+        Me.btnOk.Text = "&OK"
+        Me.btnOk.UseVisualStyleBackColor = True
+        '
+        'txtPlayerName
+        '
+        Me.txtPlayerName.Location = New System.Drawing.Point(4, 25)
+        Me.txtPlayerName.Name = "txtPlayerName"
+        Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
+        Me.txtPlayerName.TabIndex = 2
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(303, 0)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.Text = "&Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1341, 421)
-        Me.Controls.Add(Me.Button3)
+        Me.ClientSize = New System.Drawing.Size(1472, 570)
+        Me.Controls.Add(Me.nameScreen)
         Me.Controls.Add(Me.inputScreen)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.scoreScreen)
         Me.Controls.Add(Me.gameScreen)
         Me.Controls.Add(Me.startScreen)
@@ -710,6 +719,8 @@ Partial Class frmMain
         Me.scoreScreen.PerformLayout()
         Me.inputScreen.ResumeLayout(False)
         Me.inputScreen.PerformLayout()
+        Me.nameScreen.ResumeLayout(False)
+        Me.nameScreen.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -759,15 +770,16 @@ Partial Class frmMain
     Friend WithEvents lblP3Score As Label
     Friend WithEvents lblP2Score As Label
     Friend WithEvents lblP1Score As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button4 As Button
     Friend WithEvents inputScreen As Panel
     Friend WithEvents lblPlayerX As Label
     Friend WithEvents btnDone As Button
     Friend WithEvents btnAddWord As Button
     Friend WithEvents txtPlayerX As TextBox
     Friend WithEvents lstPlayerXWords As ListBox
-    Friend WithEvents Button3 As Button
     Friend WithEvents Label4 As Label
+    Friend WithEvents nameScreen As Panel
+    Friend WithEvents lblEnterName As Label
+    Friend WithEvents btnOk As Button
+    Friend WithEvents txtPlayerName As TextBox
+    Friend WithEvents btnCancel As Button
 End Class

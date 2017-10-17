@@ -1,57 +1,75 @@
 ﻿Public Class frmMain
     Private numberOfPlayers = 2
     Private gameLogicManager As GameLogic
+    Private nameList = New List(Of String)
+
+
+    Private Sub Center(interior As Object, exterior As Object)
+        interior.left = CInt((exterior.Width / 2) - (interior.Width / 2))
+        interior.top = CInt((exterior.Height / 2) - (interior.Height / 2))
+    End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.Width = 550
-        Me.Height = 464
-        Me.MinimumSize = New Drawing.Size(550, 464)
-        Me.MaximumSize = New Drawing.Size(550, 464)
-        gotoStartScreen()
-
-
-        'Temp Game Setup
-        Dim strPlayerList = New String(1) {"Allen", "Taylor"}
-        gameLogicManager = New GameLogic(strPlayerList)
+        Me.Width = 500
+        Me.Height = 500
+        Me.MinimumSize = New Drawing.Size(500, 500)
+        Me.MaximumSize = New Drawing.Size(500, 500)
+        gotoMainMenu()
 
     End Sub
 
-    Private Sub gotoStartScreen()
+    Private Sub gotoMainMenu()
         startScreen.Visible = True
+        nameScreen.Visible = False
         gameScreen.Visible = False
         inputScreen.Visible = False
         scoreScreen.Visible = False
-        startScreen.Left = 265 - (startScreen.Width / 2)
+        Center(startScreen, Me)
         Me.AcceptButton = btnStartGame
         btnStartGame.Focus()
     End Sub
 
-
-    Private Sub gotoGameScreen()
+    Private Sub gotoEnterNames()
         startScreen.Visible = False
+        nameScreen.Visible = True
+        gameScreen.Visible = False
+        inputScreen.Visible = False
+        scoreScreen.Visible = False
+        Center(nameScreen, Me)
+        Me.AcceptButton = btnOk
+        txtPlayerName.Focus()
+        lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
+        nameList = New List(Of String)
+    End Sub
+
+    Private Sub gotoGame()
+        startScreen.Visible = False
+        nameScreen.Visible = False
         gameScreen.Visible = True
         inputScreen.Visible = False
         scoreScreen.Visible = False
-        gameScreen.Left = 265 - (gameScreen.Width / 2)
+        Center(gameScreen, Me)
     End Sub
 
-    Private Sub gotoInputScreen()
+    Private Sub gotoEnterWords()
         startScreen.Visible = False
+        nameScreen.Visible = False
         gameScreen.Visible = False
         inputScreen.Visible = True
         scoreScreen.Visible = False
-        inputScreen.Left = 265 - (inputScreen.Width / 2)
+        Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
         txtPlayerX.Focus()
     End Sub
 
-    Private Sub gotoScoreScreen()
+    Private Sub gotoResults()
         startScreen.Visible = False
+        nameScreen.Visible = False
         gameScreen.Visible = False
         inputScreen.Visible = False
         scoreScreen.Visible = True
-        scoreScreen.Left = 265 - (scoreScreen.Width / 2)
+        Center(scoreScreen, Me)
     End Sub
 
 
@@ -64,22 +82,6 @@
         Process.Start("https://github.com/robosheep95")
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        gotoStartScreen()
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        gotoGameScreen()
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        gotoScoreScreen()
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        gotoInputScreen()
-    End Sub
-
     Private Sub btnStartGame_Click(sender As Object, e As EventArgs) Handles btnStartGame.Click
         If radio1Player.Checked() Then
             numberOfPlayers = 1
@@ -90,11 +92,29 @@
         Else
             numberOfPlayers = 4
         End If
+        gotoEnterNames()
+    End Sub
 
-        Dim PlayerList = New List(Of String)
-        For i = 1 To numberOfPlayers
-            PlayerList.Add(InputBox("Player " + CStr(i) + " Enter Your Name."))
-        Next
-        gotoGameScreen()
+    Private Sub btnQuit_Click(sender As Object, e As EventArgs) Handles btnQuit.Click
+        If MsgBox("Are You Sure You Want to Quit?", vbQuestion + vbYesNo, "Quit") = vbYes Then
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        gotoMainMenu()
+    End Sub
+
+    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
+        If txtPlayerName.Text = "" Then
+            MsgBox("Your name must be at least 1 character long", vbExclamation + vbOK, "Invalid Name")
+        Else
+            nameList.Add(txtPlayerName.Text)
+            txtPlayerName.Text = ""
+            lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
+        End If
+        If nameList.Count() = numberOfPlayers Then
+            gotoGame()
+        End If
     End Sub
 End Class
