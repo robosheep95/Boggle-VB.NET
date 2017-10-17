@@ -2,24 +2,25 @@
 The Game of Boggle Created in Visual Basic
 ## Game Logic
 - Dice
-  - createDice(String diceConfig)
-  - getTopLetter() as char
-  - scrambleLetter()
+  - CreateDice(String diceConfig)
+  - GetTopLetter() as char
+  - ScrambleLetter()
 - Board
-  - getUnusedDice() as String[]
-  - setUnusedDice(String[] unused)
-  - getBoard() as Char[]
-  - scrambleBoard()
-  - getNeighbors(int pos) as Dict{}
+  - GetBoard() as Char[]
+  - ScrambleBoard()
+  - GetNeighbors(int pos) as Dict{}
 - Timer
-  - getTime() as Int
-  - startTime()
-  - setTimeLimit (int sec, Default 180)
+  - GetTime() as Int
+  - StartTime()
+  - SetTimeLimit (int sec, Default 180)
 - Player(s)
-  - setName(String name)
-  - getName() as String
-  - setScore(Integer score)
-  - getScore() as Integer
+  - SetName(String name)
+  - GetName() as String
+  - SetScore(Integer score)
+  - GetScore() as Integer
+  - AddWord(String inputWord)
+  - GetWordList() as List(String)
+  - ClearWordList()
 - Valadator(String) as Boolean
 - SearchDict(string input) as Boolean
 - CompareAnswers(Players[] players)
