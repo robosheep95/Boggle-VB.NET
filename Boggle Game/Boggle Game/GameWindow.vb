@@ -9,16 +9,6 @@
         interior.top = CInt((exterior.Height / 2) - (interior.Height / 2))
     End Sub
 
-    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Me.Width = 500
-        Me.Height = 500
-        Me.MinimumSize = New Drawing.Size(500, 500)
-        Me.MaximumSize = New Drawing.Size(500, 500)
-        gotoMainMenu()
-
-    End Sub
-
     Private Sub gotoMainMenu()
         startScreen.Visible = True
         nameScreen.Visible = False
@@ -38,6 +28,7 @@
         scoreScreen.Visible = False
         Center(nameScreen, Me)
         Me.AcceptButton = btnOk
+        txtPlayerName.Text = ""
         txtPlayerName.Focus()
         lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
         nameList = New List(Of String)
@@ -72,7 +63,22 @@
         Center(scoreScreen, Me)
     End Sub
 
+    Private Sub timeKeeper(time As Integer, callback As Object, Optional msTick As Integer = 1000)
 
+    End Sub
+
+
+
+
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.Width = 500
+        Me.Height = 500
+        Me.MinimumSize = New Drawing.Size(500, 500)
+        Me.MaximumSize = New Drawing.Size(500, 500)
+        gotoMainMenu()
+
+    End Sub
 
     Private Sub LblAllenRetzler_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblAllenRetzler.LinkClicked
         Process.Start("https://github.com/allenretz")
@@ -108,6 +114,8 @@
     Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
         If txtPlayerName.Text = "" Then
             MsgBox("Your name must be at least 1 character long", vbExclamation + vbOK, "Invalid Name")
+        ElseIf nameList.Contains(txtPlayerName.Text) Then
+            MsgBox("Your Name must not be the same as a previous player", vbExclamation + vbOK, "Invalid Name")
         Else
             nameList.Add(txtPlayerName.Text)
             txtPlayerName.Text = ""

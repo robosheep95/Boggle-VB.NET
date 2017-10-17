@@ -76,10 +76,10 @@ Partial Class frmMain
         Me.btnDone = New System.Windows.Forms.Button()
         Me.lblPlayerX = New System.Windows.Forms.Label()
         Me.nameScreen = New System.Windows.Forms.Panel()
+        Me.btnCancel = New System.Windows.Forms.Button()
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
-        Me.btnCancel = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -591,9 +591,9 @@ Partial Class frmMain
         Me.inputScreen.Controls.Add(Me.txtPlayerX)
         Me.inputScreen.Controls.Add(Me.btnDone)
         Me.inputScreen.Controls.Add(Me.lblPlayerX)
-        Me.inputScreen.Location = New System.Drawing.Point(544, 87)
+        Me.inputScreen.Location = New System.Drawing.Point(544, 132)
         Me.inputScreen.Name = "inputScreen"
-        Me.inputScreen.Size = New System.Drawing.Size(390, 342)
+        Me.inputScreen.Size = New System.Drawing.Size(390, 297)
         Me.inputScreen.TabIndex = 2
         '
         'Label4
@@ -632,9 +632,9 @@ Partial Class frmMain
         '
         'btnDone
         '
-        Me.btnDone.Location = New System.Drawing.Point(21, 293)
+        Me.btnDone.Location = New System.Drawing.Point(152, 244)
         Me.btnDone.Name = "btnDone"
-        Me.btnDone.Size = New System.Drawing.Size(354, 43)
+        Me.btnDone.Size = New System.Drawing.Size(227, 43)
         Me.btnDone.TabIndex = 5
         Me.btnDone.Text = "&Done"
         Me.btnDone.UseVisualStyleBackColor = True
@@ -659,6 +659,15 @@ Partial Class frmMain
         Me.nameScreen.Name = "nameScreen"
         Me.nameScreen.Size = New System.Drawing.Size(379, 47)
         Me.nameScreen.TabIndex = 8
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(303, 0)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.Text = "&Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'lblEnterName
         '
@@ -685,15 +694,6 @@ Partial Class frmMain
         Me.txtPlayerName.Name = "txtPlayerName"
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
         Me.txtPlayerName.TabIndex = 2
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(303, 0)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancel.TabIndex = 4
-        Me.btnCancel.Text = "&Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'frmMain
         '
