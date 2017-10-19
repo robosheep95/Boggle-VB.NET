@@ -1,7 +1,20 @@
-﻿Public Class frmMain
+﻿'Project: Boggle
+'By:      Allen Retzler and Taylor Scafe
+'Date:    10-12-17
+
+Imports VB = Microsoft.VisualBasic ' Used for creating a timer https://stackoverflow.com/a/36362504
+
+Public Class frmMain
     Private numberOfPlayers = 2
     Private gameLogicManager As GameLogic
     Private nameList = New List(Of String)
+
+    Private Enum timerType
+        Initial
+        InGame
+    End Enum
+
+    Private timerMode As timerType = timerType.Initial
 
 
     Private Sub Center(interior As Object, exterior As Object)
@@ -41,6 +54,79 @@
         inputScreen.Visible = False
         scoreScreen.Visible = False
         Center(gameScreen, Me)
+
+        prgTimer.Value = 0
+        gameLogicManager = New GameLogic(nameList.toArray())
+
+        lblDie1.Text = "3"
+        lblDie2.Text = "3"
+        lblDie3.Text = "3"
+        lblDie4.Text = "3"
+        lblDie5.Text = "3"
+        lblDie6.Text = "3"
+        lblDie7.Text = "3"
+        lblDie8.Text = "3"
+        lblDie9.Text = "3"
+        lblDie10.Text = "3"
+        lblDie11.Text = "3"
+        lblDie12.Text = "3"
+        lblDie13.Text = "3"
+        lblDie14.Text = "3"
+        lblDie15.Text = "3"
+        lblDie16.Text = "3"
+        timer(1000)
+        lblDie1.Text = "2"
+        lblDie2.Text = "2"
+        lblDie3.Text = "2"
+        lblDie4.Text = "2"
+        lblDie5.Text = "2"
+        lblDie6.Text = "2"
+        lblDie7.Text = "2"
+        lblDie8.Text = "2"
+        lblDie9.Text = "2"
+        lblDie10.Text = "2"
+        lblDie11.Text = "2"
+        lblDie12.Text = "2"
+        lblDie13.Text = "2"
+        lblDie14.Text = "2"
+        lblDie15.Text = "2"
+        lblDie16.Text = "2"
+        timer(1000)
+        lblDie1.Text = "1"
+        lblDie2.Text = "1"
+        lblDie3.Text = "1"
+        lblDie4.Text = "1"
+        lblDie5.Text = "1"
+        lblDie6.Text = "1"
+        lblDie7.Text = "1"
+        lblDie8.Text = "1"
+        lblDie9.Text = "1"
+        lblDie10.Text = "1"
+        lblDie11.Text = "1"
+        lblDie12.Text = "1"
+        lblDie13.Text = "1"
+        lblDie14.Text = "1"
+        lblDie15.Text = "1"
+        lblDie16.Text = "1"
+        timer(1000)
+        Dim v = gameLogicManager.GetBoard()
+        lblDie1.Text = v(0)
+        lblDie2.Text = v(1)
+        lblDie3.Text = v(2)
+        lblDie4.Text = v(3)
+        lblDie5.Text = v(4)
+        lblDie6.Text = v(5)
+        lblDie7.Text = v(6)
+        lblDie8.Text = v(7)
+        lblDie9.Text = v(8)
+        lblDie10.Text = v(9)
+        lblDie11.Text = v(10)
+        lblDie12.Text = v(11)
+        lblDie13.Text = v(12)
+        lblDie14.Text = v(13)
+        lblDie15.Text = v(14)
+        lblDie16.Text = v(15)
+
     End Sub
 
     Private Sub gotoEnterWords()
@@ -63,8 +149,11 @@
         Center(scoreScreen, Me)
     End Sub
 
-    Private Sub timeKeeper(time As Integer, callback As Object, Optional msTick As Integer = 1000)
-
+    Private Sub timer(time As Integer)
+        'This timer could be made more accurate by adding a For Loop
+        'and sleeping for smaller periods of time, but there is no need
+        Application.DoEvents()
+        System.Threading.Thread.Sleep(time)
     End Sub
 
 

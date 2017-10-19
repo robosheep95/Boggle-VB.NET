@@ -62,7 +62,7 @@ Partial Class frmMain
         Me.lblDie3 = New System.Windows.Forms.Label()
         Me.lblDie2 = New System.Windows.Forms.Label()
         Me.lblDie1 = New System.Windows.Forms.Label()
-        Me.timer = New System.Windows.Forms.ProgressBar()
+        Me.prgTimer = New System.Windows.Forms.ProgressBar()
         Me.scoreScreen = New System.Windows.Forms.Panel()
         Me.lblP4Score = New System.Windows.Forms.Label()
         Me.lblP3Score = New System.Windows.Forms.Label()
@@ -314,7 +314,7 @@ Partial Class frmMain
         'gameScreen
         '
         Me.gameScreen.Controls.Add(Me.boggleTable)
-        Me.gameScreen.Controls.Add(Me.timer)
+        Me.gameScreen.Controls.Add(Me.prgTimer)
         Me.gameScreen.Controls.Add(Me.Label19)
         Me.gameScreen.Location = New System.Drawing.Point(215, 87)
         Me.gameScreen.Name = "gameScreen"
@@ -518,15 +518,15 @@ Partial Class frmMain
         Me.lblDie1.Text = "Qu"
         Me.lblDie1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'timer
+        'prgTimer
         '
-        Me.timer.Location = New System.Drawing.Point(162, 9)
-        Me.timer.Name = "timer"
-        Me.timer.Size = New System.Drawing.Size(151, 23)
-        Me.timer.Step = 1
-        Me.timer.Style = System.Windows.Forms.ProgressBarStyle.Continuous
-        Me.timer.TabIndex = 1
-        Me.timer.Value = 30
+        Me.prgTimer.Location = New System.Drawing.Point(162, 9)
+        Me.prgTimer.Name = "prgTimer"
+        Me.prgTimer.Size = New System.Drawing.Size(151, 23)
+        Me.prgTimer.Step = 1
+        Me.prgTimer.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.prgTimer.TabIndex = 1
+        Me.prgTimer.Value = 30
         '
         'scoreScreen
         '
@@ -542,7 +542,7 @@ Partial Class frmMain
         Me.scoreScreen.Controls.Add(Me.lstP3Unique)
         Me.scoreScreen.Controls.Add(Me.lblP3Name)
         Me.scoreScreen.Controls.Add(Me.lblP4Name)
-        Me.scoreScreen.Location = New System.Drawing.Point(940, 12)
+        Me.scoreScreen.Location = New System.Drawing.Point(544, 390)
         Me.scoreScreen.Name = "scoreScreen"
         Me.scoreScreen.Size = New System.Drawing.Size(519, 349)
         Me.scoreScreen.TabIndex = 3
@@ -591,7 +591,7 @@ Partial Class frmMain
         Me.inputScreen.Controls.Add(Me.txtPlayerX)
         Me.inputScreen.Controls.Add(Me.btnDone)
         Me.inputScreen.Controls.Add(Me.lblPlayerX)
-        Me.inputScreen.Location = New System.Drawing.Point(544, 132)
+        Me.inputScreen.Location = New System.Drawing.Point(544, 87)
         Me.inputScreen.Name = "inputScreen"
         Me.inputScreen.Size = New System.Drawing.Size(390, 297)
         Me.inputScreen.TabIndex = 2
@@ -657,7 +657,7 @@ Partial Class frmMain
         Me.nameScreen.Controls.Add(Me.txtPlayerName)
         Me.nameScreen.Location = New System.Drawing.Point(215, 12)
         Me.nameScreen.Name = "nameScreen"
-        Me.nameScreen.Size = New System.Drawing.Size(379, 47)
+        Me.nameScreen.Size = New System.Drawing.Size(379, 48)
         Me.nameScreen.TabIndex = 8
         '
         'btnCancel
@@ -700,7 +700,7 @@ Partial Class frmMain
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1472, 570)
+        Me.ClientSize = New System.Drawing.Size(1089, 759)
         Me.Controls.Add(Me.nameScreen)
         Me.Controls.Add(Me.inputScreen)
         Me.Controls.Add(Me.scoreScreen)
@@ -747,7 +747,7 @@ Partial Class frmMain
     Friend WithEvents btnStartGame As Button
     Friend WithEvents btnQuit As Button
     Friend WithEvents gameScreen As Panel
-    Friend WithEvents timer As ProgressBar
+    Friend WithEvents prgTimer As ProgressBar
     Friend WithEvents boggleTable As TableLayoutPanel
     Friend WithEvents lblDie16 As Label
     Friend WithEvents lblDie15 As Label
