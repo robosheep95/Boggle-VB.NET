@@ -19,6 +19,7 @@
         'Temp Game Setup
         MsgBox(gameBoard.GetBoard())
         MsgBox(playerList.ElementAt(0).GetName())
+        MsgBox(IsRealWord("Hello"))
     End Sub
     'TO DO: Make Timer System
     ReadOnly Property GetBoard() As Char()
@@ -29,10 +30,12 @@
 
     Function IsRealWord(input As String) As Boolean
         If (input.Length >= 3) Then
+            If IsNothing(ListOfLetterList.ElementAt(input.Length - 3)) Then
 
-            If (ListOfLetterList.ElementAt(input.Length - 3).Count = 0) Then
-                Dim Filename = Application.StartupPath() = +input.Length.ToString + "-letter-words.txt"
-                ListOfLetterList.ElementAt(input.Length - 3).AddRange(Split(Filename))
+
+
+                'Dim Filename =  + "\dictionary\" + input.Length.ToString + "-letter-words.txt"
+                'ListOfLetterList.ElementAt(input.Length - 3).AddRange(Split(Filename))
             End If
             Return ListOfLetterList.ElementAt(input.Length - 3).Contains(input)
         End If
