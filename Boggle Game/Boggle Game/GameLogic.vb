@@ -17,9 +17,12 @@
         ListOfLetterList = New List(Of List(Of String))
         ListOfLetterList.AddRange(collection:={LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12})
         'Temp Game Setup
-        MsgBox(gameBoard.GetBoard())
-        MsgBox(playerList.ElementAt(0).GetName())
-        MsgBox(IsRealWord("Hello"))
+
+        'Debug Info Should be written to the Console or you should have your own branch
+        Console.WriteLine("Taylor - " + gameBoard.GetBoard())
+        Console.WriteLine("Taylor - " + playerList(0).GetName())
+        'MsgBox(gameBoard.GetBoard())
+        'MsgBox(playerList.ElementAt(0).GetName())
     End Sub
     'TO DO: Make Timer System
     ReadOnly Property GetBoard() As Char()
@@ -30,12 +33,10 @@
 
     Function IsRealWord(input As String) As Boolean
         If (input.Length >= 3) Then
-            If IsNothing(ListOfLetterList.ElementAt(input.Length - 3)) Then
 
-
-
-                'Dim Filename =  + "\dictionary\" + input.Length.ToString + "-letter-words.txt"
-                'ListOfLetterList.ElementAt(input.Length - 3).AddRange(Split(Filename))
+            If (ListOfLetterList.ElementAt(input.Length - 3).Count = 0) Then
+                Dim Filename = Application.StartupPath() = +input.Length.ToString + "-letter-words.txt"
+                ListOfLetterList.ElementAt(input.Length - 3).AddRange(Split(Filename))
             End If
             Return ListOfLetterList.ElementAt(input.Length - 3).Contains(input)
         End If
