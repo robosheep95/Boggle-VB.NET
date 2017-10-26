@@ -9,7 +9,7 @@
     ''' <summary>
     ''' Creates the game with an array of player names
     ''' </summary>
-    Public Sub New(strPlayerList As String())
+    Public Sub New(ByVal strPlayerList As String())
 
         gameBoard = New Board(strDefaultDice)
         playerList = New List(Of Player)
@@ -18,6 +18,8 @@
         Next
         ListOfLetterList = New List(Of List(Of String))
         ListOfLetterList.AddRange(collection:={LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12})
+
+        TestStuff()
 
     End Sub
 
@@ -60,7 +62,7 @@
     ''' </summary>
     ''' <param name="input"></param>
     ''' <returns>True or False</returns>
-    Public Function IsRealWord(input As String) As Boolean
+    Public Function IsRealWord(ByVal input As String) As Boolean
         If (input.Length >= 3) Then
 
             If (ListOfLetterList.ElementAt(input.Length - 3).Count = 0) Then
@@ -77,19 +79,30 @@
     ''' </summary>
     ''' <param name="input"></param>
     ''' <returns>Boolean and Integer equal to number of specials</returns>
-    Private Function IsOnBoard(input As String) As Tuple(Of Boolean, Integer)
+    Private Function IsOnBoard(ByVal input As String) As Tuple(Of Boolean, Integer)
         'TO DO: Create IsOnBoard Function
         Return New Tuple(Of Boolean, Integer)(True, 1)
     End Function
 
     ''' <summary>
-    ''' Checks if another player has the word
+    ''' 
     ''' </summary>
     ''' <param name="input"></param>
+    ''' <param name="playerIndex"></param>
     ''' <returns></returns>
-    Private Function IsDuplicate(input As String) As Boolean
-        'TO DO: Create Duplicate Finder
-        Return True
+    Private Function IsDuplicate(ByVal input As String, ByVal playerIndex As Integer) As Boolean
+        Dim boolDuplacate As Boolean = False
+        For Each player In playerList.GetRange(playerIndex + 1, playerList.Count + playerIndex - 1)
+            Dim wordList As List(Of String) = player.GetWordList
+            If wordList.Contains(input) Then
+                boolDuplacate = True
+                player.MarkDuplicate(input)
+            End If
+        Next
+        If boolDuplacate Then
+            playerList(playerIndex).MarkDuplicate(input)
+        End If
+        Return boolDuplacate
     End Function
 
     ''' <summary>
@@ -98,7 +111,7 @@
     Public Sub ScorePlayers()
         For Each player In playerList
             For Each word In player.GetWordList
-                If Not word.Contains("*") And Not IsDuplicate(word) Then
+                If Not word.Contains("*") And Not IsDuplicate(word, playerList.IndexOf(player)) Then
                     Dim wordLength As Integer = word.Length
                     If wordLength > 8 Then
                         wordLength = 8
@@ -112,6 +125,22 @@
                 End If
             Next
         Next
+    End Sub
+
+    Private Sub TestStuff()
+        playerList(0).AddWord("Hello")
+        playerList(0).AddWord("World")
+        playerList(1).AddWord("Hello")
+        playerList(1).AddWord("Billy")
+        playerList(1).AddWord("Idol")
+        ScorePlayers()
+        Console.WriteLine(playerList(0).GetWordList(0))
+        Console.WriteLine(playerList(0).GetWordList(1))
+        Console.WriteLine(playerList(1).GetWordList(0))
+        Console.WriteLine(playerList(1).GetWordList(1))
+        Console.WriteLine(playerList(1).GetWordList(2))
+        Console.WriteLine(playerList(0).GetScore)
+        Console.WriteLine(playerList(1).GetScore)
     End Sub
 
 End Class
