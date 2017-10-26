@@ -2,8 +2,10 @@
     Private LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12 As List(Of String)
     Private ListOfLetterList As List(Of List(Of String))
     Private strDefaultDice As String = "AAAFRS AAEEEE AAFIRS ADENNN AEEEEM AEEGMU AEGMNN AFIRSY BJKQXZ CCNSTW CEIILT CEILPT CEIPST DHHNOT DHHLOR DHLNOR DDLNOR EIIITT EMOTTT ENSSSU FIPRSY GORRVW HIPRRY NOOTUW OOOTTU"
+    Private scoreArray As Integer() = {0, 0, 0, 1, 1, 2, 3, 5, 11}
     Private gameBoard As Board
     Private playerList As List(Of Player)
+
     ''' <summary>
     ''' Creates the game with an array of player names
     ''' </summary>
@@ -93,15 +95,19 @@
     ''' <summary>
     ''' Scores the Players and Saves score to the player object
     ''' </summary>
-    Public Sub ScorePlayers()    'Incomplete!!!
+    Public Sub ScorePlayers()
         For Each player In playerList
             For Each word In player.GetWordList
-                If Not IsDuplicate(word) Then
+                If Not word.Contains("*") And Not IsDuplicate(word) Then
+                    Dim wordLength As Integer = word.Length
+                    If wordLength > 8 Then
+                        wordLength = 8
+                    End If
                     Dim tmpData As Tuple(Of Boolean, Integer) = IsOnBoard(word)
-                    If tmpData.Item1 And tmpData.Item2 <> 0 Then
-                        player.AddScore(word.Length * (2 * tmpData.Item2))
-                    ElseIf tmpData.Item1 And tmpData.Item2 = 0 Then
-                        player.AddScore(word.Length - 2)
+                    If tmpData.Item1 And tmpData.Item2 = 0 Then
+                        player.AddScore(scoreArray(wordLength))
+                    ElseIf tmpData.Item1 And tmpData.Item2 <> 0 Then
+                        player.AddScore(scoreArray(wordLength) * (2 * tmpData.Item2))
                     End If
                 End If
             Next
