@@ -80,6 +80,8 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
+        Me.lblTimerText = New System.Windows.Forms.Label()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -128,10 +130,10 @@ Partial Class frmMain
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(13, 5)
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(5, 9)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(98, 31)
+        Me.Label19.Size = New System.Drawing.Size(138, 44)
         Me.Label19.TabIndex = 0
         Me.Label19.Text = "Boggle"
         '
@@ -313,12 +315,14 @@ Partial Class frmMain
         '
         'gameScreen
         '
+        Me.gameScreen.Controls.Add(Me.btnBack)
+        Me.gameScreen.Controls.Add(Me.lblTimerText)
         Me.gameScreen.Controls.Add(Me.boggleTable)
         Me.gameScreen.Controls.Add(Me.prgTimer)
         Me.gameScreen.Controls.Add(Me.Label19)
         Me.gameScreen.Location = New System.Drawing.Point(215, 87)
         Me.gameScreen.Name = "gameScreen"
-        Me.gameScreen.Size = New System.Drawing.Size(323, 350)
+        Me.gameScreen.Size = New System.Drawing.Size(323, 407)
         Me.gameScreen.TabIndex = 1
         '
         'boggleTable
@@ -346,7 +350,7 @@ Partial Class frmMain
         Me.boggleTable.Controls.Add(Me.lblDie3, 2, 0)
         Me.boggleTable.Controls.Add(Me.lblDie2, 1, 0)
         Me.boggleTable.Controls.Add(Me.lblDie1, 0, 0)
-        Me.boggleTable.Location = New System.Drawing.Point(13, 42)
+        Me.boggleTable.Location = New System.Drawing.Point(13, 61)
         Me.boggleTable.MaximumSize = New System.Drawing.Size(300, 300)
         Me.boggleTable.MinimumSize = New System.Drawing.Size(300, 300)
         Me.boggleTable.Name = "boggleTable"
@@ -520,7 +524,7 @@ Partial Class frmMain
         '
         'prgTimer
         '
-        Me.prgTimer.Location = New System.Drawing.Point(162, 9)
+        Me.prgTimer.Location = New System.Drawing.Point(162, 28)
         Me.prgTimer.Name = "prgTimer"
         Me.prgTimer.Size = New System.Drawing.Size(151, 23)
         Me.prgTimer.Step = 1
@@ -695,12 +699,30 @@ Partial Class frmMain
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
         Me.txtPlayerName.TabIndex = 2
         '
+        'lblTimerText
+        '
+        Me.lblTimerText.AutoSize = True
+        Me.lblTimerText.Location = New System.Drawing.Point(227, 12)
+        Me.lblTimerText.Name = "lblTimerText"
+        Me.lblTimerText.Size = New System.Drawing.Size(28, 13)
+        Me.lblTimerText.TabIndex = 3
+        Me.lblTimerText.Text = "3:00"
+        '
+        'btnBack
+        '
+        Me.btnBack.Location = New System.Drawing.Point(238, 368)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(75, 23)
+        Me.btnBack.TabIndex = 4
+        Me.btnBack.Text = "&Back"
+        Me.btnBack.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1089, 759)
+        Me.ClientSize = New System.Drawing.Size(1089, 741)
         Me.Controls.Add(Me.nameScreen)
         Me.Controls.Add(Me.inputScreen)
         Me.Controls.Add(Me.scoreScreen)
@@ -782,4 +804,6 @@ Partial Class frmMain
     Friend WithEvents btnOk As Button
     Friend WithEvents txtPlayerName As TextBox
     Friend WithEvents btnCancel As Button
+    Friend WithEvents lblTimerText As Label
+    Friend WithEvents btnBack As Button
 End Class

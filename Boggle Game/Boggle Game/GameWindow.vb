@@ -5,23 +5,79 @@
 Imports VB = Microsoft.VisualBasic ' Used for creating a timer https://stackoverflow.com/a/36362504
 
 Public Class frmMain
-    Private numberOfPlayers = 2
+    Private numberOfPlayers As UShort = 2
     Private gameLogicManager As GameLogic
     Private nameList = New List(Of String)
 
-    Private Enum timerType
-        Initial
-        InGame
-    End Enum
+    Private timerMinutes As UShort = 3
+    Private timerSeconds As UShort = 10
+    Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
 
-    Private timerMode As timerType = timerType.Initial
+    'Private Enum timerType
+    '    Initial
+    '    InGame
+    'End Enum
+    'Private timerMode As timerType = timerType.Initial
 
-
+    ''' <summary>
+    ''' Centers an interior Object relative to it's exterior container
+    ''' </summary>
+    ''' <param name="interior">The object to center</param>
+    ''' <param name="exterior">The container to center the object within</param>
     Private Sub Center(interior As Object, exterior As Object)
         interior.left = CInt((exterior.Width / 2) - (interior.Width / 2))
         interior.top = CInt((exterior.Height / 2) - (interior.Height / 2))
     End Sub
 
+    ''' <summary>
+    ''' Halts execution of the current function for a period of time.
+    ''' This function uses threading to allow other events to interrupt
+    ''' the timer.
+    ''' </summary>
+    ''' <param name="seconds">The number of seconds to wait until continuing execution</param>
+    Private Sub timer(seconds As Integer)
+        For index = 0 To 10
+            Application.DoEvents()
+            System.Threading.Thread.Sleep(seconds * 100)
+        Next
+    End Sub
+
+    ''' <summary>
+    ''' Decrements the amount of time left
+    ''' </summary>
+    ''' <returns>Returns True when the timer has elapsed (0min 0sec remaining)</returns>
+    Private Function timerDecrement() As Boolean
+        If timerMinutes > 0 Or timerSeconds > 0 Then
+            If timerSeconds > 0 Then
+                timerSeconds -= 1
+            Else
+                timerMinutes -= 1
+                timerSeconds = 59
+            End If
+            Return False
+        End If
+        Return True
+    End Function
+
+    ''' <summary>
+    ''' Updates the timer display
+    ''' </summary>
+    Private Sub timerUpdate()
+        prgTimer.Maximum = timerMax
+        prgTimer.Value = 60 * timerMinutes + timerSeconds
+        Dim ts As String
+        If timerSeconds < 10 Then
+            ts = "0" + CStr(timerSeconds)
+        Else
+            ts = CStr(timerSeconds)
+        End If
+        lblTimerText.Text = CStr(timerMinutes) + ":" + ts
+    End Sub
+
+
+    ''' <summary>
+    ''' Goes to the Main Menu Screen
+    ''' </summary>
     Private Sub gotoMainMenu()
         startScreen.Visible = True
         nameScreen.Visible = False
@@ -33,6 +89,9 @@ Public Class frmMain
         btnStartGame.Focus()
     End Sub
 
+    ''' <summary>
+    ''' Goes to the screen where the players enter their names (just before the actual game)
+    ''' </summary>
     Private Sub gotoEnterNames()
         startScreen.Visible = False
         nameScreen.Visible = True
@@ -43,10 +102,14 @@ Public Class frmMain
         Me.AcceptButton = btnOk
         txtPlayerName.Text = ""
         txtPlayerName.Focus()
-        lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
         nameList = New List(Of String)
+        lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
     End Sub
 
+
+    ''' <summary>
+    ''' Goes to the actual game and starts it
+    ''' </summary>
     Private Sub gotoGame()
         startScreen.Visible = False
         nameScreen.Visible = False
@@ -57,6 +120,11 @@ Public Class frmMain
 
         prgTimer.Value = 0
         gameLogicManager = New GameLogic(nameList.toArray())
+
+        timerMinutes = timerMax \ 60
+        timerSeconds = timerMax - (60 * timerMinutes)
+
+        timerUpdate()
 
         lblDie1.Text = "3"
         lblDie2.Text = "3"
@@ -74,7 +142,8 @@ Public Class frmMain
         lblDie14.Text = "3"
         lblDie15.Text = "3"
         lblDie16.Text = "3"
-        timer(1000)
+        timer(1)
+
         lblDie1.Text = "2"
         lblDie2.Text = "2"
         lblDie3.Text = "2"
@@ -91,7 +160,8 @@ Public Class frmMain
         lblDie14.Text = "2"
         lblDie15.Text = "2"
         lblDie16.Text = "2"
-        timer(1000)
+        timer(1)
+
         lblDie1.Text = "1"
         lblDie2.Text = "1"
         lblDie3.Text = "1"
@@ -108,7 +178,7 @@ Public Class frmMain
         lblDie14.Text = "1"
         lblDie15.Text = "1"
         lblDie16.Text = "1"
-        timer(1000)
+        timer(1)
         Dim v = gameLogicManager.GetBoard()
         lblDie1.Text = v(0)
         lblDie2.Text = v(1)
@@ -127,8 +197,17 @@ Public Class frmMain
         lblDie15.Text = v(14)
         lblDie16.Text = v(15)
 
+        While Not timerDecrement()
+            timerUpdate()
+            timer(1)
+        End While
+        timerUpdate()
+
     End Sub
 
+    ''' <summary>
+    ''' Goes to the screen where players enter the words they found (just after the actual game)
+    ''' </summary>
     Private Sub gotoEnterWords()
         startScreen.Visible = False
         nameScreen.Visible = False
@@ -140,6 +219,9 @@ Public Class frmMain
         txtPlayerX.Focus()
     End Sub
 
+    ''' <summary>
+    ''' Goes to the screen where scores and words found are displayed
+    ''' </summary>
     Private Sub gotoResults()
         startScreen.Visible = False
         nameScreen.Visible = False
@@ -149,16 +231,11 @@ Public Class frmMain
         Center(scoreScreen, Me)
     End Sub
 
-    Private Sub timer(time As Integer)
-        'This timer could be made more accurate by adding a For Loop
-        'and sleeping for smaller periods of time, but there is no need
-        Application.DoEvents()
-        System.Threading.Thread.Sleep(time)
-    End Sub
 
 
-
-
+    ''' <summary>
+    ''' function that runs when the main form is loaded
+    ''' </summary>
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.Width = 500
@@ -213,5 +290,9 @@ Public Class frmMain
         If nameList.Count() = numberOfPlayers Then
             gotoGame()
         End If
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        gotoMainMenu()
     End Sub
 End Class
