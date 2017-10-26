@@ -11,6 +11,7 @@
             DiceList.Add(New Dice(sequence))
         Next
     End Sub
+
     ''' <summary>
     ''' Scrambles Board and Dice
     ''' </summary>
@@ -24,6 +25,7 @@
             dice.ScrambleDice()
         Next
     End Sub
+
     ''' <summary>
     ''' Gets board letters
     ''' </summary>
@@ -35,6 +37,11 @@
         Next
         Return strOuput
     End Function
+
+    ''' <summary>
+    ''' Gets Boolean List of Specials
+    ''' </summary>
+    ''' <returns>Boolean Array</returns>
     Public Function GetSpecials() As List(Of Boolean)
         Dim bolOutput As List(Of Boolean) = New List(Of Boolean)
         For Each dice In DiceList

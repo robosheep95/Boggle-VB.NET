@@ -28,14 +28,17 @@
     Sub SetName(ByVal inputName As String)
         strName = inputName
     End Sub
-    Sub SetScore(ByVal inputName As String)
-        strName = inputName
+    Sub SetScore(ByVal inputScore As Integer)
+        intScore = inputScore
+    End Sub
+    Sub AddScore(ByVal inputScore As Integer)
+        intScore += inputScore
     End Sub
     '---List Functions---'
     Sub AddWord(ByVal inputWord As String)
         strWordList.Add(inputWord)
     End Sub
     Sub ClearWordList()
-        strWordList = New List(Of String)
+        strWordList.Clear()
     End Sub
 End Class
