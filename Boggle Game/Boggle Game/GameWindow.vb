@@ -2,22 +2,29 @@
 'By:      Allen Retzler and Taylor Scafe
 'Date:    10-12-17
 
-Imports VB = Microsoft.VisualBasic ' Used for creating a timer https://stackoverflow.com/a/36362504
+Imports System.ComponentModel
+Imports VB = Microsoft.VisualBasic
 
 Public Class frmMain
     Private numberOfPlayers As UShort = 2
     Private gameLogicManager As GameLogic
     Private nameList = New List(Of String)
 
-    Private timerMinutes As UShort = 3
+    Private timerMinutes As UShort = 0 ' TODO: Change to 3 min
     Private timerSeconds As UShort = 10
     Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
+    Private timerHalted = False
 
-    'Private Enum timerType
-    '    Initial
-    '    InGame
-    'End Enum
-    'Private timerMode As timerType = timerType.Initial
+    ''' <summary>
+    ''' Converts the string q to Qu (used fore showing each dice on the board)
+    ''' </summary>
+    Private Function qToQu(s As String)
+        If s.ToUpper() = "Q" Then
+            Return "Qu"
+        Else
+            Return s
+        End If
+    End Function
 
     ''' <summary>
     ''' Centers an interior Object relative to it's exterior container
@@ -31,14 +38,21 @@ Public Class frmMain
 
     ''' <summary>
     ''' Halts execution of the current function for a period of time.
-    ''' This function uses threading to allow other events to interrupt
-    ''' the timer.
+    ''' This function uses threading to allow interrupts to still function.
+    ''' The timer needs to be halted before close
+    ''' This is based off of https://stackoverflow.com/a/36362504
     ''' </summary>
     ''' <param name="seconds">The number of seconds to wait until continuing execution</param>
     Private Sub timer(seconds As Integer)
+        If timerHalted Then
+            Return
+        End If
         For index = 0 To 10
             Application.DoEvents()
             System.Threading.Thread.Sleep(seconds * 100)
+            If timerHalted Then
+                Exit For
+            End If
         Next
     End Sub
 
@@ -72,6 +86,21 @@ Public Class frmMain
             ts = CStr(timerSeconds)
         End If
         lblTimerText.Text = CStr(timerMinutes) + ":" + ts
+    End Sub
+
+
+    ''' <summary>
+    ''' Stops the timer from counting down
+    ''' </summary>
+    Private Sub timerHalt()
+        timerHalted = True
+    End Sub
+
+    ''' <summary>
+    ''' Allows the timer to function if it were halted
+    ''' </summary>
+    Private Sub timerReset()
+        timerHalted = False
     End Sub
 
 
@@ -125,6 +154,7 @@ Public Class frmMain
         timerSeconds = timerMax - (60 * timerMinutes)
 
         timerUpdate()
+        timerReset()
 
         lblDie1.Text = "3"
         lblDie2.Text = "3"
@@ -180,28 +210,36 @@ Public Class frmMain
         lblDie16.Text = "1"
         timer(1)
         Dim v = gameLogicManager.GetBoard()
-        lblDie1.Text = v(0)
-        lblDie2.Text = v(1)
-        lblDie3.Text = v(2)
-        lblDie4.Text = v(3)
-        lblDie5.Text = v(4)
-        lblDie6.Text = v(5)
-        lblDie7.Text = v(6)
-        lblDie8.Text = v(7)
-        lblDie9.Text = v(8)
-        lblDie10.Text = v(9)
-        lblDie11.Text = v(10)
-        lblDie12.Text = v(11)
-        lblDie13.Text = v(12)
-        lblDie14.Text = v(13)
-        lblDie15.Text = v(14)
-        lblDie16.Text = v(15)
+
+        lblDie1.Text = qToQu(v(0))
+        lblDie2.Text = qToQu(v(1))
+        lblDie3.Text = qToQu(v(2))
+        lblDie4.Text = qToQu(v(3))
+        lblDie5.Text = qToQu(v(4))
+        lblDie6.Text = qToQu(v(5))
+        lblDie7.Text = qToQu(v(6))
+        lblDie8.Text = qToQu(v(7))
+        lblDie9.Text = qToQu(v(8))
+        lblDie10.Text = qToQu(v(9))
+        lblDie11.Text = qToQu(v(10))
+        lblDie12.Text = qToQu(v(11))
+        lblDie13.Text = qToQu(v(12))
+        lblDie14.Text = qToQu(v(13))
+        lblDie15.Text = qToQu(v(14))
+        lblDie16.Text = qToQu(v(15))
+
 
         While Not timerDecrement()
             timerUpdate()
             timer(1)
         End While
         timerUpdate()
+
+        'Figure out a better way to do this
+        If gameScreen.Visible = True Then
+            gotoEnterWords()
+        End If
+
 
     End Sub
 
@@ -217,6 +255,8 @@ Public Class frmMain
         Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
         txtPlayerX.Focus()
+
+        '--------------------------> BEGIN HERE <----------------------------
     End Sub
 
     ''' <summary>
@@ -237,7 +277,6 @@ Public Class frmMain
     ''' function that runs when the main form is loaded
     ''' </summary>
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Me.Width = 500
         Me.Height = 500
         Me.MinimumSize = New Drawing.Size(500, 500)
@@ -246,14 +285,14 @@ Public Class frmMain
 
     End Sub
 
+    ''' Button Handlers
+
     Private Sub LblAllenRetzler_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblAllenRetzler.LinkClicked
         Process.Start("https://github.com/allenretz")
     End Sub
-
     Private Sub LblTaylorScafe_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblTaylorScafe.LinkClicked
         Process.Start("https://github.com/robosheep95")
     End Sub
-
     Private Sub btnStartGame_Click(sender As Object, e As EventArgs) Handles btnStartGame.Click
         If radio1Player.Checked() Then
             numberOfPlayers = 1
@@ -266,17 +305,14 @@ Public Class frmMain
         End If
         gotoEnterNames()
     End Sub
-
     Private Sub btnQuit_Click(sender As Object, e As EventArgs) Handles btnQuit.Click
         If MsgBox("Are You Sure You Want to Quit?", vbQuestion + vbYesNo, "Quit") = vbYes Then
             Me.Close()
         End If
     End Sub
-
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         gotoMainMenu()
     End Sub
-
     Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
         If txtPlayerName.Text = "" Then
             MsgBox("Your name must be at least 1 character long", vbExclamation + vbOK, "Invalid Name")
@@ -291,8 +327,15 @@ Public Class frmMain
             gotoGame()
         End If
     End Sub
-
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        timerHalt()
         gotoMainMenu()
+    End Sub
+
+    ''' <summary>
+    ''' Clean up
+    ''' </summary>
+    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        timerHalt()
     End Sub
 End Class
