@@ -132,7 +132,7 @@ Public Class frmMain
         txtPlayerName.Text = ""
         txtPlayerName.Focus()
         nameList = New List(Of String)
-        lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
+        lblEnterName.Text = "Player 1 enter your name"
     End Sub
 
 
@@ -254,9 +254,8 @@ Public Class frmMain
         scoreScreen.Visible = False
         Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
-        txtPlayerX.Focus()
-
-        '--------------------------> BEGIN HERE <----------------------------
+        txtPlayerXWord.Focus()
+        lblPlayerX.Text = "Player 1"
     End Sub
 
     ''' <summary>
@@ -337,5 +336,23 @@ Public Class frmMain
     ''' </summary>
     Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         timerHalt()
+    End Sub
+
+    Private Sub btnAddWord_Click(sender As Object, e As EventArgs) Handles btnAddWord.Click
+        Dim tmpPlayerXWords As List(Of String) = New List(Of String)
+        Dim word = txtPlayerXWord.Text
+        Dim isValid As Boolean = gameLogicManager.IsRealWord(word)
+
+        '--------------------------->HERE<---------------------------
+        'TODO: Only allow a-zA-Z to be entered
+        If word.Length > 3 Then
+            If isValid Then
+                tmpPlayerXWords.Add(txtPlayerXWord.Text)
+            Else
+                MsgBox("The word you entered either doesn't exist on the board, or is not a recognized word.", vbExclamation + vbOK, "Invalid Word")
+            End If
+        Else
+            MsgBox("All words must be atleast 3 characters long", vbExclamation + vbOK, "Invalid Word")
+        End If
     End Sub
 End Class
