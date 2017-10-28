@@ -5,6 +5,7 @@
     Private scoreArray As Integer() = {0, 0, 0, 1, 1, 2, 3, 5, 11}
     Private gameBoard As Board
     Private playerList As List(Of Player)
+    Private wordValue As Dictionary(Of String, Integer)
 
     ''' <summary>
     ''' Creates the game with an array of player names
@@ -61,6 +62,7 @@
     ''' <param name="input"></param>
     ''' <returns>True or False</returns>
     Public Function IsRealWord(input As String) As Boolean
+        Return True
         If (input.Length >= 3) Then
 
             If (ListOfLetterList.ElementAt(input.Length - 3).Count = 0) Then
@@ -73,13 +75,77 @@
     End Function
 
     ''' <summary>
-    ''' Checks if the word is on the board
+    ''' Returns the maximuim board value for a particular word (does not factor in duplicates). Returns -1 if the word is not on the board
     ''' </summary>
-    ''' <param name="input"></param>
-    ''' <returns>Boolean and Integer equal to number of specials</returns>
-    Private Function IsOnBoard(input As String) As Tuple(Of Boolean, Integer)
-        'TO DO: Create IsOnBoard Function
-        Return New Tuple(Of Boolean, Integer)(True, 1)
+    ''' <param name="word">the word to check the value of</param>
+    ''' <returns></returns>
+    Private Function getBoardValueOfWord(word As String) As Integer
+
+
+        'Note I have not tested any of these Lambda Functions
+        Dim get1DIndex = Function(x As Integer())
+                             Return x(0) + (4 * x(1))
+                         End Function
+        Dim get2DIndex = Function(x As Integer)
+                             Return New Integer() {x - (x \ 4), x \ 4}
+                         End Function
+
+        Dim getAdjacent = Function(x As Integer)
+                              Dim loc = get2DIndex(x)
+                              Dim adj = New List(Of Integer)
+                              If loc(1) - 1 > 0 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0), loc(1) - 1}))
+                              End If
+
+                              If loc(0) - 1 > 0 And loc(1) + 1 < 4 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0) - 1, loc(1) + 1}))
+                              End If
+
+                              If loc(1) + 1 < 4 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0), loc(1) + 1}))
+                              End If
+
+                              If loc(0) + 1 < 4 And loc(1) + 1 < 4 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0) + 1, loc(1) + 1}))
+                              End If
+
+                              If loc(0) + 1 < 4 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0) + 1, loc(1) + 1}))
+                              End If
+
+                              If loc(0) - 1 > 0 And loc(1) + 1 < 4 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0) - 1, loc(1) + 1}))
+                              End If
+
+                              If loc(0) - 1 > 0 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0), loc(1) - 1}))
+                              End If
+
+                              If loc(0) - 1 > 0 And loc(1) - 1 > 0 Then
+                                  adj.Add(get1DIndex(New Integer() {loc(0) - 1, loc(1) - 1}))
+                              End If
+
+                              Return adj
+
+                          End Function
+
+
+        Dim value As Integer = -1
+
+        For i = 0 To 15
+            '--------->BEGIN HERE<-------
+            'loop through each index and check if the starting letter matches
+            'then procede to adjacent letters
+        Next
+    End Function
+
+    ''' <summary>
+    ''' Returns true if a word is on the board
+    ''' </summary>
+    ''' <param name="word">the word to check if it is on the board</param>
+    ''' <returns></returns>
+    Private Function isOnBoard(word As String) As Boolean
+        Return Not getBoardValueOfWord(word) = -1
     End Function
 
     ''' <summary>
@@ -103,12 +169,12 @@
                     If wordLength > 8 Then
                         wordLength = 8
                     End If
-                    Dim tmpData As Tuple(Of Boolean, Integer) = IsOnBoard(word)
-                    If tmpData.Item1 And tmpData.Item2 = 0 Then
-                        player.AddScore(scoreArray(wordLength))
-                    ElseIf tmpData.Item1 And tmpData.Item2 <> 0 Then
-                        player.AddScore(scoreArray(wordLength) * (2 * tmpData.Item2))
-                    End If
+                    'Dim tmpData As Tuple(Of Boolean, Integer) = IsOnBoard(word)
+                    'If tmpData.Item1 And tmpData.Item2 = 0 Then
+                    'player.AddScore(scoreArray(wordLength))
+                    'ElseIf tmpData.Item1 And tmpData.Item2 <> 0 Then
+                    'player.AddScore(scoreArray(wordLength) * (2 * tmpData.Item2))
+                    'End If
                 End If
             Next
         Next

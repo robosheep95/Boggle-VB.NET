@@ -67,6 +67,7 @@ Partial Class frmMain
         Me.lblP2Score = New System.Windows.Forms.Label()
         Me.lblP1Score = New System.Windows.Forms.Label()
         Me.inputScreen = New System.Windows.Forms.Panel()
+        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnAddWord = New System.Windows.Forms.Button()
         Me.txtPlayerXWord = New System.Windows.Forms.TextBox()
@@ -77,7 +78,6 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
-        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -578,6 +578,15 @@ Partial Class frmMain
         Me.inputScreen.Size = New System.Drawing.Size(390, 297)
         Me.inputScreen.TabIndex = 2
         '
+        'rtbPlayerXWords
+        '
+        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
+        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
+        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
+        Me.rtbPlayerXWords.TabIndex = 6
+        Me.rtbPlayerXWords.Text = ""
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -668,15 +677,6 @@ Partial Class frmMain
         Me.txtPlayerName.Name = "txtPlayerName"
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
         Me.txtPlayerName.TabIndex = 2
-        '
-        'rtbPlayerXWords
-        '
-        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
-        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
-        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
-        Me.rtbPlayerXWords.TabIndex = 6
-        Me.rtbPlayerXWords.Text = ""
         '
         'frmMain
         '
