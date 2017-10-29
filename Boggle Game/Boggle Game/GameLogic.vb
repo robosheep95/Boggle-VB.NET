@@ -18,7 +18,7 @@
             playerList.Add(New Player(playerName))
         Next
         wordList = New WordList
-        TestStuff() ' Temp test class at EOF
+        gameBoard.ScrambleBoard()
 
     End Sub
 
@@ -52,7 +52,7 @@
             For Each player In playerList
                 tempScore.Add(player.GetScore)
             Next
-            Return tempScore.ToArray
+            Return tempScore.ToArray()
         End Get
     End Property
 
@@ -70,6 +70,20 @@
         End If
     End Function
 
+    ''' <summary>
+    ''' Returns a Boolean if the word is on the board
+    ''' </summary>
+    ''' <param name="word"></param>
+    ''' <returns>Boolean</returns>
+    Public Function SimpleIsOnBoard(word As String) As Boolean
+        Return IsOnBoard(word).Item1
+    End Function
+
+    ''' <summary>
+    ''' Checks if a word is on the board
+    ''' </summary>
+    ''' <param name="word"></param>
+    ''' <returns></returns>
     Private Function IsOnBoard(word As String) As Tuple(Of Boolean, Integer)
         Dim listOfPaths As List(Of Tuple(Of Boolean, Integer)) = New List(Of Tuple(Of Boolean, Integer))
         Dim listOfUsed As List(Of Boolean) = New List(Of Boolean)
@@ -97,13 +111,13 @@
     End Function
 
     ''' <summary>
-    ''' Recusive Pathfinder
+    ''' Recusive Pathfinder for IsOnBoard
     ''' </summary>
     ''' <param name="word"></param>
     ''' <param name="index"></param>
     ''' <param name="intspecialCount"></param>
     ''' <param name="listOfUsed"></param>
-    ''' <returns></returns>
+    ''' <returns>Tuple of Boolean and Integer</returns>
     Private Function RabbitHole(ByVal word As String, ByVal index As Integer, ByVal intspecialCount As Integer, ByRef listOfUsed As List(Of Boolean)) As Tuple(Of Boolean, Integer)
         listOfUsed(index) = True
         If gameBoard.GetSpecials(index) Then
@@ -118,12 +132,13 @@
             Return New Tuple(Of Boolean, Integer)(False, 0)
         Else
 
+            For Each entry In letterDict
+                If entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) Then
+                    Return RabbitHole(word.Substring(1), entry.Key, intspecialCount, listOfUsed)
+                End If
+            Next
+
         End If
-        For Each entry In letterDict
-            If entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) Then
-                Return RabbitHole(word.Substring(1), entry.Key, intspecialCount, listOfUsed)
-            End If
-        Next
         Return New Tuple(Of Boolean, Integer)(False, 0)
     End Function
 
@@ -274,24 +289,6 @@
                 End If
             Next
         Next
-    End Sub
-
-    Private Sub TestStuff()
-        playerList(0).AddWord("Hello")
-        playerList(0).AddWord("World")
-        playerList(1).AddWord("Hello")
-        playerList(1).AddWord("Billy")
-        playerList(1).AddWord("Idol")
-        ScorePlayers()
-        Console.WriteLine(playerList(0).GetWordList(0))
-        Console.WriteLine(playerList(0).GetWordList(1))
-        Console.WriteLine(playerList(1).GetWordList(0))
-        Console.WriteLine(playerList(1).GetWordList(1))
-        Console.WriteLine(playerList(1).GetWordList(2))
-        Console.WriteLine(playerList(0).GetScore)
-        Console.WriteLine(playerList(1).GetScore)
-        Console.WriteLine(wordList.ListOfWordLists.ElementAt(0).Contains("aah"))
-        Console.WriteLine(IsRealWord("hello"))
     End Sub
 
 End Class
