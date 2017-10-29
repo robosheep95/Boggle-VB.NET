@@ -38,6 +38,10 @@
     Sub AddWord(ByVal inputWord As String)
         strWordList.Add(inputWord)
     End Sub
+    Public Sub MarkDuplicate(ByVal word As String)
+        strWordList(strWordList.IndexOf(word)) += "*"
+    End Sub
+
     Sub ClearWordList()
         strWordList.Clear()
     End Sub
