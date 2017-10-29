@@ -1,11 +1,11 @@
 ﻿Public Class GameLogic
-    Private LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12 As List(Of String)
-    Private ListOfLetterList As List(Of List(Of String))
+
     Private strDefaultDice As String = "AAAFRS AAEEEE AAFIRS ADENNN AEEEEM AEEGMU AEGMNN AFIRSY BJKQXZ CCNSTW CEIILT CEILPT CEIPST DHHNOT DHHLOR DHLNOR DDLNOR EIIITT EMOTTT ENSSSU FIPRSY GORRVW HIPRRY NOOTUW OOOTTU"
     Private scoreArray As Integer() = {0, 0, 0, 1, 1, 2, 3, 5, 11}
     Private gameBoard As Board
     Private playerList As List(Of Player)
     Private wordValue As Dictionary(Of String, Integer)
+    Private wordList As WordList
 
     ''' <summary>
     ''' Creates the game with an array of player names
@@ -17,10 +17,8 @@
         For Each playerName In strPlayerList
             playerList.Add(New Player(playerName))
         Next
-        ListOfLetterList = New List(Of List(Of String))
-        ListOfLetterList.AddRange(collection:={LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12})
 
-        '        TestStuff() ' Temp test class at EOF
+        'TestStuff() ' Temp test class at EOF
 
     End Sub
 
@@ -65,17 +63,11 @@
     ''' <returns>True or False</returns>
 
     Public Function IsRealWord(ByVal input As String) As Boolean
-        Return True
-
-        If (input.Length >= 3) Then
-
-            If (ListOfLetterList.ElementAt(input.Length - 3).Count = 0) Then
-                Dim Filename = Application.StartupPath() = +input.Length.ToString + "-letter-words.txt"
-                ListOfLetterList.ElementAt(input.Length - 3).AddRange(Split(Filename))
-            End If
-            Return ListOfLetterList.ElementAt(input.Length - 3).Contains(input)
+        If (input.Length >= 3 And wordList.ListOfWordLists.ElementAt(input.Length).Contains(input)) Then
+            Return True
+        Else
+            Return False
         End If
-        Return False
     End Function
 
     Private Function IsOnBoard(word As String) As Tuple(Of Boolean, Integer)
@@ -284,20 +276,20 @@
         Next
     End Sub
 
-    '   Private Sub TestStuff()
-    '       playerList(0).AddWord("Hello")
-    '       playerList(0).AddWord("World")
-    '       playerList(1).AddWord("Hello")
-    '       playerList(1).AddWord("Billy")
-    '       playerList(1).AddWord("Idol")
-    '       ScorePlayers()
-    '       Console.WriteLine(playerList(0).GetWordList(0))
-    '       Console.WriteLine(playerList(0).GetWordList(1))
-    '       Console.WriteLine(playerList(1).GetWordList(0))
-    '       Console.WriteLine(playerList(1).GetWordList(1))
-    '       Console.WriteLine(playerList(1).GetWordList(2))
-    '       Console.WriteLine(playerList(0).GetScore)
-    '       Console.WriteLine(playerList(1).GetScore)
-    '   End Sub
+ '   Private Sub TestStuff()
+ '       playerList(0).AddWord("Hello")
+ '       playerList(0).AddWord("World")
+ '       playerList(1).AddWord("Hello")
+ '       playerList(1).AddWord("Billy")
+ '       playerList(1).AddWord("Idol")
+ '       ScorePlayers()
+ '       Console.WriteLine(playerList(0).GetWordList(0))
+ '       Console.WriteLine(playerList(0).GetWordList(1))
+ '       Console.WriteLine(playerList(1).GetWordList(0))
+ '       Console.WriteLine(playerList(1).GetWordList(1))
+ '       Console.WriteLine(playerList(1).GetWordList(2))
+ '       Console.WriteLine(playerList(0).GetScore)
+ '       Console.WriteLine(playerList(1).GetScore)
+ '   End Sub
 
 End Class

@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.vb" />
+    <Compile Include="WordList.vb" />
     <Compile Include="Dice.vb" />
     <Compile Include="GameWindow.vb">
       <SubType>Form</SubType>
@@ -123,17 +124,5 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Dictionaries\10-letter-words.txt" />
-    <Content Include="Dictionaries\11-letter-words.txt" />
-    <Content Include="Dictionaries\12-letter-words.txt" />
-    <Content Include="Dictionaries\3-letter-words.txt" />
-    <Content Include="Dictionaries\4-letter-words.txt" />
-    <Content Include="Dictionaries\5-letter-words.txt" />
-    <Content Include="Dictionaries\6-letter-words.txt" />
-    <Content Include="Dictionaries\7-letter-words.txt" />
-    <Content Include="Dictionaries\8-letter-words.txt" />
-    <Content Include="Dictionaries\9-letter-words.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
