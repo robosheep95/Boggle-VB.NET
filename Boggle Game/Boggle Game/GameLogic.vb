@@ -17,8 +17,8 @@
         For Each playerName In strPlayerList
             playerList.Add(New Player(playerName))
         Next
-
-        'TestStuff() ' Temp test class at EOF
+        wordList = New WordList
+        TestStuff() ' Temp test class at EOF
 
     End Sub
 
@@ -63,8 +63,8 @@
     ''' <returns>True or False</returns>
 
     Public Function IsRealWord(ByVal input As String) As Boolean
-        If (input.Length >= 3 And wordList.ListOfWordLists.ElementAt(input.Length).Contains(input)) Then
-            Return True
+        If (input.Length >= 3) Then
+            Return wordList.ListOfWordLists.ElementAt(input.Length - 3).Contains(input)
         Else
             Return False
         End If
@@ -135,7 +135,7 @@
     Private Function GetNeighbors(ByVal index As Integer) As Dictionary(Of Integer, Char)
         Dim intConstant As Integer = 4
         Dim letterList As New Dictionary(Of Integer, Char)
-        Console.WriteLine(index)
+
         'North
         If index > intConstant Then
             letterList.Add(index - intConstant, gameBoard.GetLetter(index - intConstant))
@@ -276,20 +276,22 @@
         Next
     End Sub
 
- '   Private Sub TestStuff()
- '       playerList(0).AddWord("Hello")
- '       playerList(0).AddWord("World")
- '       playerList(1).AddWord("Hello")
- '       playerList(1).AddWord("Billy")
- '       playerList(1).AddWord("Idol")
- '       ScorePlayers()
- '       Console.WriteLine(playerList(0).GetWordList(0))
- '       Console.WriteLine(playerList(0).GetWordList(1))
- '       Console.WriteLine(playerList(1).GetWordList(0))
- '       Console.WriteLine(playerList(1).GetWordList(1))
- '       Console.WriteLine(playerList(1).GetWordList(2))
- '       Console.WriteLine(playerList(0).GetScore)
- '       Console.WriteLine(playerList(1).GetScore)
- '   End Sub
+    Private Sub TestStuff()
+        playerList(0).AddWord("Hello")
+        playerList(0).AddWord("World")
+        playerList(1).AddWord("Hello")
+        playerList(1).AddWord("Billy")
+        playerList(1).AddWord("Idol")
+        ScorePlayers()
+        Console.WriteLine(playerList(0).GetWordList(0))
+        Console.WriteLine(playerList(0).GetWordList(1))
+        Console.WriteLine(playerList(1).GetWordList(0))
+        Console.WriteLine(playerList(1).GetWordList(1))
+        Console.WriteLine(playerList(1).GetWordList(2))
+        Console.WriteLine(playerList(0).GetScore)
+        Console.WriteLine(playerList(1).GetScore)
+        Console.WriteLine(wordList.ListOfWordLists.ElementAt(0).Contains("aah"))
+        Console.WriteLine(IsRealWord("hello"))
+    End Sub
 
 End Class
