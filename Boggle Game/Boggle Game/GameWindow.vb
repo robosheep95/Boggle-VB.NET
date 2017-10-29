@@ -152,7 +152,7 @@ Public Class frmMain
         Center(gameScreen, Me)
 
         prgTimer.Value = 0
-        gameLogicManager = New GameLogic(nameList.toArray())
+        gameLogicManager.CreatePlayers(nameList)
 
         timerMinutes = timerMax \ 60
         timerSeconds = timerMax - (60 * timerMinutes)
@@ -280,6 +280,7 @@ Public Class frmMain
     ''' function that runs when the main form is loaded
     ''' </summary>
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        gameLogicManager = New GameLogic()
         Me.Width = 500
         Me.Height = 500
         Me.MinimumSize = New Drawing.Size(500, 500)

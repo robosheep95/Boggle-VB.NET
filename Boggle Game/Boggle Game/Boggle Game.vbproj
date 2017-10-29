@@ -46,6 +46,12 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Boggle.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.vb" />
+    <Compile Include="BoggleSplash.Designer.vb">
+      <DependentUpon>BoggleSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BoggleSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WordList.vb" />
     <Compile Include="Dice.vb" />
     <Compile Include="GameWindow.vb">
@@ -101,6 +113,9 @@
     <Compile Include="Player.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BoggleSplash.resx">
+      <DependentUpon>BoggleSplash.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameWindow.resx">
       <DependentUpon>GameWindow.vb</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +127,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -123,6 +139,8 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Boggle.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -10,16 +10,19 @@
     ''' <summary>
     ''' Creates the game with an array of player names
     ''' </summary>
-    Public Sub New(ByVal strPlayerList As String())
+    Public Sub New()
 
         gameBoard = New Board(strDefaultDice)
-        playerList = New List(Of Player)
-        For Each playerName In strPlayerList
-            playerList.Add(New Player(playerName))
-        Next
         wordList = New WordList
         gameBoard.ScrambleBoard()
 
+    End Sub
+
+    Public Sub CreatePlayers(players As List(Of String))
+        playerList = New List(Of Player)
+        For Each playerName In players
+            playerList.Add(New Player(playerName))
+        Next
     End Sub
 
     ''' <summary>

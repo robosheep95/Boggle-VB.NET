@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("Boggle Game")>
-<Assembly: AssemblyCopyright("Copyright ©  2017")>
+<Assembly: AssemblyCopyright("Copyright ©  2017 Allen Retzler and Taylor Scafe")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
