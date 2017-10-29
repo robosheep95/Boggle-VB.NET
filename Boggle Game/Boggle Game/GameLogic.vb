@@ -90,28 +90,28 @@
     ''' <param name="input"></param>
     ''' <param name="playerIndex"></param>
     ''' <returns></returns>
-    Private Function IsDuplicate(ByVal input As String, ByVal playerIndex As Integer) As Boolean
-        Dim boolDuplacate As Boolean = False
-        For Each player In playerList.GetRange(playerIndex + 1, playerList.Count + playerIndex - 1)
-            Dim wordList As List(Of String) = player.GetWordList
-            If wordList.Contains(input) Then
-                boolDuplacate = True
-                player.MarkDuplicate(input)
-            End If
-        Next
-        If boolDuplacate Then
-            playerList(playerIndex).MarkDuplicate(input)
+    Private Sub MarkDuplicates()
+        If playerList.Count <> 0 Then
+            Dim wordLists As List(Of List(Of String)) = New List(Of List(Of String))
+            For Each player In playerList
+                wordLists.Add(player.GetWordList)
+            Next
+            'Dim duplacates = wordLists(0).Intersect(wordLists.gr)
         End If
-        Return boolDuplacate
-    End Function
+
+    End Sub
 
     ''' <summary>
     ''' Scores the Players and Saves score to the player object
     ''' </summary>
     Public Sub ScorePlayers()
+        MarkDuplicates()
         For Each player In playerList
+
             For Each word In player.GetWordList
-                If Not word.Contains("*") And Not IsDuplicate(word, playerList.IndexOf(player)) Then
+
+
+                If Not word.Contains("*") Then
                     Dim wordLength As Integer = word.Length
                     If wordLength > 8 Then
                         wordLength = 8
