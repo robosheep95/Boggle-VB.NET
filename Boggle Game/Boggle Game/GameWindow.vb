@@ -5,15 +5,19 @@
 Imports System.ComponentModel
 Imports VB = Microsoft.VisualBasic
 
+Imports Regex = System.Text.RegularExpressions.Regex
+
 Public Class frmMain
     Private numberOfPlayers As UShort = 2
     Private gameLogicManager As GameLogic
     Private nameList = New List(Of String)
 
     Private timerMinutes As UShort = 0 ' TODO: Change to 3 min
-    Private timerSeconds As UShort = 10
+    Private timerSeconds As UShort = 0
     Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
     Private timerHalted = False
+
+    Private tmpCurrentPlayer = 1
 
     ''' <summary>
     ''' Converts the string q to Qu (used fore showing each dice on the board)
@@ -132,7 +136,7 @@ Public Class frmMain
         txtPlayerName.Text = ""
         txtPlayerName.Focus()
         nameList = New List(Of String)
-        lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
+        lblEnterName.Text = "Player 1 enter your name"
     End Sub
 
 
@@ -254,9 +258,8 @@ Public Class frmMain
         scoreScreen.Visible = False
         Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
-        txtPlayerX.Focus()
-
-        '--------------------------> BEGIN HERE <----------------------------
+        txtPlayerXWord.Focus()
+        lblPlayerX.Text = "Player 1"
     End Sub
 
     ''' <summary>
@@ -332,10 +335,48 @@ Public Class frmMain
         gotoMainMenu()
     End Sub
 
+    Private Sub btnAddWord_Click(sender As Object, e As EventArgs) Handles btnAddWord.Click
+        Dim tmpPlayerXWords As List(Of String) = New List(Of String)
+        Dim word = txtPlayerXWord.Text
+        Dim isValid As Boolean = gameLogicManager.IsRealWord(word)
+
+        Dim alpha As Regex = New Regex("^[a-zA-z]*$")
+
+
+        If alpha.IsMatch(word) Then
+            If word.Length >= 3 Then
+                If isValid Then
+                    tmpPlayerXWords.Add(txtPlayerXWord.Text)
+                    txtPlayerXWord.Text = ""
+                    Return
+                Else
+                    MsgBox("The word you entered either doesn't exist on the board, or is not a recognized word.", vbExclamation + vbOK, "Invalid Word")
+                End If
+            Else
+                MsgBox("All words must be atleast 3 characters long", vbExclamation + vbOK, "Invalid Word")
+            End If
+        Else
+            MsgBox("Words can only contain alphabetical characters", vbExclamation + vbOK, "Invalid Word")
+        End If
+        txtPlayerXWord.SelectAll()
+    End Sub
+
     ''' <summary>
     ''' Clean up
     ''' </summary>
     Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         timerHalt()
+    End Sub
+
+    Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
+        txtPlayerXWord.Text = ""
+        'gameLogicManager.
+        ' Set the score for a particular player
+        If tmpCurrentPlayer < numberOfPlayers Then
+            tmpCurrentPlayer += 1
+            lblPlayerX.Text = "Player " + CStr(tmpCurrentPlayer)
+        Else
+            gotoResults()
+        End If
     End Sub
 End Class

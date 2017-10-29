@@ -24,11 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.lblP1Name = New System.Windows.Forms.Label()
         Me.lblP2Name = New System.Windows.Forms.Label()
-        Me.lstP1Unique = New System.Windows.Forms.ListBox()
-        Me.lstP2Unique = New System.Windows.Forms.ListBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.lstP4Unique = New System.Windows.Forms.ListBox()
-        Me.lstP3Unique = New System.Windows.Forms.ListBox()
         Me.lblP4Name = New System.Windows.Forms.Label()
         Me.lblP3Name = New System.Windows.Forms.Label()
         Me.startScreen = New System.Windows.Forms.Panel()
@@ -45,6 +41,8 @@ Partial Class frmMain
         Me.lblAllenRetzler = New System.Windows.Forms.LinkLabel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gameScreen = New System.Windows.Forms.Panel()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.lblTimerText = New System.Windows.Forms.Label()
         Me.boggleTable = New System.Windows.Forms.TableLayoutPanel()
         Me.lblDie16 = New System.Windows.Forms.Label()
         Me.lblDie15 = New System.Windows.Forms.Label()
@@ -69,10 +67,10 @@ Partial Class frmMain
         Me.lblP2Score = New System.Windows.Forms.Label()
         Me.lblP1Score = New System.Windows.Forms.Label()
         Me.inputScreen = New System.Windows.Forms.Panel()
+        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.lstPlayerXWords = New System.Windows.Forms.ListBox()
         Me.btnAddWord = New System.Windows.Forms.Button()
-        Me.txtPlayerX = New System.Windows.Forms.TextBox()
+        Me.txtPlayerXWord = New System.Windows.Forms.TextBox()
         Me.btnDone = New System.Windows.Forms.Button()
         Me.lblPlayerX = New System.Windows.Forms.Label()
         Me.nameScreen = New System.Windows.Forms.Panel()
@@ -80,8 +78,6 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
-        Me.lblTimerText = New System.Windows.Forms.Label()
-        Me.btnBack = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -111,22 +107,6 @@ Partial Class frmMain
         Me.lblP2Name.TabIndex = 3
         Me.lblP2Name.Text = "Player 2"
         '
-        'lstP1Unique
-        '
-        Me.lstP1Unique.FormattingEnabled = True
-        Me.lstP1Unique.Location = New System.Drawing.Point(12, 65)
-        Me.lstP1Unique.Name = "lstP1Unique"
-        Me.lstP1Unique.Size = New System.Drawing.Size(120, 277)
-        Me.lstP1Unique.TabIndex = 2
-        '
-        'lstP2Unique
-        '
-        Me.lstP2Unique.FormattingEnabled = True
-        Me.lstP2Unique.Location = New System.Drawing.Point(138, 65)
-        Me.lstP2Unique.Name = "lstP2Unique"
-        Me.lstP2Unique.Size = New System.Drawing.Size(120, 277)
-        Me.lstP2Unique.TabIndex = 5
-        '
         'Label19
         '
         Me.Label19.AutoSize = True
@@ -136,22 +116,6 @@ Partial Class frmMain
         Me.Label19.Size = New System.Drawing.Size(138, 44)
         Me.Label19.TabIndex = 0
         Me.Label19.Text = "Boggle"
-        '
-        'lstP4Unique
-        '
-        Me.lstP4Unique.FormattingEnabled = True
-        Me.lstP4Unique.Location = New System.Drawing.Point(390, 65)
-        Me.lstP4Unique.Name = "lstP4Unique"
-        Me.lstP4Unique.Size = New System.Drawing.Size(120, 277)
-        Me.lstP4Unique.TabIndex = 11
-        '
-        'lstP3Unique
-        '
-        Me.lstP3Unique.FormattingEnabled = True
-        Me.lstP3Unique.Location = New System.Drawing.Point(264, 65)
-        Me.lstP3Unique.Name = "lstP3Unique"
-        Me.lstP3Unique.Size = New System.Drawing.Size(120, 277)
-        Me.lstP3Unique.TabIndex = 8
         '
         'lblP4Name
         '
@@ -324,6 +288,24 @@ Partial Class frmMain
         Me.gameScreen.Name = "gameScreen"
         Me.gameScreen.Size = New System.Drawing.Size(323, 407)
         Me.gameScreen.TabIndex = 1
+        '
+        'btnBack
+        '
+        Me.btnBack.Location = New System.Drawing.Point(238, 368)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(75, 23)
+        Me.btnBack.TabIndex = 4
+        Me.btnBack.Text = "&Back"
+        Me.btnBack.UseVisualStyleBackColor = True
+        '
+        'lblTimerText
+        '
+        Me.lblTimerText.AutoSize = True
+        Me.lblTimerText.Location = New System.Drawing.Point(227, 12)
+        Me.lblTimerText.Name = "lblTimerText"
+        Me.lblTimerText.Size = New System.Drawing.Size(28, 13)
+        Me.lblTimerText.TabIndex = 3
+        Me.lblTimerText.Text = "3:00"
         '
         'boggleTable
         '
@@ -538,12 +520,8 @@ Partial Class frmMain
         Me.scoreScreen.Controls.Add(Me.lblP3Score)
         Me.scoreScreen.Controls.Add(Me.lblP2Score)
         Me.scoreScreen.Controls.Add(Me.lblP1Score)
-        Me.scoreScreen.Controls.Add(Me.lstP1Unique)
         Me.scoreScreen.Controls.Add(Me.lblP1Name)
         Me.scoreScreen.Controls.Add(Me.lblP2Name)
-        Me.scoreScreen.Controls.Add(Me.lstP4Unique)
-        Me.scoreScreen.Controls.Add(Me.lstP2Unique)
-        Me.scoreScreen.Controls.Add(Me.lstP3Unique)
         Me.scoreScreen.Controls.Add(Me.lblP3Name)
         Me.scoreScreen.Controls.Add(Me.lblP4Name)
         Me.scoreScreen.Location = New System.Drawing.Point(544, 390)
@@ -589,16 +567,25 @@ Partial Class frmMain
         '
         'inputScreen
         '
+        Me.inputScreen.Controls.Add(Me.rtbPlayerXWords)
         Me.inputScreen.Controls.Add(Me.Label4)
-        Me.inputScreen.Controls.Add(Me.lstPlayerXWords)
         Me.inputScreen.Controls.Add(Me.btnAddWord)
-        Me.inputScreen.Controls.Add(Me.txtPlayerX)
+        Me.inputScreen.Controls.Add(Me.txtPlayerXWord)
         Me.inputScreen.Controls.Add(Me.btnDone)
         Me.inputScreen.Controls.Add(Me.lblPlayerX)
         Me.inputScreen.Location = New System.Drawing.Point(544, 87)
         Me.inputScreen.Name = "inputScreen"
         Me.inputScreen.Size = New System.Drawing.Size(390, 297)
         Me.inputScreen.TabIndex = 2
+        '
+        'rtbPlayerXWords
+        '
+        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
+        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
+        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
+        Me.rtbPlayerXWords.TabIndex = 6
+        Me.rtbPlayerXWords.Text = ""
         '
         'Label4
         '
@@ -610,14 +597,6 @@ Partial Class frmMain
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Enter the Words You Found."
         '
-        'lstPlayerXWords
-        '
-        Me.lstPlayerXWords.FormattingEnabled = True
-        Me.lstPlayerXWords.Location = New System.Drawing.Point(21, 101)
-        Me.lstPlayerXWords.Name = "lstPlayerXWords"
-        Me.lstPlayerXWords.Size = New System.Drawing.Size(125, 186)
-        Me.lstPlayerXWords.TabIndex = 4
-        '
         'btnAddWord
         '
         Me.btnAddWord.Location = New System.Drawing.Point(300, 73)
@@ -627,18 +606,18 @@ Partial Class frmMain
         Me.btnAddWord.Text = "&Add Word"
         Me.btnAddWord.UseVisualStyleBackColor = True
         '
-        'txtPlayerX
+        'txtPlayerXWord
         '
-        Me.txtPlayerX.Location = New System.Drawing.Point(21, 75)
-        Me.txtPlayerX.Name = "txtPlayerX"
-        Me.txtPlayerX.Size = New System.Drawing.Size(273, 20)
-        Me.txtPlayerX.TabIndex = 2
+        Me.txtPlayerXWord.Location = New System.Drawing.Point(21, 75)
+        Me.txtPlayerXWord.Name = "txtPlayerXWord"
+        Me.txtPlayerXWord.Size = New System.Drawing.Size(273, 20)
+        Me.txtPlayerXWord.TabIndex = 2
         '
         'btnDone
         '
-        Me.btnDone.Location = New System.Drawing.Point(152, 244)
+        Me.btnDone.Location = New System.Drawing.Point(300, 102)
         Me.btnDone.Name = "btnDone"
-        Me.btnDone.Size = New System.Drawing.Size(227, 43)
+        Me.btnDone.Size = New System.Drawing.Size(75, 22)
         Me.btnDone.TabIndex = 5
         Me.btnDone.Text = "&Done"
         Me.btnDone.UseVisualStyleBackColor = True
@@ -699,30 +678,12 @@ Partial Class frmMain
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
         Me.txtPlayerName.TabIndex = 2
         '
-        'lblTimerText
-        '
-        Me.lblTimerText.AutoSize = True
-        Me.lblTimerText.Location = New System.Drawing.Point(227, 12)
-        Me.lblTimerText.Name = "lblTimerText"
-        Me.lblTimerText.Size = New System.Drawing.Size(28, 13)
-        Me.lblTimerText.TabIndex = 3
-        Me.lblTimerText.Text = "3:00"
-        '
-        'btnBack
-        '
-        Me.btnBack.Location = New System.Drawing.Point(238, 368)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(75, 23)
-        Me.btnBack.TabIndex = 4
-        Me.btnBack.Text = "&Back"
-        Me.btnBack.UseVisualStyleBackColor = True
-        '
         'frmMain
         '
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1089, 741)
+        Me.ClientSize = New System.Drawing.Size(1089, 733)
         Me.Controls.Add(Me.nameScreen)
         Me.Controls.Add(Me.inputScreen)
         Me.Controls.Add(Me.scoreScreen)
@@ -748,11 +709,7 @@ Partial Class frmMain
     End Sub
     Friend WithEvents lblP1Name As Label
     Friend WithEvents lblP2Name As Label
-    Friend WithEvents lstP1Unique As ListBox
-    Friend WithEvents lstP2Unique As ListBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents lstP4Unique As ListBox
-    Friend WithEvents lstP3Unique As ListBox
     Friend WithEvents lblP4Name As Label
     Friend WithEvents lblP3Name As Label
     Friend WithEvents startScreen As Panel
@@ -796,8 +753,7 @@ Partial Class frmMain
     Friend WithEvents lblPlayerX As Label
     Friend WithEvents btnDone As Button
     Friend WithEvents btnAddWord As Button
-    Friend WithEvents txtPlayerX As TextBox
-    Friend WithEvents lstPlayerXWords As ListBox
+    Friend WithEvents txtPlayerXWord As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents nameScreen As Panel
     Friend WithEvents lblEnterName As Label
@@ -806,4 +762,5 @@ Partial Class frmMain
     Friend WithEvents btnCancel As Button
     Friend WithEvents lblTimerText As Label
     Friend WithEvents btnBack As Button
+    Friend WithEvents rtbPlayerXWords As RichTextBox
 End Class
