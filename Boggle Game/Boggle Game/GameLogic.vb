@@ -20,7 +20,7 @@
         ListOfLetterList = New List(Of List(Of String))
         ListOfLetterList.AddRange(collection:={LetterList3, LetterList4, LetterList5, LetterList6, LetterList7, LetterList8, LetterList9, LetterList10, LetterList11, LetterList12})
 
-        TestStuff()
+        TestStuff() ' Temp test class at EOF
 
     End Sub
 
@@ -78,17 +78,15 @@
         Return False
     End Function
 
+    'Private Function IsOnBoard(ByVal input As String) As Tuple(Of Boolean, Integer)
+    'TO DO: Create IsOnBoard Function
+    'Return New Tuple(Of Boolean, Integer)(True, 1)
+
+    'End Function
+
     ''' <summary>
     ''' Returns the maximuim board value for a particular word (does not factor in duplicates). Returns -1 if the word is not on the board
     ''' </summary>
-
-    ''' <param name="input"></param>
-    ''' <returns>Boolean and Integer equal to number of specials</returns>
-    Private Function IsOnBoard(ByVal input As String) As Tuple(Of Boolean, Integer)
-        'TO DO: Create IsOnBoard Function
-        Return New Tuple(Of Boolean, Integer)(True, 1)
-
-
     ''' <param name="word">the word to check the value of</param>
     ''' <returns></returns>
     Private Function getBoardValueOfWord(word As String) As Integer
@@ -162,18 +160,23 @@
     End Function
 
     ''' <summary>
-    ''' 
+    ''' Looks through and commands players to mark duplicates
     ''' </summary>
-    ''' <param name="input"></param>
-    ''' <param name="playerIndex"></param>
-    ''' <returns></returns>
     Private Sub MarkDuplicates()
         If playerList.Count <> 0 Then
-            Dim wordLists As List(Of List(Of String)) = New List(Of List(Of String))
+            Dim wordList As List(Of String) = New List(Of String)
             For Each player In playerList
-                wordLists.Add(player.GetWordList)
+                wordList.AddRange(player.GetWordList)
             Next
-            'Dim duplacates = wordLists(0).Intersect(wordLists.gr)
+            wordList = wordList.GroupBy(Function(m) m) _
+                 .Where(Function(g) g.Count() > 1) _
+                 .Select(Function(g) g.Key).ToList
+            Console.WriteLine(wordList.ToString)
+            For Each word In wordList
+                For Each player In playerList
+                    player.MarkDuplicate(word)
+                Next
+            Next
         End If
 
     End Sub
