@@ -39,6 +39,15 @@
     End Function
 
     ''' <summary>
+    ''' Returns top letter of the dice in the indexed positon
+    ''' </summary>
+    ''' <param name="index"></param>
+    ''' <returns></returns>
+    Public Function GetLetter(ByVal index As Integer) As Char
+        Return DiceList(index).GetTopLetter
+    End Function
+
+    ''' <summary>
     ''' Gets Boolean List of Specials
     ''' </summary>
     ''' <returns>Boolean Array</returns>
