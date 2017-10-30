@@ -42,6 +42,8 @@ Partial Class frmMain
         Me.lblAllenRetzler = New System.Windows.Forms.LinkLabel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gameScreen = New System.Windows.Forms.Panel()
+        Me.btnRescramble = New System.Windows.Forms.Button()
+        Me.btnFinish = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.lblTimerText = New System.Windows.Forms.Label()
         Me.boggleTable = New System.Windows.Forms.TableLayoutPanel()
@@ -85,8 +87,6 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
-        Me.btnFinish = New System.Windows.Forms.Button()
-        Me.btnRescramble = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -317,6 +317,26 @@ Partial Class frmMain
         Me.gameScreen.Name = "gameScreen"
         Me.gameScreen.Size = New System.Drawing.Size(330, 483)
         Me.gameScreen.TabIndex = 1
+        '
+        'btnRescramble
+        '
+        Me.btnRescramble.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRescramble.Location = New System.Drawing.Point(94, 448)
+        Me.btnRescramble.Name = "btnRescramble"
+        Me.btnRescramble.Size = New System.Drawing.Size(137, 25)
+        Me.btnRescramble.TabIndex = 6
+        Me.btnRescramble.Text = "&Rescramble"
+        Me.btnRescramble.UseVisualStyleBackColor = True
+        '
+        'btnFinish
+        '
+        Me.btnFinish.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFinish.Location = New System.Drawing.Point(237, 448)
+        Me.btnFinish.Name = "btnFinish"
+        Me.btnFinish.Size = New System.Drawing.Size(76, 25)
+        Me.btnFinish.TabIndex = 5
+        Me.btnFinish.Text = "&Finish"
+        Me.btnFinish.UseVisualStyleBackColor = True
         '
         'btnBack
         '
@@ -787,37 +807,17 @@ Partial Class frmMain
         Me.txtPlayerName.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtPlayerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPlayerName.Location = New System.Drawing.Point(16, 57)
-        Me.txtPlayerName.MinimumSize = New System.Drawing.Size(0, 25)
+        Me.txtPlayerName.MinimumSize = New System.Drawing.Size(4, 25)
         Me.txtPlayerName.Name = "txtPlayerName"
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 23)
         Me.txtPlayerName.TabIndex = 2
-        '
-        'btnFinish
-        '
-        Me.btnFinish.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFinish.Location = New System.Drawing.Point(237, 448)
-        Me.btnFinish.Name = "btnFinish"
-        Me.btnFinish.Size = New System.Drawing.Size(76, 25)
-        Me.btnFinish.TabIndex = 5
-        Me.btnFinish.Text = "&Finish"
-        Me.btnFinish.UseVisualStyleBackColor = True
-        '
-        'btnRescramble
-        '
-        Me.btnRescramble.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRescramble.Location = New System.Drawing.Point(94, 448)
-        Me.btnRescramble.Name = "btnRescramble"
-        Me.btnRescramble.Size = New System.Drawing.Size(137, 25)
-        Me.btnRescramble.TabIndex = 6
-        Me.btnRescramble.Text = "&Rescramble"
-        Me.btnRescramble.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.DarkGray
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(180, Byte), Integer))
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1333, 733)

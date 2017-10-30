@@ -7,6 +7,7 @@
 Imports System.ComponentModel
 Imports VB = Microsoft.VisualBasic
 
+
 Imports Regex = System.Text.RegularExpressions.Regex
 
 Public Class frmMain
@@ -22,14 +23,20 @@ Public Class frmMain
     Private tmpCurrentPlayer = 1
     Private tmpPlayerXWords As List(Of String) = New List(Of String)
 
+    Private currentObject As Object = startScreen
+
     ''' <summary>
     ''' Centers an interior Object relative to it's exterior container
     ''' </summary>
     ''' <param name="interior">The object to center</param>
     ''' <param name="exterior">The container to center the object within</param>
     Private Sub Center(interior As Object, exterior As Object)
-        interior.left = CInt((exterior.Width / 2) - (interior.Width / 2))
-        interior.top = CInt((exterior.Height / 2) - (interior.Height / 2))
+        Try
+            interior.left = CInt((exterior.Width / 2) - (interior.Width / 2))
+            interior.top = CInt((exterior.Height / 2) - (interior.Height / 2))
+        Catch a As NullReferenceException
+            Console.WriteLine("Error")
+        End Try
     End Sub
 
     ''' <summary>
@@ -109,6 +116,9 @@ Public Class frmMain
         gameScreen.Visible = False
         inputScreen.Visible = False
         scoreScreen.Visible = False
+
+        currentObject = startScreen
+
         Center(startScreen, Me)
         Me.AcceptButton = btnStartGame
         btnStartGame.Focus()
@@ -123,6 +133,9 @@ Public Class frmMain
         gameScreen.Visible = False
         inputScreen.Visible = False
         scoreScreen.Visible = False
+
+        currentObject = nameScreen
+
         Center(nameScreen, Me)
         Me.AcceptButton = btnOk
         txtPlayerName.Text = ""
@@ -141,6 +154,9 @@ Public Class frmMain
         gameScreen.Visible = True
         inputScreen.Visible = False
         scoreScreen.Visible = False
+
+        currentObject = gameScreen
+
         Center(gameScreen, Me)
         Dim diceList = New List(Of Label)
 
@@ -232,6 +248,9 @@ Public Class frmMain
         gameScreen.Visible = False
         inputScreen.Visible = True
         scoreScreen.Visible = False
+
+        currentObject = inputScreen
+
         Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
         txtPlayerXWord.Focus()
@@ -250,6 +269,9 @@ Public Class frmMain
         gameScreen.Visible = False
         inputScreen.Visible = False
         scoreScreen.Visible = True
+
+        currentObject = scoreScreen
+
         Center(scoreScreen, Me)
 
         lblP2Name.Hide()
@@ -322,10 +344,9 @@ Public Class frmMain
     ''' </summary>
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         gameLogicManager = New GameLogic()
-        Me.Width = 500
-        Me.Height = 500
+        Me.Width = 800
+        Me.Height = 600
         Me.MinimumSize = New Drawing.Size(800, 600)
-        Me.MaximumSize = New Drawing.Size(800, 600)
         gotoMainMenu()
 
     End Sub
@@ -450,12 +471,20 @@ Public Class frmMain
         gotoMainMenu()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnFinish.Click
+    Private Sub btnFinish_Click(sender As Object, e As EventArgs) Handles btnFinish.Click
         timerHalt()
         gotoEnterWords()
     End Sub
 
     Private Sub btnRescramble_Click(sender As Object, e As EventArgs) Handles btnRescramble.Click
         gotoGame()
+    End Sub
+
+    Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+        gotoGame()
+    End Sub
+
+    Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Center(currentObject, Me)
     End Sub
 End Class

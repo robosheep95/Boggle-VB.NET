@@ -108,7 +108,7 @@
         For i As Integer = 0 To 16
             If gameBoard.GetLetter(i) = word(0) And word(0) <> "q" Then
                 listOfPaths.Add(RabbitHole(word.Substring(1), i, 0, listOfUsed))
-            ElseIf gameBoard.GetLetter(i) = word(0) And word(0) = "q" Then
+            ElseIf gameBoard.GetLetter(i) = word(0) And word(0) = "q" And Len(word) > 1 And word(1) = "u" Then
                 listOfPaths.Add(RabbitHole(word.Substring(2), i, 0, listOfUsed))
             End If
         Next
@@ -151,8 +151,8 @@
             For Each entry In letterDict
                 If entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value <> "q" Then
                     Return RabbitHole(word.Substring(1), entry.Key, intspecialCount, listOfUsed)
-                ElseIf entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value = "q" Then
-                Return RabbitHole(word.Substring(2), entry.Key, intspecialCount, listOfUsed)
+                ElseIf entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value = "q" And Len(word) > 1 And word(1) = "u" Then
+                    Return RabbitHole(word.Substring(2), entry.Key, intspecialCount, listOfUsed)
                 End If
             Next
 
