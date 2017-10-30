@@ -92,6 +92,7 @@ Partial Class frmMain
         '
         Me.lblP1Name.AutoSize = True
         Me.lblP1Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP1Name.ForeColor = System.Drawing.Color.Snow
         Me.lblP1Name.Location = New System.Drawing.Point(8, 12)
         Me.lblP1Name.Name = "lblP1Name"
         Me.lblP1Name.Size = New System.Drawing.Size(65, 20)
@@ -102,6 +103,7 @@ Partial Class frmMain
         '
         Me.lblP2Name.AutoSize = True
         Me.lblP2Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP2Name.ForeColor = System.Drawing.Color.Snow
         Me.lblP2Name.Location = New System.Drawing.Point(134, 15)
         Me.lblP2Name.Name = "lblP2Name"
         Me.lblP2Name.Size = New System.Drawing.Size(65, 20)
@@ -112,6 +114,7 @@ Partial Class frmMain
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.Snow
         Me.Label19.Location = New System.Drawing.Point(5, 9)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(138, 44)
@@ -122,6 +125,7 @@ Partial Class frmMain
         '
         Me.lblP4Name.AutoSize = True
         Me.lblP4Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP4Name.ForeColor = System.Drawing.Color.Snow
         Me.lblP4Name.Location = New System.Drawing.Point(386, 15)
         Me.lblP4Name.Name = "lblP4Name"
         Me.lblP4Name.Size = New System.Drawing.Size(65, 20)
@@ -132,6 +136,7 @@ Partial Class frmMain
         '
         Me.lblP3Name.AutoSize = True
         Me.lblP3Name.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblP3Name.ForeColor = System.Drawing.Color.Snow
         Me.lblP3Name.Location = New System.Drawing.Point(260, 15)
         Me.lblP3Name.Name = "lblP3Name"
         Me.lblP3Name.Size = New System.Drawing.Size(65, 20)
@@ -140,6 +145,7 @@ Partial Class frmMain
         '
         'startScreen
         '
+        Me.startScreen.BackColor = System.Drawing.Color.Maroon
         Me.startScreen.Controls.Add(Me.btnQuit)
         Me.startScreen.Controls.Add(Me.btnStartGame)
         Me.startScreen.Controls.Add(Me.grpNumOfPlayers)
@@ -177,6 +183,7 @@ Partial Class frmMain
         Me.grpNumOfPlayers.Controls.Add(Me.radio3Players)
         Me.grpNumOfPlayers.Controls.Add(Me.Radio2Players)
         Me.grpNumOfPlayers.Controls.Add(Me.radio1Player)
+        Me.grpNumOfPlayers.ForeColor = System.Drawing.Color.Snow
         Me.grpNumOfPlayers.Location = New System.Drawing.Point(10, 111)
         Me.grpNumOfPlayers.Name = "grpNumOfPlayers"
         Me.grpNumOfPlayers.Size = New System.Drawing.Size(163, 118)
@@ -229,7 +236,7 @@ Partial Class frmMain
         'lblTaylorScafe
         '
         Me.lblTaylorScafe.AutoSize = True
-        Me.lblTaylorScafe.LinkColor = System.Drawing.Color.Blue
+        Me.lblTaylorScafe.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.lblTaylorScafe.Location = New System.Drawing.Point(106, 84)
         Me.lblTaylorScafe.Name = "lblTaylorScafe"
         Me.lblTaylorScafe.Size = New System.Drawing.Size(67, 13)
@@ -241,6 +248,7 @@ Partial Class frmMain
         'Label3
         '
         Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.Snow
         Me.Label3.Location = New System.Drawing.Point(86, 84)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(25, 13)
@@ -250,6 +258,7 @@ Partial Class frmMain
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(7, 84)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(19, 13)
@@ -259,7 +268,7 @@ Partial Class frmMain
         'lblAllenRetzler
         '
         Me.lblAllenRetzler.AutoSize = True
-        Me.lblAllenRetzler.LinkColor = System.Drawing.Color.Blue
+        Me.lblAllenRetzler.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.lblAllenRetzler.Location = New System.Drawing.Point(24, 84)
         Me.lblAllenRetzler.Name = "lblAllenRetzler"
         Me.lblAllenRetzler.Size = New System.Drawing.Size(66, 13)
@@ -272,6 +281,7 @@ Partial Class frmMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 37.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Snow
         Me.Label1.Location = New System.Drawing.Point(3, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(181, 58)
@@ -280,6 +290,7 @@ Partial Class frmMain
         '
         'gameScreen
         '
+        Me.gameScreen.BackColor = System.Drawing.Color.Maroon
         Me.gameScreen.Controls.Add(Me.btnBack)
         Me.gameScreen.Controls.Add(Me.lblTimerText)
         Me.gameScreen.Controls.Add(Me.boggleTable)
@@ -302,6 +313,7 @@ Partial Class frmMain
         'lblTimerText
         '
         Me.lblTimerText.AutoSize = True
+        Me.lblTimerText.ForeColor = System.Drawing.Color.Snow
         Me.lblTimerText.Location = New System.Drawing.Point(227, 12)
         Me.lblTimerText.Name = "lblTimerText"
         Me.lblTimerText.Size = New System.Drawing.Size(28, 13)
@@ -517,6 +529,7 @@ Partial Class frmMain
         '
         'scoreScreen
         '
+        Me.scoreScreen.BackColor = System.Drawing.Color.Maroon
         Me.scoreScreen.Controls.Add(Me.lblP4Score)
         Me.scoreScreen.Controls.Add(Me.lblP3Score)
         Me.scoreScreen.Controls.Add(Me.lblP2Score)
@@ -533,6 +546,7 @@ Partial Class frmMain
         'lblP4Score
         '
         Me.lblP4Score.AutoSize = True
+        Me.lblP4Score.ForeColor = System.Drawing.Color.Snow
         Me.lblP4Score.Location = New System.Drawing.Point(387, 45)
         Me.lblP4Score.Name = "lblP4Score"
         Me.lblP4Score.Size = New System.Drawing.Size(57, 13)
@@ -542,6 +556,7 @@ Partial Class frmMain
         'lblP3Score
         '
         Me.lblP3Score.AutoSize = True
+        Me.lblP3Score.ForeColor = System.Drawing.Color.Snow
         Me.lblP3Score.Location = New System.Drawing.Point(261, 45)
         Me.lblP3Score.Name = "lblP3Score"
         Me.lblP3Score.Size = New System.Drawing.Size(57, 13)
@@ -551,6 +566,7 @@ Partial Class frmMain
         'lblP2Score
         '
         Me.lblP2Score.AutoSize = True
+        Me.lblP2Score.ForeColor = System.Drawing.Color.Snow
         Me.lblP2Score.Location = New System.Drawing.Point(135, 45)
         Me.lblP2Score.Name = "lblP2Score"
         Me.lblP2Score.Size = New System.Drawing.Size(57, 13)
@@ -560,6 +576,7 @@ Partial Class frmMain
         'lblP1Score
         '
         Me.lblP1Score.AutoSize = True
+        Me.lblP1Score.ForeColor = System.Drawing.Color.Snow
         Me.lblP1Score.Location = New System.Drawing.Point(9, 45)
         Me.lblP1Score.Name = "lblP1Score"
         Me.lblP1Score.Size = New System.Drawing.Size(57, 13)
@@ -568,6 +585,7 @@ Partial Class frmMain
         '
         'inputScreen
         '
+        Me.inputScreen.BackColor = System.Drawing.Color.Maroon
         Me.inputScreen.Controls.Add(Me.rtbPlayerXWords)
         Me.inputScreen.Controls.Add(Me.Label4)
         Me.inputScreen.Controls.Add(Me.btnAddWord)
@@ -592,6 +610,7 @@ Partial Class frmMain
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Snow
         Me.Label4.Location = New System.Drawing.Point(17, 50)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(212, 20)
@@ -627,6 +646,7 @@ Partial Class frmMain
         '
         Me.lblPlayerX.AutoSize = True
         Me.lblPlayerX.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPlayerX.ForeColor = System.Drawing.Color.Snow
         Me.lblPlayerX.Location = New System.Drawing.Point(17, 11)
         Me.lblPlayerX.Name = "lblPlayerX"
         Me.lblPlayerX.Size = New System.Drawing.Size(104, 29)
@@ -635,18 +655,19 @@ Partial Class frmMain
         '
         'nameScreen
         '
+        Me.nameScreen.BackColor = System.Drawing.Color.Maroon
         Me.nameScreen.Controls.Add(Me.btnCancel)
         Me.nameScreen.Controls.Add(Me.lblEnterName)
         Me.nameScreen.Controls.Add(Me.btnOk)
         Me.nameScreen.Controls.Add(Me.txtPlayerName)
-        Me.nameScreen.Location = New System.Drawing.Point(215, 12)
+        Me.nameScreen.Location = New System.Drawing.Point(47, 500)
         Me.nameScreen.Name = "nameScreen"
-        Me.nameScreen.Size = New System.Drawing.Size(379, 48)
+        Me.nameScreen.Size = New System.Drawing.Size(400, 117)
         Me.nameScreen.TabIndex = 8
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(303, 0)
+        Me.btnCancel.Location = New System.Drawing.Point(315, 32)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 4
@@ -657,7 +678,8 @@ Partial Class frmMain
         '
         Me.lblEnterName.AutoSize = True
         Me.lblEnterName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEnterName.Location = New System.Drawing.Point(1, 1)
+        Me.lblEnterName.ForeColor = System.Drawing.Color.Snow
+        Me.lblEnterName.Location = New System.Drawing.Point(13, 33)
         Me.lblEnterName.Name = "lblEnterName"
         Me.lblEnterName.Size = New System.Drawing.Size(192, 20)
         Me.lblEnterName.TabIndex = 1
@@ -665,7 +687,7 @@ Partial Class frmMain
         '
         'btnOk
         '
-        Me.btnOk.Location = New System.Drawing.Point(303, 23)
+        Me.btnOk.Location = New System.Drawing.Point(315, 55)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(75, 23)
         Me.btnOk.TabIndex = 3
@@ -674,7 +696,7 @@ Partial Class frmMain
         '
         'txtPlayerName
         '
-        Me.txtPlayerName.Location = New System.Drawing.Point(4, 25)
+        Me.txtPlayerName.Location = New System.Drawing.Point(16, 57)
         Me.txtPlayerName.Name = "txtPlayerName"
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
         Me.txtPlayerName.TabIndex = 2
@@ -684,6 +706,9 @@ Partial Class frmMain
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.DarkGray
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1089, 733)
         Me.Controls.Add(Me.nameScreen)
         Me.Controls.Add(Me.inputScreen)
