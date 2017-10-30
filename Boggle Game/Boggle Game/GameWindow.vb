@@ -39,7 +39,7 @@ Public Class frmMain
     ''' This is based off of https://stackoverflow.com/a/36362504
     ''' </summary>
     ''' <param name="seconds">The number of seconds to wait until continuing execution</param>
-    Private Sub timer(seconds As Integer)
+    Private Sub timer(seconds As Double)
         If timerHalted Then
             Return
         End If
@@ -142,9 +142,11 @@ Public Class frmMain
         inputScreen.Visible = False
         scoreScreen.Visible = False
         Center(gameScreen, Me)
-        Dim board = gameLogicManager.GetBoard()
-
         Dim diceList = New List(Of Label)
+
+        btnRescramble.Visible = False
+        btnFinish.Visible = False
+
         diceList.Add(lblDie1)
         diceList.Add(lblDie2)
         diceList.Add(lblDie3)
@@ -161,8 +163,6 @@ Public Class frmMain
         diceList.Add(lblDie14)
         diceList.Add(lblDie15)
         diceList.Add(lblDie16)
-
-        Dim specials = gameLogicManager.GetSpecial()
 
         Dim qToQu = Function(s As String)
                         If s.ToUpper() = "Q" Then
@@ -182,24 +182,26 @@ Public Class frmMain
         timerReset()
 
 
-        For i = 0 To 15
-            diceList(i).Text = "3"
+        'Scrambeling The Board
+        For t = 0 To 20
+            For i = 0 To 15
+                diceList(i).Text = qToQu(gameLogicManager.GetBoard()(i))
+                If gameLogicManager.GetSpecial()(i) Then
+                    diceList(i).ForeColor = Color.Red
+                Else
+                    diceList(i).ForeColor = Color.Black
+                End If
+            Next
+            gameLogicManager.ScrambleBoard()
+            timer(0.06)
         Next
-        timer(1)
+
+        btnRescramble.Visible = True
+        btnFinish.Visible = True
 
         For i = 0 To 15
-            diceList(i).Text = "2"
-        Next
-        timer(1)
-
-        For i = 0 To 15
-            diceList(i).Text = "1"
-        Next
-        timer(1)
-
-        For i = 0 To 15
-            diceList(i).Text = qToQu(board(i))
-            If specials(i) Then
+            diceList(i).Text = qToQu(gameLogicManager.GetBoard()(i))
+            If gameLogicManager.GetSpecial()(i) Then
                 diceList(i).ForeColor = Color.Red
             Else
                 diceList(i).ForeColor = Color.Black
@@ -233,7 +235,8 @@ Public Class frmMain
         Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
         txtPlayerXWord.Focus()
-        lblPlayerX.Text = gameLogicManager.GetPlayers(tmpCurrentPlayer - 1).GetName()
+        tmpCurrentPlayer = 1
+        lblPlayerX.Text = gameLogicManager.GetPlayers(0).GetName()
     End Sub
 
     ''' <summary>
@@ -265,7 +268,7 @@ Public Class frmMain
 
 
         lblP1Name.Text = players(0).GetName()
-        lblP1Score.Text = players(0).GetScore()
+        lblP1Score.Text = players(0).GetScore() & " Points"
         For Each i In players(0).GetWordList()
             rtbPlayer1Words.Text += i + vbNewLine
         Next
@@ -277,7 +280,7 @@ Public Class frmMain
             rtbPlayer2Words.Show()
 
             lblP2Name.Text = players(1).GetName()
-            lblP2Score.Text = players(1).GetScore()
+            lblP2Score.Text = players(1).GetScore() & " Points"
             For Each i In players(1).GetWordList()
                 rtbPlayer2Words.Text += i + vbNewLine
             Next
@@ -289,7 +292,7 @@ Public Class frmMain
             rtbPlayer3Words.Show()
 
             lblP3Name.Text = players(2).GetName()
-            lblP3Score.Text = players(2).GetScore()
+            lblP3Score.Text = players(2).GetScore() & " Points"
             For Each i In players(2).GetWordList()
                 rtbPlayer3Words.Text += i + vbNewLine
             Next
@@ -301,7 +304,7 @@ Public Class frmMain
             rtbPlayer4Words.Show()
 
             lblP4Name.Text = players(3).GetName()
-            lblP4Score.Text = players(3).GetScore()
+            lblP4Score.Text = players(3).GetScore() & " Points"
             For Each i In players(3).GetWordList()
                 rtbPlayer4Words.Text += i + vbNewLine
             Next
@@ -321,8 +324,8 @@ Public Class frmMain
         gameLogicManager = New GameLogic()
         Me.Width = 500
         Me.Height = 500
-        Me.MinimumSize = New Drawing.Size(500, 500)
-        Me.MaximumSize = New Drawing.Size(500, 500)
+        Me.MinimumSize = New Drawing.Size(800, 600)
+        Me.MaximumSize = New Drawing.Size(800, 600)
         gotoMainMenu()
 
     End Sub
@@ -357,9 +360,9 @@ Public Class frmMain
     End Sub
     Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
         If txtPlayerName.Text = "" Then
-            MsgBox("Your name must be at least 1 character long", vbExclamation + vbOK, "Invalid Name")
+            MsgBox("Your name must be at least 1 character long", vbExclamation + vbOKOnly, "Invalid Name")
         ElseIf nameList.Contains(txtPlayerName.Text) Then
-            MsgBox("Your Name must not be the same as a previous player", vbExclamation + vbOK, "Invalid Name")
+            MsgBox("Your Name must not be the same as a previous player", vbExclamation + vbOKOnly, "Invalid Name")
         Else
             nameList.Add(txtPlayerName.Text)
             txtPlayerName.Text = ""
@@ -394,19 +397,19 @@ Public Class frmMain
                             txtPlayerXWord.Text = ""
                             Return
                         Else
-                            MsgBox("You already entered this word.", vbExclamation + vbOK, "Word Already Entered")
+                            MsgBox("You already entered this word.", vbExclamation + vbOKOnly, "Word Already Entered")
                         End If
                     Else
-                        MsgBox("The word you entered is not on the board.", vbExclamation + vbOK, "Invalid Word")
+                        MsgBox("The word you entered is not on the board.", vbExclamation + vbOKOnly, "Invalid Word")
                     End If
                 Else
-                    MsgBox("The word you entered is not in the dictionary.", vbExclamation + vbOK, "Invalid Word")
+                    MsgBox("The word you entered is not in the dictionary.", vbExclamation + vbOKOnly, "Invalid Word")
                 End If
             Else
-                MsgBox("All words must be between 3 and 13 characters long", vbExclamation + vbOK, "Invalid Word")
+                MsgBox("All words must be between 3 and 13 characters long", vbExclamation + vbOKOnly, "Invalid Word")
             End If
         Else
-            MsgBox("Words can only contain alphabetical characters", vbExclamation + vbOK, "Invalid Word")
+            MsgBox("Words can only contain alphabetical characters", vbExclamation + vbOKOnly, "Invalid Word")
         End If
         txtPlayerXWord.SelectAll()
     End Sub
@@ -440,5 +443,19 @@ Public Class frmMain
         Else
             txtPlayerXWord.ForeColor = Color.Red
         End If
+    End Sub
+
+    Private Sub btnNewGame_Click(sender As Object, e As EventArgs) Handles btnNewGame.Click
+        nameList.clear()
+        gotoMainMenu()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnFinish.Click
+        timerHalt()
+        gotoEnterWords()
+    End Sub
+
+    Private Sub btnRescramble_Click(sender As Object, e As EventArgs) Handles btnRescramble.Click
+        gotoGame()
     End Sub
 End Class

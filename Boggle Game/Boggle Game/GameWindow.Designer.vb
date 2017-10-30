@@ -63,11 +63,18 @@ Partial Class frmMain
         Me.lblDie1 = New System.Windows.Forms.Label()
         Me.prgTimer = New System.Windows.Forms.ProgressBar()
         Me.scoreScreen = New System.Windows.Forms.Panel()
+        Me.btnNewGame = New System.Windows.Forms.Button()
+        Me.btnContinue = New System.Windows.Forms.Button()
+        Me.rtbPlayer4Words = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer3Words = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer2Words = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer1Words = New System.Windows.Forms.RichTextBox()
         Me.lblP4Score = New System.Windows.Forms.Label()
         Me.lblP3Score = New System.Windows.Forms.Label()
         Me.lblP2Score = New System.Windows.Forms.Label()
         Me.lblP1Score = New System.Windows.Forms.Label()
         Me.inputScreen = New System.Windows.Forms.Panel()
+        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnAddWord = New System.Windows.Forms.Button()
         Me.txtPlayerXWord = New System.Windows.Forms.TextBox()
@@ -78,13 +85,8 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
-        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
-        Me.rtbPlayer1Words = New System.Windows.Forms.RichTextBox()
-        Me.rtbPlayer2Words = New System.Windows.Forms.RichTextBox()
-        Me.rtbPlayer3Words = New System.Windows.Forms.RichTextBox()
-        Me.rtbPlayer4Words = New System.Windows.Forms.RichTextBox()
-        Me.btnContinue = New System.Windows.Forms.Button()
-        Me.btnNewGame = New System.Windows.Forms.Button()
+        Me.btnFinish = New System.Windows.Forms.Button()
+        Me.btnRescramble = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -119,11 +121,11 @@ Partial Class frmMain
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 38.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.Snow
-        Me.Label19.Location = New System.Drawing.Point(5, 9)
+        Me.Label19.Location = New System.Drawing.Point(70, 6)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(138, 44)
+        Me.Label19.Size = New System.Drawing.Size(182, 59)
         Me.Label19.TabIndex = 0
         Me.Label19.Text = "Boggle"
         '
@@ -160,14 +162,15 @@ Partial Class frmMain
         Me.startScreen.Controls.Add(Me.Label2)
         Me.startScreen.Controls.Add(Me.lblAllenRetzler)
         Me.startScreen.Controls.Add(Me.Label1)
-        Me.startScreen.Location = New System.Drawing.Point(20, 12)
+        Me.startScreen.Location = New System.Drawing.Point(3, 3)
         Me.startScreen.Name = "startScreen"
-        Me.startScreen.Size = New System.Drawing.Size(189, 349)
+        Me.startScreen.Size = New System.Drawing.Size(242, 349)
         Me.startScreen.TabIndex = 0
         '
         'btnQuit
         '
-        Me.btnQuit.Location = New System.Drawing.Point(14, 294)
+        Me.btnQuit.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnQuit.Location = New System.Drawing.Point(40, 289)
         Me.btnQuit.Name = "btnQuit"
         Me.btnQuit.Size = New System.Drawing.Size(160, 43)
         Me.btnQuit.TabIndex = 1
@@ -176,7 +179,8 @@ Partial Class frmMain
         '
         'btnStartGame
         '
-        Me.btnStartGame.Location = New System.Drawing.Point(13, 245)
+        Me.btnStartGame.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStartGame.Location = New System.Drawing.Point(40, 240)
         Me.btnStartGame.Name = "btnStartGame"
         Me.btnStartGame.Size = New System.Drawing.Size(160, 43)
         Me.btnStartGame.TabIndex = 0
@@ -189,10 +193,11 @@ Partial Class frmMain
         Me.grpNumOfPlayers.Controls.Add(Me.radio3Players)
         Me.grpNumOfPlayers.Controls.Add(Me.Radio2Players)
         Me.grpNumOfPlayers.Controls.Add(Me.radio1Player)
+        Me.grpNumOfPlayers.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpNumOfPlayers.ForeColor = System.Drawing.Color.Snow
-        Me.grpNumOfPlayers.Location = New System.Drawing.Point(10, 111)
+        Me.grpNumOfPlayers.Location = New System.Drawing.Point(41, 116)
         Me.grpNumOfPlayers.Name = "grpNumOfPlayers"
-        Me.grpNumOfPlayers.Size = New System.Drawing.Size(163, 118)
+        Me.grpNumOfPlayers.Size = New System.Drawing.Size(159, 118)
         Me.grpNumOfPlayers.TabIndex = 7
         Me.grpNumOfPlayers.TabStop = False
         Me.grpNumOfPlayers.Text = "Number of Players"
@@ -200,9 +205,9 @@ Partial Class frmMain
         'radio4Players
         '
         Me.radio4Players.AutoSize = True
-        Me.radio4Players.Location = New System.Drawing.Point(50, 88)
+        Me.radio4Players.Location = New System.Drawing.Point(10, 88)
         Me.radio4Players.Name = "radio4Players"
-        Me.radio4Players.Size = New System.Drawing.Size(68, 17)
+        Me.radio4Players.Size = New System.Drawing.Size(85, 21)
         Me.radio4Players.TabIndex = 3
         Me.radio4Players.Text = "4 Players"
         Me.radio4Players.UseVisualStyleBackColor = True
@@ -210,9 +215,9 @@ Partial Class frmMain
         'radio3Players
         '
         Me.radio3Players.AutoSize = True
-        Me.radio3Players.Location = New System.Drawing.Point(50, 65)
+        Me.radio3Players.Location = New System.Drawing.Point(10, 65)
         Me.radio3Players.Name = "radio3Players"
-        Me.radio3Players.Size = New System.Drawing.Size(68, 17)
+        Me.radio3Players.Size = New System.Drawing.Size(85, 21)
         Me.radio3Players.TabIndex = 2
         Me.radio3Players.Text = "3 Players"
         Me.radio3Players.UseVisualStyleBackColor = True
@@ -221,9 +226,9 @@ Partial Class frmMain
         '
         Me.Radio2Players.AutoSize = True
         Me.Radio2Players.Checked = True
-        Me.Radio2Players.Location = New System.Drawing.Point(50, 42)
+        Me.Radio2Players.Location = New System.Drawing.Point(10, 42)
         Me.Radio2Players.Name = "Radio2Players"
-        Me.Radio2Players.Size = New System.Drawing.Size(68, 17)
+        Me.Radio2Players.Size = New System.Drawing.Size(85, 21)
         Me.Radio2Players.TabIndex = 1
         Me.Radio2Players.TabStop = True
         Me.Radio2Players.Text = "2 Players"
@@ -232,9 +237,9 @@ Partial Class frmMain
         'radio1Player
         '
         Me.radio1Player.AutoSize = True
-        Me.radio1Player.Location = New System.Drawing.Point(50, 19)
+        Me.radio1Player.Location = New System.Drawing.Point(10, 19)
         Me.radio1Player.Name = "radio1Player"
-        Me.radio1Player.Size = New System.Drawing.Size(63, 17)
+        Me.radio1Player.Size = New System.Drawing.Size(78, 21)
         Me.radio1Player.TabIndex = 0
         Me.radio1Player.Text = "1 Player"
         Me.radio1Player.UseVisualStyleBackColor = True
@@ -242,10 +247,11 @@ Partial Class frmMain
         'lblTaylorScafe
         '
         Me.lblTaylorScafe.AutoSize = True
+        Me.lblTaylorScafe.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTaylorScafe.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.lblTaylorScafe.Location = New System.Drawing.Point(106, 84)
+        Me.lblTaylorScafe.Location = New System.Drawing.Point(142, 84)
         Me.lblTaylorScafe.Name = "lblTaylorScafe"
-        Me.lblTaylorScafe.Size = New System.Drawing.Size(67, 13)
+        Me.lblTaylorScafe.Size = New System.Drawing.Size(88, 17)
         Me.lblTaylorScafe.TabIndex = 6
         Me.lblTaylorScafe.TabStop = True
         Me.lblTaylorScafe.Text = "Taylor Scafe"
@@ -254,30 +260,33 @@ Partial Class frmMain
         'Label3
         '
         Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Snow
-        Me.Label3.Location = New System.Drawing.Point(86, 84)
+        Me.Label3.Location = New System.Drawing.Point(114, 84)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(25, 13)
+        Me.Label3.Size = New System.Drawing.Size(32, 17)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "and"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(7, 84)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(19, 13)
+        Me.Label2.Size = New System.Drawing.Size(24, 17)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "By"
         '
         'lblAllenRetzler
         '
         Me.lblAllenRetzler.AutoSize = True
+        Me.lblAllenRetzler.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAllenRetzler.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.lblAllenRetzler.Location = New System.Drawing.Point(24, 84)
+        Me.lblAllenRetzler.Location = New System.Drawing.Point(29, 84)
         Me.lblAllenRetzler.Name = "lblAllenRetzler"
-        Me.lblAllenRetzler.Size = New System.Drawing.Size(66, 13)
+        Me.lblAllenRetzler.Size = New System.Drawing.Size(88, 17)
         Me.lblAllenRetzler.TabIndex = 4
         Me.lblAllenRetzler.TabStop = True
         Me.lblAllenRetzler.Text = "Allen Retzler"
@@ -286,32 +295,35 @@ Partial Class frmMain
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 37.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Snow
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(3, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(181, 58)
+        Me.Label1.Size = New System.Drawing.Size(233, 73)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Boggle"
         '
         'gameScreen
         '
         Me.gameScreen.BackColor = System.Drawing.Color.Maroon
+        Me.gameScreen.Controls.Add(Me.btnRescramble)
+        Me.gameScreen.Controls.Add(Me.btnFinish)
         Me.gameScreen.Controls.Add(Me.btnBack)
         Me.gameScreen.Controls.Add(Me.lblTimerText)
         Me.gameScreen.Controls.Add(Me.boggleTable)
         Me.gameScreen.Controls.Add(Me.prgTimer)
         Me.gameScreen.Controls.Add(Me.Label19)
-        Me.gameScreen.Location = New System.Drawing.Point(215, 87)
+        Me.gameScreen.Location = New System.Drawing.Point(251, 3)
         Me.gameScreen.Name = "gameScreen"
-        Me.gameScreen.Size = New System.Drawing.Size(323, 407)
+        Me.gameScreen.Size = New System.Drawing.Size(330, 483)
         Me.gameScreen.TabIndex = 1
         '
         'btnBack
         '
-        Me.btnBack.Location = New System.Drawing.Point(238, 368)
+        Me.btnBack.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBack.Location = New System.Drawing.Point(13, 448)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(75, 23)
+        Me.btnBack.Size = New System.Drawing.Size(75, 25)
         Me.btnBack.TabIndex = 4
         Me.btnBack.Text = "&Back"
         Me.btnBack.UseVisualStyleBackColor = True
@@ -319,16 +331,18 @@ Partial Class frmMain
         'lblTimerText
         '
         Me.lblTimerText.AutoSize = True
+        Me.lblTimerText.BackColor = System.Drawing.Color.Transparent
+        Me.lblTimerText.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTimerText.ForeColor = System.Drawing.Color.Snow
-        Me.lblTimerText.Location = New System.Drawing.Point(227, 12)
+        Me.lblTimerText.Location = New System.Drawing.Point(136, 75)
         Me.lblTimerText.Name = "lblTimerText"
-        Me.lblTimerText.Size = New System.Drawing.Size(28, 13)
+        Me.lblTimerText.Size = New System.Drawing.Size(58, 29)
         Me.lblTimerText.TabIndex = 3
         Me.lblTimerText.Text = "3:00"
         '
         'boggleTable
         '
-        Me.boggleTable.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.boggleTable.BackColor = System.Drawing.Color.WhiteSmoke
         Me.boggleTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble
         Me.boggleTable.ColumnCount = 4
         Me.boggleTable.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
@@ -351,7 +365,7 @@ Partial Class frmMain
         Me.boggleTable.Controls.Add(Me.lblDie3, 2, 0)
         Me.boggleTable.Controls.Add(Me.lblDie2, 1, 0)
         Me.boggleTable.Controls.Add(Me.lblDie1, 0, 0)
-        Me.boggleTable.Location = New System.Drawing.Point(13, 61)
+        Me.boggleTable.Location = New System.Drawing.Point(13, 142)
         Me.boggleTable.MaximumSize = New System.Drawing.Size(300, 300)
         Me.boggleTable.MinimumSize = New System.Drawing.Size(300, 300)
         Me.boggleTable.Name = "boggleTable"
@@ -525,9 +539,9 @@ Partial Class frmMain
         '
         'prgTimer
         '
-        Me.prgTimer.Location = New System.Drawing.Point(162, 28)
+        Me.prgTimer.Location = New System.Drawing.Point(13, 106)
         Me.prgTimer.Name = "prgTimer"
-        Me.prgTimer.Size = New System.Drawing.Size(151, 23)
+        Me.prgTimer.Size = New System.Drawing.Size(300, 30)
         Me.prgTimer.Step = 1
         Me.prgTimer.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.prgTimer.TabIndex = 1
@@ -550,10 +564,68 @@ Partial Class frmMain
         Me.scoreScreen.Controls.Add(Me.lblP2Name)
         Me.scoreScreen.Controls.Add(Me.lblP3Name)
         Me.scoreScreen.Controls.Add(Me.lblP4Name)
-        Me.scoreScreen.Location = New System.Drawing.Point(544, 390)
+        Me.scoreScreen.Location = New System.Drawing.Point(674, 381)
         Me.scoreScreen.Name = "scoreScreen"
         Me.scoreScreen.Size = New System.Drawing.Size(519, 315)
         Me.scoreScreen.TabIndex = 3
+        '
+        'btnNewGame
+        '
+        Me.btnNewGame.Location = New System.Drawing.Point(349, 277)
+        Me.btnNewGame.Name = "btnNewGame"
+        Me.btnNewGame.Size = New System.Drawing.Size(143, 23)
+        Me.btnNewGame.TabIndex = 16
+        Me.btnNewGame.Text = "&New Game"
+        Me.btnNewGame.UseVisualStyleBackColor = True
+        '
+        'btnContinue
+        '
+        Me.btnContinue.Location = New System.Drawing.Point(349, 248)
+        Me.btnContinue.Name = "btnContinue"
+        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
+        Me.btnContinue.TabIndex = 15
+        Me.btnContinue.Text = "C&ontinue Playing"
+        Me.btnContinue.UseVisualStyleBackColor = True
+        '
+        'rtbPlayer4Words
+        '
+        Me.rtbPlayer4Words.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.rtbPlayer4Words.Location = New System.Drawing.Point(390, 61)
+        Me.rtbPlayer4Words.Name = "rtbPlayer4Words"
+        Me.rtbPlayer4Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer4Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer4Words.TabIndex = 14
+        Me.rtbPlayer4Words.Text = ""
+        '
+        'rtbPlayer3Words
+        '
+        Me.rtbPlayer3Words.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.rtbPlayer3Words.Location = New System.Drawing.Point(264, 61)
+        Me.rtbPlayer3Words.Name = "rtbPlayer3Words"
+        Me.rtbPlayer3Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer3Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer3Words.TabIndex = 13
+        Me.rtbPlayer3Words.Text = ""
+        '
+        'rtbPlayer2Words
+        '
+        Me.rtbPlayer2Words.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.rtbPlayer2Words.Location = New System.Drawing.Point(138, 61)
+        Me.rtbPlayer2Words.Name = "rtbPlayer2Words"
+        Me.rtbPlayer2Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer2Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer2Words.TabIndex = 12
+        Me.rtbPlayer2Words.Text = ""
+        '
+        'rtbPlayer1Words
+        '
+        Me.rtbPlayer1Words.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.rtbPlayer1Words.Location = New System.Drawing.Point(10, 61)
+        Me.rtbPlayer1Words.Name = "rtbPlayer1Words"
+        Me.rtbPlayer1Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer1Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer1Words.TabIndex = 11
+        Me.rtbPlayer1Words.Text = ""
         '
         'lblP4Score
         '
@@ -604,10 +676,20 @@ Partial Class frmMain
         Me.inputScreen.Controls.Add(Me.txtPlayerXWord)
         Me.inputScreen.Controls.Add(Me.btnDone)
         Me.inputScreen.Controls.Add(Me.lblPlayerX)
-        Me.inputScreen.Location = New System.Drawing.Point(544, 87)
+        Me.inputScreen.Location = New System.Drawing.Point(620, 38)
         Me.inputScreen.Name = "inputScreen"
         Me.inputScreen.Size = New System.Drawing.Size(390, 297)
         Me.inputScreen.TabIndex = 2
+        '
+        'rtbPlayerXWords
+        '
+        Me.rtbPlayerXWords.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
+        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
+        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
+        Me.rtbPlayerXWords.TabIndex = 6
+        Me.rtbPlayerXWords.Text = ""
         '
         'Label4
         '
@@ -631,6 +713,7 @@ Partial Class frmMain
         '
         'txtPlayerXWord
         '
+        Me.txtPlayerXWord.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtPlayerXWord.Location = New System.Drawing.Point(21, 75)
         Me.txtPlayerXWord.Name = "txtPlayerXWord"
         Me.txtPlayerXWord.Size = New System.Drawing.Size(273, 20)
@@ -663,16 +746,17 @@ Partial Class frmMain
         Me.nameScreen.Controls.Add(Me.lblEnterName)
         Me.nameScreen.Controls.Add(Me.btnOk)
         Me.nameScreen.Controls.Add(Me.txtPlayerName)
-        Me.nameScreen.Location = New System.Drawing.Point(47, 500)
+        Me.nameScreen.Location = New System.Drawing.Point(80, 541)
         Me.nameScreen.Name = "nameScreen"
         Me.nameScreen.Size = New System.Drawing.Size(400, 117)
         Me.nameScreen.TabIndex = 8
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(315, 32)
+        Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Location = New System.Drawing.Point(312, 27)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.Size = New System.Drawing.Size(75, 26)
         Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "&Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -690,82 +774,43 @@ Partial Class frmMain
         '
         'btnOk
         '
-        Me.btnOk.Location = New System.Drawing.Point(315, 55)
+        Me.btnOk.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOk.Location = New System.Drawing.Point(312, 57)
         Me.btnOk.Name = "btnOk"
-        Me.btnOk.Size = New System.Drawing.Size(75, 23)
+        Me.btnOk.Size = New System.Drawing.Size(75, 25)
         Me.btnOk.TabIndex = 3
         Me.btnOk.Text = "&OK"
         Me.btnOk.UseVisualStyleBackColor = True
         '
         'txtPlayerName
         '
+        Me.txtPlayerName.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtPlayerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPlayerName.Location = New System.Drawing.Point(16, 57)
+        Me.txtPlayerName.MinimumSize = New System.Drawing.Size(0, 25)
         Me.txtPlayerName.Name = "txtPlayerName"
-        Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
+        Me.txtPlayerName.Size = New System.Drawing.Size(293, 23)
         Me.txtPlayerName.TabIndex = 2
         '
-        'rtbPlayerXWords
+        'btnFinish
         '
-        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
-        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
-        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
-        Me.rtbPlayerXWords.TabIndex = 6
-        Me.rtbPlayerXWords.Text = ""
+        Me.btnFinish.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFinish.Location = New System.Drawing.Point(237, 448)
+        Me.btnFinish.Name = "btnFinish"
+        Me.btnFinish.Size = New System.Drawing.Size(76, 25)
+        Me.btnFinish.TabIndex = 5
+        Me.btnFinish.Text = "&Finish"
+        Me.btnFinish.UseVisualStyleBackColor = True
         '
-        'rtbPlayer1Words
+        'btnRescramble
         '
-        Me.rtbPlayer1Words.Location = New System.Drawing.Point(10, 61)
-        Me.rtbPlayer1Words.Name = "rtbPlayer1Words"
-        Me.rtbPlayer1Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayer1Words.Size = New System.Drawing.Size(102, 181)
-        Me.rtbPlayer1Words.TabIndex = 11
-        Me.rtbPlayer1Words.Text = ""
-        '
-        'rtbPlayer2Words
-        '
-        Me.rtbPlayer2Words.Location = New System.Drawing.Point(138, 61)
-        Me.rtbPlayer2Words.Name = "rtbPlayer2Words"
-        Me.rtbPlayer2Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayer2Words.Size = New System.Drawing.Size(102, 181)
-        Me.rtbPlayer2Words.TabIndex = 12
-        Me.rtbPlayer2Words.Text = ""
-        '
-        'rtbPlayer3Words
-        '
-        Me.rtbPlayer3Words.Location = New System.Drawing.Point(264, 61)
-        Me.rtbPlayer3Words.Name = "rtbPlayer3Words"
-        Me.rtbPlayer3Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayer3Words.Size = New System.Drawing.Size(102, 181)
-        Me.rtbPlayer3Words.TabIndex = 13
-        Me.rtbPlayer3Words.Text = ""
-        '
-        'rtbPlayer4Words
-        '
-        Me.rtbPlayer4Words.Location = New System.Drawing.Point(390, 61)
-        Me.rtbPlayer4Words.Name = "rtbPlayer4Words"
-        Me.rtbPlayer4Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayer4Words.Size = New System.Drawing.Size(102, 181)
-        Me.rtbPlayer4Words.TabIndex = 14
-        Me.rtbPlayer4Words.Text = ""
-        '
-        'btnContinue
-        '
-        Me.btnContinue.Location = New System.Drawing.Point(349, 248)
-        Me.btnContinue.Name = "btnContinue"
-        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
-        Me.btnContinue.TabIndex = 15
-        Me.btnContinue.Text = "C&ontinue Playing"
-        Me.btnContinue.UseVisualStyleBackColor = True
-        '
-        'btnNewGame
-        '
-        Me.btnNewGame.Location = New System.Drawing.Point(349, 277)
-        Me.btnNewGame.Name = "btnNewGame"
-        Me.btnNewGame.Size = New System.Drawing.Size(143, 23)
-        Me.btnNewGame.TabIndex = 16
-        Me.btnNewGame.Text = "&New Game"
-        Me.btnNewGame.UseVisualStyleBackColor = True
+        Me.btnRescramble.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRescramble.Location = New System.Drawing.Point(94, 448)
+        Me.btnRescramble.Name = "btnRescramble"
+        Me.btnRescramble.Size = New System.Drawing.Size(137, 25)
+        Me.btnRescramble.TabIndex = 6
+        Me.btnRescramble.Text = "&Rescramble"
+        Me.btnRescramble.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -775,7 +820,7 @@ Partial Class frmMain
         Me.BackColor = System.Drawing.Color.DarkGray
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(1089, 733)
+        Me.ClientSize = New System.Drawing.Size(1333, 733)
         Me.Controls.Add(Me.nameScreen)
         Me.Controls.Add(Me.inputScreen)
         Me.Controls.Add(Me.scoreScreen)
@@ -862,4 +907,6 @@ Partial Class frmMain
     Friend WithEvents rtbPlayer1Words As RichTextBox
     Friend WithEvents btnNewGame As Button
     Friend WithEvents btnContinue As Button
+    Friend WithEvents btnRescramble As Button
+    Friend WithEvents btnFinish As Button
 End Class

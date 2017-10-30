@@ -59,6 +59,13 @@
         End Get
     End Property
 
+    ''' <summary>
+    ''' Scrambles the board
+    ''' </summary>
+    Public Sub ScrambleBoard()
+        gameBoard.ScrambleBoard()
+    End Sub
+
     Public Function GetPlayers() As List(Of Player)
         Return playerList
     End Function
