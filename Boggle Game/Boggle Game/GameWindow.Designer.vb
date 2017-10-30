@@ -68,7 +68,6 @@ Partial Class frmMain
         Me.lblP2Score = New System.Windows.Forms.Label()
         Me.lblP1Score = New System.Windows.Forms.Label()
         Me.inputScreen = New System.Windows.Forms.Panel()
-        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnAddWord = New System.Windows.Forms.Button()
         Me.txtPlayerXWord = New System.Windows.Forms.TextBox()
@@ -79,6 +78,13 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
+        Me.rtbPlayerXWords = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer1Words = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer2Words = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer3Words = New System.Windows.Forms.RichTextBox()
+        Me.rtbPlayer4Words = New System.Windows.Forms.RichTextBox()
+        Me.btnContinue = New System.Windows.Forms.Button()
+        Me.btnNewGame = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -530,6 +536,12 @@ Partial Class frmMain
         'scoreScreen
         '
         Me.scoreScreen.BackColor = System.Drawing.Color.Maroon
+        Me.scoreScreen.Controls.Add(Me.btnNewGame)
+        Me.scoreScreen.Controls.Add(Me.btnContinue)
+        Me.scoreScreen.Controls.Add(Me.rtbPlayer4Words)
+        Me.scoreScreen.Controls.Add(Me.rtbPlayer3Words)
+        Me.scoreScreen.Controls.Add(Me.rtbPlayer2Words)
+        Me.scoreScreen.Controls.Add(Me.rtbPlayer1Words)
         Me.scoreScreen.Controls.Add(Me.lblP4Score)
         Me.scoreScreen.Controls.Add(Me.lblP3Score)
         Me.scoreScreen.Controls.Add(Me.lblP2Score)
@@ -540,7 +552,7 @@ Partial Class frmMain
         Me.scoreScreen.Controls.Add(Me.lblP4Name)
         Me.scoreScreen.Location = New System.Drawing.Point(544, 390)
         Me.scoreScreen.Name = "scoreScreen"
-        Me.scoreScreen.Size = New System.Drawing.Size(519, 349)
+        Me.scoreScreen.Size = New System.Drawing.Size(519, 315)
         Me.scoreScreen.TabIndex = 3
         '
         'lblP4Score
@@ -596,15 +608,6 @@ Partial Class frmMain
         Me.inputScreen.Name = "inputScreen"
         Me.inputScreen.Size = New System.Drawing.Size(390, 297)
         Me.inputScreen.TabIndex = 2
-        '
-        'rtbPlayerXWords
-        '
-        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
-        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
-        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
-        Me.rtbPlayerXWords.TabIndex = 6
-        Me.rtbPlayerXWords.Text = ""
         '
         'Label4
         '
@@ -701,6 +704,69 @@ Partial Class frmMain
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 20)
         Me.txtPlayerName.TabIndex = 2
         '
+        'rtbPlayerXWords
+        '
+        Me.rtbPlayerXWords.Location = New System.Drawing.Point(21, 102)
+        Me.rtbPlayerXWords.Name = "rtbPlayerXWords"
+        Me.rtbPlayerXWords.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayerXWords.Size = New System.Drawing.Size(111, 181)
+        Me.rtbPlayerXWords.TabIndex = 6
+        Me.rtbPlayerXWords.Text = ""
+        '
+        'rtbPlayer1Words
+        '
+        Me.rtbPlayer1Words.Location = New System.Drawing.Point(10, 61)
+        Me.rtbPlayer1Words.Name = "rtbPlayer1Words"
+        Me.rtbPlayer1Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer1Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer1Words.TabIndex = 11
+        Me.rtbPlayer1Words.Text = ""
+        '
+        'rtbPlayer2Words
+        '
+        Me.rtbPlayer2Words.Location = New System.Drawing.Point(138, 61)
+        Me.rtbPlayer2Words.Name = "rtbPlayer2Words"
+        Me.rtbPlayer2Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer2Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer2Words.TabIndex = 12
+        Me.rtbPlayer2Words.Text = ""
+        '
+        'rtbPlayer3Words
+        '
+        Me.rtbPlayer3Words.Location = New System.Drawing.Point(264, 61)
+        Me.rtbPlayer3Words.Name = "rtbPlayer3Words"
+        Me.rtbPlayer3Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer3Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer3Words.TabIndex = 13
+        Me.rtbPlayer3Words.Text = ""
+        '
+        'rtbPlayer4Words
+        '
+        Me.rtbPlayer4Words.Location = New System.Drawing.Point(390, 61)
+        Me.rtbPlayer4Words.Name = "rtbPlayer4Words"
+        Me.rtbPlayer4Words.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.rtbPlayer4Words.Size = New System.Drawing.Size(102, 181)
+        Me.rtbPlayer4Words.TabIndex = 14
+        Me.rtbPlayer4Words.Text = ""
+        '
+        'btnContinue
+        '
+        Me.btnContinue.Location = New System.Drawing.Point(349, 248)
+        Me.btnContinue.Name = "btnContinue"
+        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
+        Me.btnContinue.TabIndex = 15
+        Me.btnContinue.Text = "C&ontinue Playing"
+        Me.btnContinue.UseVisualStyleBackColor = True
+        '
+        'btnNewGame
+        '
+        Me.btnNewGame.Location = New System.Drawing.Point(349, 277)
+        Me.btnNewGame.Name = "btnNewGame"
+        Me.btnNewGame.Size = New System.Drawing.Size(143, 23)
+        Me.btnNewGame.TabIndex = 16
+        Me.btnNewGame.Text = "&New Game"
+        Me.btnNewGame.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnStartGame
@@ -790,4 +856,10 @@ Partial Class frmMain
     Friend WithEvents lblTimerText As Label
     Friend WithEvents btnBack As Button
     Friend WithEvents rtbPlayerXWords As RichTextBox
+    Friend WithEvents rtbPlayer4Words As RichTextBox
+    Friend WithEvents rtbPlayer3Words As RichTextBox
+    Friend WithEvents rtbPlayer2Words As RichTextBox
+    Friend WithEvents rtbPlayer1Words As RichTextBox
+    Friend WithEvents btnNewGame As Button
+    Friend WithEvents btnContinue As Button
 End Class

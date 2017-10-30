@@ -59,6 +59,10 @@
         End Get
     End Property
 
+    Public Function GetPlayers() As List(Of Player)
+        Return playerList
+    End Function
+
     ''' <summary>
     ''' Checks Dictionary if input is a real word
     ''' </summary>
@@ -194,67 +198,6 @@
         Return letterList
     End Function
 
-
-    'Note I have not tested any of these Lambda Functions
-    '   Dim get1DIndex = Function(x As Integer())
-    '                            Return x(0) + (4 * x(1))
-    '                        End Function
-    '       Dim get2DIndex = Function(x As Integer)
-    '                            Return New Integer() {x - (x \ 4), x \ 4}
-    '                        End Function
-    '
-    '       Dim getAdjacent = Function(x As Integer)
-    '                             Dim loc = get2DIndex(x)
-    '                             Dim adj = New List(Of Integer)
-    '                             If loc(1) - 1 > 0 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0), loc(1) - 1}))
-    '                             End If
-    '
-    '                             If loc(0) - 1 > 0 And loc(1) + 1 < 4 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0) - 1, loc(1) + 1}))
-    '                             End If
-    '
-    '                             If loc(1) + 1 < 4 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0), loc(1) + 1}))
-    '                             End If
-    '
-    '                             If loc(0) + 1 < 4 And loc(1) + 1 < 4 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0) + 1, loc(1) + 1}))
-    '                             End If
-    '
-    '                             If loc(0) + 1 < 4 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0) + 1, loc(1) + 1}))
-    '                             End If
-    '
-    '                             If loc(0) - 1 > 0 And loc(1) + 1 < 4 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0) - 1, loc(1) + 1}))
-    '                             End If
-    '
-    '                             If loc(0) - 1 > 0 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0), loc(1) - 1}))
-    '                             End If
-    '
-    '                             If loc(0) - 1 > 0 And loc(1) - 1 > 0 Then
-    '                                 adj.Add(get1DIndex(New Integer() {loc(0) - 1, loc(1) - 1}))
-    '                             End If
-    '
-    '                             Return adj
-    '
-    '                         End Function
-    '
-    '
-    '       Dim value As Integer = -1
-    '
-    '       For i = 0 To 15
-    '           '--------->BEGIN HERE<-------
-    '           'loop through each index and check if the starting letter matches
-    '           'then procede to adjacent letters
-    '       Next
-    '   End Function
-
-    ''' <summary>
-    ''' Looks through and commands players to mark duplicates
-    ''' </summary>
     Private Sub MarkDuplicates()
         If playerList.Count <> 0 Then
             Dim wordList As List(Of String) = New List(Of String)

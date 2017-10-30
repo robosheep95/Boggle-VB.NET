@@ -2,9 +2,8 @@
 'By:      Allen Retzler and Taylor Scafe
 'Date:    10-12-17
 
-'Background Image By Jolene Faber
-'https://www.flickr.com/photos/jovanlaar/2137872208/in/photolist-4fV9VE-6dEdXJ-7vEVv7-qt6uTL-7MYx2d-7bfhL1-7ZYXGq-5RhZ97-4MitNY-nZB3fK-5hgoH6-vwp1Us-aY4g3-4T8hoV-7bfimU-8qiVbt-7sF14G-8qvbQo-9UMgNA-4QioXL-aCwXC-8TuGnf-bgKm6M-pqSmr-aQfrr2-FdFrw-fF9JC-Lj3bW-66Pr88-erbtWm-jEQEc-7zYNyp-5FYch3-7cPczA-7a6zqc-4zQYqx-UQ3ctU-6XhsiQ-TdCi-8hfGKv-8cEacT-68vb2y-b2uReR-94ZJ2v-8hV7T1-cMRco-pWGe9V-qDMJSB-cE4a7u-axDX6i
-
+'Background Image By Jolene Faber https://www.flickr.com/photos/jovanlaar/2137872208/in/photolist-4fV9VE-6dEdXJ-7vEVv7-qt6uTL-7MYx2d-7bfhL1-7ZYXGq-5RhZ97-4MitNY-nZB3fK-5hgoH6-vwp1Us-aY4g3-4T8hoV-7bfimU-8qiVbt-7sF14G-8qvbQo-9UMgNA-4QioXL-aCwXC-8TuGnf-bgKm6M-pqSmr-aQfrr2-FdFrw-fF9JC-Lj3bW-66Pr88-erbtWm-jEQEc-7zYNyp-5FYch3-7cPczA-7a6zqc-4zQYqx-UQ3ctU-6XhsiQ-TdCi-8hfGKv-8cEacT-68vb2y-b2uReR-94ZJ2v-8hV7T1-cMRco-pWGe9V-qDMJSB-cE4a7u-axDX6i
+'Splash Screen Image By Rich Brooks https://www.flickr.com/photos/therichbrooks/4039402557/in/photolist-Hfsnb-8sRUhS-jM3h1-5MV5rb-7wid4Y-3idFWu-ai62v-4SK7dS-2nsWsm-5MtwKv-wqFHV-aqpBv1-Ap2bS-79WZDF-4grY5S-oB74G-66Lfb7-9ARFN-64ysgN-6H1kKA-nTKPqR-2jL2dp-9gh7oJ-7Gqfdb-QGYVZ-7a1Rty-7WPbx3-tAwBF-jC885-ibZuX-8HfcuR-5Mtv6p-5MturK-5MxLLA-dJm4C5-5E9Sxx-9AdHWK-8Xu1Ma-4paK8z-7ikCdo-bexBiK-5Mtanx-cvjrZ-bhF7vF-9jpVvi-5E9SR4-4paHzk-5ET5b9-5MttVi-5Mtxft
 Imports System.ComponentModel
 Imports VB = Microsoft.VisualBasic
 
@@ -16,22 +15,12 @@ Public Class frmMain
     Private nameList = New List(Of String)
 
     Private timerMinutes As UShort = 0 ' TODO: Change to 3 min
-    Private timerSeconds As UShort = 0
+    Private timerSeconds As UShort = 10
     Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
     Private timerHalted = False
 
     Private tmpCurrentPlayer = 1
-
-    ''' <summary>
-    ''' Converts the string q to Qu (used fore showing each dice on the board)
-    ''' </summary>
-    Private Function qToQu(s As String)
-        If s.ToUpper() = "Q" Then
-            Return "Qu"
-        Else
-            Return s
-        End If
-    End Function
+    Private tmpPlayerXWords As List(Of String) = New List(Of String)
 
     ''' <summary>
     ''' Centers an interior Object relative to it's exterior container
@@ -153,6 +142,35 @@ Public Class frmMain
         inputScreen.Visible = False
         scoreScreen.Visible = False
         Center(gameScreen, Me)
+        Dim board = gameLogicManager.GetBoard()
+
+        Dim diceList = New List(Of Label)
+        diceList.Add(lblDie1)
+        diceList.Add(lblDie2)
+        diceList.Add(lblDie3)
+        diceList.Add(lblDie4)
+        diceList.Add(lblDie5)
+        diceList.Add(lblDie6)
+        diceList.Add(lblDie7)
+        diceList.Add(lblDie8)
+        diceList.Add(lblDie9)
+        diceList.Add(lblDie10)
+        diceList.Add(lblDie11)
+        diceList.Add(lblDie12)
+        diceList.Add(lblDie13)
+        diceList.Add(lblDie14)
+        diceList.Add(lblDie15)
+        diceList.Add(lblDie16)
+
+        Dim specials = gameLogicManager.GetSpecial()
+
+        Dim qToQu = Function(s As String)
+                        If s.ToUpper() = "Q" Then
+                            Return "Qu"
+                        Else
+                            Return s
+                        End If
+                    End Function
 
         prgTimer.Value = 0
         gameLogicManager.CreatePlayers(nameList)
@@ -163,77 +181,30 @@ Public Class frmMain
         timerUpdate()
         timerReset()
 
-        lblDie1.Text = "3"
-        lblDie2.Text = "3"
-        lblDie3.Text = "3"
-        lblDie4.Text = "3"
-        lblDie5.Text = "3"
-        lblDie6.Text = "3"
-        lblDie7.Text = "3"
-        lblDie8.Text = "3"
-        lblDie9.Text = "3"
-        lblDie10.Text = "3"
-        lblDie11.Text = "3"
-        lblDie12.Text = "3"
-        lblDie13.Text = "3"
-        lblDie14.Text = "3"
-        lblDie15.Text = "3"
-        lblDie16.Text = "3"
+
+        For i = 0 To 15
+            diceList(i).Text = "3"
+        Next
         timer(1)
 
-        lblDie1.Text = "2"
-        lblDie2.Text = "2"
-        lblDie3.Text = "2"
-        lblDie4.Text = "2"
-        lblDie5.Text = "2"
-        lblDie6.Text = "2"
-        lblDie7.Text = "2"
-        lblDie8.Text = "2"
-        lblDie9.Text = "2"
-        lblDie10.Text = "2"
-        lblDie11.Text = "2"
-        lblDie12.Text = "2"
-        lblDie13.Text = "2"
-        lblDie14.Text = "2"
-        lblDie15.Text = "2"
-        lblDie16.Text = "2"
+        For i = 0 To 15
+            diceList(i).Text = "2"
+        Next
         timer(1)
 
-        lblDie1.Text = "1"
-        lblDie2.Text = "1"
-        lblDie3.Text = "1"
-        lblDie4.Text = "1"
-        lblDie5.Text = "1"
-        lblDie6.Text = "1"
-        lblDie7.Text = "1"
-        lblDie8.Text = "1"
-        lblDie9.Text = "1"
-        lblDie10.Text = "1"
-        lblDie11.Text = "1"
-        lblDie12.Text = "1"
-        lblDie13.Text = "1"
-        lblDie14.Text = "1"
-        lblDie15.Text = "1"
-        lblDie16.Text = "1"
+        For i = 0 To 15
+            diceList(i).Text = "1"
+        Next
         timer(1)
-        Dim v = gameLogicManager.GetBoard()
 
-        lblDie1.Text = qToQu(v(0))
-        lblDie2.Text = qToQu(v(1))
-        lblDie3.Text = qToQu(v(2))
-        lblDie4.Text = qToQu(v(3))
-        lblDie5.Text = qToQu(v(4))
-        lblDie6.Text = qToQu(v(5))
-        lblDie7.Text = qToQu(v(6))
-        lblDie8.Text = qToQu(v(7))
-        lblDie9.Text = qToQu(v(8))
-        lblDie10.Text = qToQu(v(9))
-        lblDie11.Text = qToQu(v(10))
-        lblDie12.Text = qToQu(v(11))
-        lblDie13.Text = qToQu(v(12))
-        lblDie14.Text = qToQu(v(13))
-        lblDie15.Text = qToQu(v(14))
-        lblDie16.Text = qToQu(v(15))
+        For i = 0 To 15
+            diceList(i).Text = qToQu(board(i))
+            If specials(i) Then
+                diceList(i).ForeColor = Color.Red
+            Else
+                diceList(i).ForeColor = Color.Black
+            End If
+        Next
 
 
         While Not timerDecrement()
@@ -262,19 +233,83 @@ Public Class frmMain
         Center(inputScreen, Me)
         Me.AcceptButton = btnAddWord
         txtPlayerXWord.Focus()
-        lblPlayerX.Text = "Player 1"
+        lblPlayerX.Text = gameLogicManager.GetPlayers(tmpCurrentPlayer - 1).GetName()
     End Sub
 
     ''' <summary>
     ''' Goes to the screen where scores and words found are displayed
     ''' </summary>
     Private Sub gotoResults()
+        Dim players = gameLogicManager.GetPlayers()
+
         startScreen.Visible = False
         nameScreen.Visible = False
         gameScreen.Visible = False
         inputScreen.Visible = False
         scoreScreen.Visible = True
         Center(scoreScreen, Me)
+
+        lblP2Name.Hide()
+        lblP3Name.Hide()
+        lblP4Name.Hide()
+
+        lblP2Score.Hide()
+        lblP3Score.Hide()
+        lblP4Score.Hide()
+
+        rtbPlayer2Words.Hide()
+        rtbPlayer3Words.Hide()
+        rtbPlayer4Words.Hide()
+
+        gameLogicManager.ScorePlayers()
+
+
+        lblP1Name.Text = players(0).GetName()
+        lblP1Score.Text = players(0).GetScore()
+        For Each i In players(0).GetWordList()
+            rtbPlayer1Words.Text += i + vbNewLine
+        Next
+
+
+        If numberOfPlayers >= 2 Then
+            lblP2Name.Show()
+            lblP2Score.Show()
+            rtbPlayer2Words.Show()
+
+            lblP2Name.Text = players(1).GetName()
+            lblP2Score.Text = players(1).GetScore()
+            For Each i In players(1).GetWordList()
+                rtbPlayer2Words.Text += i + vbNewLine
+            Next
+        End If
+
+        If numberOfPlayers >= 3 Then
+            lblP3Name.Show()
+            lblP3Score.Show()
+            rtbPlayer3Words.Show()
+
+            lblP3Name.Text = players(2).GetName()
+            lblP3Score.Text = players(2).GetScore()
+            For Each i In players(2).GetWordList()
+                rtbPlayer3Words.Text += i + vbNewLine
+            Next
+        End If
+
+        If numberOfPlayers >= 4 Then
+            lblP4Name.Show()
+            lblP4Score.Show()
+            rtbPlayer4Words.Show()
+
+            lblP4Name.Text = players(3).GetName()
+            lblP4Score.Text = players(3).GetScore()
+            For Each i In players(3).GetWordList()
+                rtbPlayer4Words.Text += i + vbNewLine
+            Next
+        End If
+
+
+
+
     End Sub
 
 
@@ -340,24 +375,35 @@ Public Class frmMain
     End Sub
 
     Private Sub btnAddWord_Click(sender As Object, e As EventArgs) Handles btnAddWord.Click
-        Dim tmpPlayerXWords As List(Of String) = New List(Of String)
-        Dim word = txtPlayerXWord.Text
-        Dim isValid As Boolean = gameLogicManager.IsRealWord(word)
+        Dim word = txtPlayerXWord.Text.ToLower
 
-        Dim alpha As Regex = New Regex("^[a-zA-z]*$")
+        'Dim isOnBoard As Boolean = 
+        'Dim isOnBoard = True
+
+        Dim alpha As Regex = New Regex("^[a-z]*$")
 
 
         If alpha.IsMatch(word) Then
-            If word.Length >= 3 Then
-                If isValid Then
-                    tmpPlayerXWords.Add(txtPlayerXWord.Text)
-                    txtPlayerXWord.Text = ""
-                    Return
+            If word.Length >= 3 And word.Length < 13 Then
+                If gameLogicManager.IsRealWord(word) Then
+                    If gameLogicManager.SimpleIsOnBoard(word) Or True Then 'TODO: FIX THE ON BOARD!!!!!!!!!
+                        If Not tmpPlayerXWords.Contains(word) Then
+                            tmpPlayerXWords.Add(txtPlayerXWord.Text.ToLower())
+                            rtbPlayerXWords.Text += word + vbNewLine
+                            gameLogicManager.GetPlayers()(tmpCurrentPlayer - 1).AddWord(word)
+                            txtPlayerXWord.Text = ""
+                            Return
+                        Else
+                            MsgBox("You already entered this word.", vbExclamation + vbOK, "Word Already Entered")
+                        End If
+                    Else
+                        MsgBox("The word you entered is not on the board.", vbExclamation + vbOK, "Invalid Word")
+                    End If
                 Else
-                    MsgBox("The word you entered either doesn't exist on the board, or is not a recognized word.", vbExclamation + vbOK, "Invalid Word")
+                    MsgBox("The word you entered is not in the dictionary.", vbExclamation + vbOK, "Invalid Word")
                 End If
             Else
-                MsgBox("All words must be atleast 3 characters long", vbExclamation + vbOK, "Invalid Word")
+                MsgBox("All words must be between 3 and 13 characters long", vbExclamation + vbOK, "Invalid Word")
             End If
         Else
             MsgBox("Words can only contain alphabetical characters", vbExclamation + vbOK, "Invalid Word")
@@ -374,13 +420,25 @@ Public Class frmMain
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
         txtPlayerXWord.Text = ""
+        tmpPlayerXWords.Clear()
+        rtbPlayerXWords.Clear()
         'gameLogicManager.
         ' Set the score for a particular player
         If tmpCurrentPlayer < numberOfPlayers Then
             tmpCurrentPlayer += 1
-            lblPlayerX.Text = "Player " + CStr(tmpCurrentPlayer)
+            lblPlayerX.Text = gameLogicManager.GetPlayers(tmpCurrentPlayer - 1).GetName()
         Else
             gotoResults()
+        End If
+    End Sub
+
+    Private Sub txtPlayerXWord_TextChanged(sender As Object, e As EventArgs) Handles txtPlayerXWord.TextChanged
+        Dim alpha As Regex = New Regex("^[a-zA-Z]{0,13}$")
+
+        If alpha.IsMatch(txtPlayerXWord.Text) Then
+            txtPlayerXWord.ForeColor = Color.Black
+        Else
+            txtPlayerXWord.ForeColor = Color.Red
         End If
     End Sub
 End Class
