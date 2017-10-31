@@ -274,6 +274,11 @@ Public Class frmMain
 
         Center(scoreScreen, Me)
 
+        rtbPlayer1Words.Text= ""
+        rtbPlayer2Words.Text = ""
+        rtbPlayer3Words.Text = ""
+        rtbPlayer4Words.Text = ""
+
         lblP2Name.Hide()
         lblP3Name.Hide()
         lblP4Name.Hide()
@@ -480,7 +485,7 @@ Public Class frmMain
         gotoGame()
     End Sub
 
-    Private Sub btnContinue_Click(sender As Object, e As EventArgs) 
+    Private Sub btnContinue_Click(sender As Object, e As EventArgs)
         gotoGame()
     End Sub
 
