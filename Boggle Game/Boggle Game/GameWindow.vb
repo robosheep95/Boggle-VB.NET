@@ -480,7 +480,7 @@ Public Class frmMain
         gotoGame()
     End Sub
 
-    Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+    Private Sub btnContinue_Click(sender As Object, e As EventArgs) 
         gotoGame()
     End Sub
 

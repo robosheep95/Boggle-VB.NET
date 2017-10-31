@@ -66,7 +66,6 @@ Partial Class frmMain
         Me.prgTimer = New System.Windows.Forms.ProgressBar()
         Me.scoreScreen = New System.Windows.Forms.Panel()
         Me.btnNewGame = New System.Windows.Forms.Button()
-        Me.btnContinue = New System.Windows.Forms.Button()
         Me.rtbPlayer4Words = New System.Windows.Forms.RichTextBox()
         Me.rtbPlayer3Words = New System.Windows.Forms.RichTextBox()
         Me.rtbPlayer2Words = New System.Windows.Forms.RichTextBox()
@@ -571,7 +570,6 @@ Partial Class frmMain
         '
         Me.scoreScreen.BackColor = System.Drawing.Color.Maroon
         Me.scoreScreen.Controls.Add(Me.btnNewGame)
-        Me.scoreScreen.Controls.Add(Me.btnContinue)
         Me.scoreScreen.Controls.Add(Me.rtbPlayer4Words)
         Me.scoreScreen.Controls.Add(Me.rtbPlayer3Words)
         Me.scoreScreen.Controls.Add(Me.rtbPlayer2Words)
@@ -597,15 +595,6 @@ Partial Class frmMain
         Me.btnNewGame.TabIndex = 16
         Me.btnNewGame.Text = "&New Game"
         Me.btnNewGame.UseVisualStyleBackColor = True
-        '
-        'btnContinue
-        '
-        Me.btnContinue.Location = New System.Drawing.Point(349, 248)
-        Me.btnContinue.Name = "btnContinue"
-        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
-        Me.btnContinue.TabIndex = 15
-        Me.btnContinue.Text = "C&ontinue Playing"
-        Me.btnContinue.UseVisualStyleBackColor = True
         '
         'rtbPlayer4Words
         '
@@ -906,7 +895,6 @@ Partial Class frmMain
     Friend WithEvents rtbPlayer2Words As RichTextBox
     Friend WithEvents rtbPlayer1Words As RichTextBox
     Friend WithEvents btnNewGame As Button
-    Friend WithEvents btnContinue As Button
     Friend WithEvents btnRescramble As Button
     Friend WithEvents btnFinish As Button
 End Class
