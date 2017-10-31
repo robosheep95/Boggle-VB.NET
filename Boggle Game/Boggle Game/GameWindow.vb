@@ -188,6 +188,14 @@ Public Class frmMain
                         End If
                     End Function
 
+        Dim toUpper = Function(s As String)
+                          If s = "Qu" Then
+                              Return "Qu"
+                          Else
+                              Return s.ToUpper()
+                          End If
+                      End Function
+
         prgTimer.Value = 0
         gameLogicManager.CreatePlayers(nameList)
 
@@ -201,7 +209,7 @@ Public Class frmMain
         'Scrambeling The Board
         For t = 0 To 20
             For i = 0 To 15
-                diceList(i).Text = qToQu(gameLogicManager.GetBoard()(i))
+                diceList(i).Text = toUpper(qToQu(gameLogicManager.GetBoard()(i)))
                 If gameLogicManager.GetSpecial()(i) Then
                     diceList(i).ForeColor = Color.Red
                 Else
@@ -216,7 +224,7 @@ Public Class frmMain
         btnFinish.Visible = True
 
         For i = 0 To 15
-            diceList(i).Text = qToQu(gameLogicManager.GetBoard()(i))
+            diceList(i).Text = toUpper(qToQu(gameLogicManager.GetBoard()(i)))
             If gameLogicManager.GetSpecial()(i) Then
                 diceList(i).ForeColor = Color.Red
             Else
