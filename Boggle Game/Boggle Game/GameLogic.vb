@@ -121,7 +121,7 @@
                     specialCount = element.Item2
                 End If
             Next
-            Return New Tuple(Of Boolean, Integer)(False, specialCount)
+            Return New Tuple(Of Boolean, Integer)(True, specialCount)
         End If
 
     End Function
@@ -149,10 +149,12 @@
         Else
 
             For Each entry In letterDict
-                If entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value <> "q" Then
+                If entry.Value = word(0) And (Not listOfUsed.ElementAt(entry.Key)) And entry.Value <> "q" Then
                     Return RabbitHole(word.Substring(1), entry.Key, intspecialCount, listOfUsed)
-                ElseIf entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value = "q" And Len(word) > 1 And word(1) = "u" Then
-                    Return RabbitHole(word.Substring(2), entry.Key, intspecialCount, listOfUsed)
+                ElseIf entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value = "q" And Len(word) > 1 Then
+                    If word(1) = "u" Then
+                        Return RabbitHole(word.Substring(2), entry.Key, intspecialCount, listOfUsed)
+                    End If
                 End If
             Next
 

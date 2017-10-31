@@ -15,8 +15,8 @@ Public Class frmMain
     Private gameLogicManager As GameLogic
     Private nameList = New List(Of String)
 
-    Private timerMinutes As UShort = 0 ' TODO: Change to 3 min
-    Private timerSeconds As UShort = 10
+    Private timerMinutes As UShort = 3
+    Private timerSeconds As UShort = 0
     Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
     Private timerHalted = False
 
@@ -410,7 +410,7 @@ Public Class frmMain
         If alpha.IsMatch(word) Then
             If word.Length >= 3 And word.Length < 13 Then
                 If gameLogicManager.IsRealWord(word) Then
-                    If gameLogicManager.SimpleIsOnBoard(word) Or True Then 'TODO: FIX THE ON BOARD!!!!!!!!!
+                    If gameLogicManager.SimpleIsOnBoard(word) Then
                         If Not tmpPlayerXWords.Contains(word) Then
                             tmpPlayerXWords.Add(txtPlayerXWord.Text.ToLower())
                             rtbPlayerXWords.Text += word + vbNewLine

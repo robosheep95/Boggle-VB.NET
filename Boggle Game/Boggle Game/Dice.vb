@@ -8,7 +8,7 @@
         specialLetter = CheckForSpecial(input)
         letterList = New List(Of Char)
         For Each letter As Char In input
-            letterList.Add(letter)
+            letterList.Add(Char.ToLower(letter))
         Next
         Randomize()
         ScrambleDice() 'Temp
