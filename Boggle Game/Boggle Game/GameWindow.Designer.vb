@@ -86,6 +86,7 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
+        Me.btnContinue = New System.Windows.Forms.Button()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -569,6 +570,7 @@ Partial Class frmMain
         'scoreScreen
         '
         Me.scoreScreen.BackColor = System.Drawing.Color.Maroon
+        Me.scoreScreen.Controls.Add(Me.btnContinue)
         Me.scoreScreen.Controls.Add(Me.btnNewGame)
         Me.scoreScreen.Controls.Add(Me.rtbPlayer4Words)
         Me.scoreScreen.Controls.Add(Me.rtbPlayer3Words)
@@ -801,6 +803,15 @@ Partial Class frmMain
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 23)
         Me.txtPlayerName.TabIndex = 2
         '
+        'btnContinue
+        '
+        Me.btnContinue.Location = New System.Drawing.Point(200, 277)
+        Me.btnContinue.Name = "btnContinue"
+        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
+        Me.btnContinue.TabIndex = 17
+        Me.btnContinue.Text = "&Continue Game"
+        Me.btnContinue.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnStartGame
@@ -897,4 +908,5 @@ Partial Class frmMain
     Friend WithEvents btnNewGame As Button
     Friend WithEvents btnRescramble As Button
     Friend WithEvents btnFinish As Button
+    Friend WithEvents btnContinue As Button
 End Class

@@ -35,7 +35,7 @@ Public Class frmMain
             interior.left = CInt((exterior.Width / 2) - (interior.Width / 2))
             interior.top = CInt((exterior.Height / 2) - (interior.Height / 2))
         Catch a As NullReferenceException
-            Console.WriteLine("Error")
+            Console.WriteLine("Resize Error")
         End Try
     End Sub
 
@@ -197,7 +197,7 @@ Public Class frmMain
                       End Function
 
         prgTimer.Value = 0
-        gameLogicManager.CreatePlayers(nameList)
+
 
         timerMinutes = timerMax \ 60
         timerSeconds = timerMax - (60 * timerMinutes)
@@ -403,6 +403,7 @@ Public Class frmMain
             lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
         End If
         If nameList.Count() = numberOfPlayers Then
+            gameLogicManager.CreatePlayers(nameList)
             gotoGame()
         End If
     End Sub
@@ -493,7 +494,7 @@ Public Class frmMain
         gotoGame()
     End Sub
 
-    Private Sub btnContinue_Click(sender As Object, e As EventArgs)
+    Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
         gotoGame()
     End Sub
 
