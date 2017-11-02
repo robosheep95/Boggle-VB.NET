@@ -438,7 +438,9 @@ Public Class frmMain
                         MsgBox("The word you entered is not on the board.", vbExclamation + vbOKOnly, "Invalid Word")
                     End If
                 Else
-                    MsgBox("The word you entered is not in the dictionary.", vbExclamation + vbOKOnly, "Invalid Word")
+                    MsgBox("The word you entered is not in the dictionary. -1 point", vbExclamation + vbOKOnly, "Invalid Word")
+                    gameLogicManager.GetPlayers()(tmpCurrentPlayer - 1).AddScore(-1)
+
                 End If
             Else
                 MsgBox("All words must be between 3 and 13 characters long", vbExclamation + vbOKOnly, "Invalid Word")
