@@ -2,28 +2,62 @@
 'By:      Allen Retzler and Taylor Scafe
 'Date:    10-12-17
 
+'References
 'Background Image By Jolene Faber https://www.flickr.com/photos/jovanlaar/2137872208/in/photolist-4fV9VE-6dEdXJ-7vEVv7-qt6uTL-7MYx2d-7bfhL1-7ZYXGq-5RhZ97-4MitNY-nZB3fK-5hgoH6-vwp1Us-aY4g3-4T8hoV-7bfimU-8qiVbt-7sF14G-8qvbQo-9UMgNA-4QioXL-aCwXC-8TuGnf-bgKm6M-pqSmr-aQfrr2-FdFrw-fF9JC-Lj3bW-66Pr88-erbtWm-jEQEc-7zYNyp-5FYch3-7cPczA-7a6zqc-4zQYqx-UQ3ctU-6XhsiQ-TdCi-8hfGKv-8cEacT-68vb2y-b2uReR-94ZJ2v-8hV7T1-cMRco-pWGe9V-qDMJSB-cE4a7u-axDX6i
 'Splash Screen Image By Rich Brooks https://www.flickr.com/photos/therichbrooks/4039402557/in/photolist-Hfsnb-8sRUhS-jM3h1-5MV5rb-7wid4Y-3idFWu-ai62v-4SK7dS-2nsWsm-5MtwKv-wqFHV-aqpBv1-Ap2bS-79WZDF-4grY5S-oB74G-66Lfb7-9ARFN-64ysgN-6H1kKA-nTKPqR-2jL2dp-9gh7oJ-7Gqfdb-QGYVZ-7a1Rty-7WPbx3-tAwBF-jC885-ibZuX-8HfcuR-5Mtv6p-5MturK-5MxLLA-dJm4C5-5E9Sxx-9AdHWK-8Xu1Ma-4paK8z-7ikCdo-bexBiK-5Mtanx-cvjrZ-bhF7vF-9jpVvi-5E9SR4-4paHzk-5ET5b9-5MttVi-5Mtxft
+
 Imports System.ComponentModel
 Imports VB = Microsoft.VisualBasic
-
-
+Imports System.Text
 Imports Regex = System.Text.RegularExpressions.Regex
 
-Public Class frmMain
+Public Class GameWindow
+    'Data Collection Variables
     Private numberOfPlayers As UShort = 2
     Private gameLogicManager As GameLogic
     Private nameList = New List(Of String)
 
+    'Timer Variables
     Private timerMinutes As UShort = 3
     Private timerSeconds As UShort = 0
     Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
     Private timerHalted = False
 
+    'Bad Variables
     Private tmpCurrentPlayer = 1
     Private tmpPlayerXWords As List(Of String) = New List(Of String)
 
+    'No Idea what this is
     Private currentObject As Object = startScreen
+
+    'Game Window Element Collections
+    Private pnlScreens As List(Of Panel)
+    Private lblGameDice As List(Of Label)
+    Private rtbResultPlayerNames As List(Of RichTextBox)
+    Private lblResultPlayerScores As List(Of Label)
+    Private lblResultPlayerName As List(Of Label)
+
+    ''' <summary>
+    ''' Function that runs when the main form is loaded
+    ''' </summary>
+    Private Sub GameWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        pnlScreens = New List(Of Panel)
+        pnlScreens.AddRange({startScreen, nameScreen, gameScreen, inputScreen, scoreScreen})
+        lblGameDice = New List(Of Label)
+        lblGameDice.AddRange({lblDie1, lblDie2, lblDie3, lblDie4, lblDie5, lblDie6, lblDie7, lblDie8, lblDie9, lblDie10, lblDie11, lblDie12, lblDie13, lblDie14, lblDie15, lblDie16})
+        rtbResultPlayerNames = New List(Of RichTextBox)
+        rtbResultPlayerNames.AddRange({rtbPlayer1Words, rtbPlayer2Words, rtbPlayer3Words, rtbPlayer4Words})
+        lblResultPlayerScores = New List(Of Label)
+        lblResultPlayerScores.AddRange({lblP1Score, lblP2Score, lblP3Score, lblP4Score})
+        lblResultPlayerName = New List(Of Label)
+        lblResultPlayerName.AddRange({lblP1Name, lblP2Name, lblP3Name, lblP4Name})
+
+        gameLogicManager = New GameLogic()
+        Width = 800
+        Height = 600
+        MinimumSize = New Drawing.Size(800, 600)
+        gotoMainMenu()
+    End Sub
 
     ''' <summary>
     ''' Centers an interior Object relative to it's exterior container
@@ -46,7 +80,7 @@ Public Class frmMain
     ''' This is based off of https://stackoverflow.com/a/36362504
     ''' </summary>
     ''' <param name="seconds">The number of seconds to wait until continuing execution</param>
-    Private Sub timer(seconds As Double)
+    Private Sub Timer(seconds As Double)
         If timerHalted Then
             Return
         End If
@@ -63,8 +97,8 @@ Public Class frmMain
     ''' Decrements the amount of time left
     ''' </summary>
     ''' <returns>Returns True when the timer has elapsed (0min 0sec remaining)</returns>
-    Private Function timerDecrement() As Boolean
-        If timerMinutes > 0 Or timerSeconds > 0 Then
+    Private Function TimerDecrement() As Boolean
+        If timerMinutes > 0 OrElse timerSeconds > 0 Then
             If timerSeconds > 0 Then
                 timerSeconds -= 1
             Else
@@ -79,18 +113,17 @@ Public Class frmMain
     ''' <summary>
     ''' Updates the timer display
     ''' </summary>
-    Private Sub timerUpdate()
+    Private Sub TimerUpdate()
         prgTimer.Maximum = timerMax
         prgTimer.Value = 60 * timerMinutes + timerSeconds
         Dim ts As String
         If timerSeconds < 10 Then
-            ts = "0" + CStr(timerSeconds)
+            ts = "0" & CStr(timerSeconds)
         Else
             ts = CStr(timerSeconds)
         End If
-        lblTimerText.Text = CStr(timerMinutes) + ":" + ts
+        lblTimerText.Text = CStr(timerMinutes) & ":" & ts
     End Sub
-
 
     ''' <summary>
     ''' Stops the timer from counting down
@@ -106,21 +139,12 @@ Public Class frmMain
         timerHalted = False
     End Sub
 
-
     ''' <summary>
     ''' Goes to the Main Menu Screen
     ''' </summary>
     Private Sub gotoMainMenu()
-        startScreen.Visible = True
-        nameScreen.Visible = False
-        gameScreen.Visible = False
-        inputScreen.Visible = False
-        scoreScreen.Visible = False
-
-        currentObject = startScreen
-
-        Center(startScreen, Me)
-        Me.AcceptButton = btnStartGame
+        ChangeScreen(0)
+        AcceptButton = btnStartGame
         btnStartGame.Focus()
     End Sub
 
@@ -128,57 +152,22 @@ Public Class frmMain
     ''' Goes to the screen where the players enter their names (just before the actual game)
     ''' </summary>
     Private Sub gotoEnterNames()
-        startScreen.Visible = False
-        nameScreen.Visible = True
-        gameScreen.Visible = False
-        inputScreen.Visible = False
-        scoreScreen.Visible = False
-
-        currentObject = nameScreen
-
-        Center(nameScreen, Me)
-        Me.AcceptButton = btnOk
+        ChangeScreen(1)
+        AcceptButton = btnOk
         txtPlayerName.Text = ""
         txtPlayerName.Focus()
         nameList = New List(Of String)
         lblEnterName.Text = "Player 1 enter your name"
     End Sub
 
-
     ''' <summary>
     ''' Goes to the actual game and starts it
     ''' </summary>
     Private Sub gotoGame()
-        startScreen.Visible = False
-        nameScreen.Visible = False
-        gameScreen.Visible = True
-        inputScreen.Visible = False
-        scoreScreen.Visible = False
-
-        currentObject = gameScreen
-
-        Center(gameScreen, Me)
-        Dim diceList = New List(Of Label)
+        ChangeScreen(2)
 
         btnRescramble.Visible = False
         btnFinish.Visible = False
-
-        diceList.Add(lblDie1)
-        diceList.Add(lblDie2)
-        diceList.Add(lblDie3)
-        diceList.Add(lblDie4)
-        diceList.Add(lblDie5)
-        diceList.Add(lblDie6)
-        diceList.Add(lblDie7)
-        diceList.Add(lblDie8)
-        diceList.Add(lblDie9)
-        diceList.Add(lblDie10)
-        diceList.Add(lblDie11)
-        diceList.Add(lblDie12)
-        diceList.Add(lblDie13)
-        diceList.Add(lblDie14)
-        diceList.Add(lblDie15)
-        diceList.Add(lblDie16)
 
         Dim qToQu = Function(s As String)
                         If s.ToUpper() = "Q" Then
@@ -202,42 +191,41 @@ Public Class frmMain
         timerMinutes = timerMax \ 60
         timerSeconds = timerMax - (60 * timerMinutes)
 
-        timerUpdate()
+        TimerUpdate()
         timerReset()
 
 
         'Scrambeling The Board
         For t = 0 To 20
             For i = 0 To 15
-                diceList(i).Text = toUpper(qToQu(gameLogicManager.GetBoard()(i)))
+                lblGameDice(i).Text = toUpper(qToQu(gameLogicManager.GetBoard()(i)))
                 If gameLogicManager.GetSpecial()(i) Then
-                    diceList(i).ForeColor = Color.Red
+                    lblGameDice(i).ForeColor = Color.Red
                 Else
-                    diceList(i).ForeColor = Color.Black
+                    lblGameDice(i).ForeColor = Color.Black
                 End If
             Next
             gameLogicManager.ScrambleBoard()
-            timer(0.06)
+            Timer(0.06)
         Next
 
         btnRescramble.Visible = True
         btnFinish.Visible = True
 
         For i = 0 To 15
-            diceList(i).Text = toUpper(qToQu(gameLogicManager.GetBoard()(i)))
+            lblGameDice(i).Text = toUpper(qToQu(gameLogicManager.GetBoard()(i)))
             If gameLogicManager.GetSpecial()(i) Then
-                diceList(i).ForeColor = Color.Red
+                lblGameDice(i).ForeColor = Color.Red
             Else
-                diceList(i).ForeColor = Color.Black
+                lblGameDice(i).ForeColor = Color.Black
             End If
         Next
 
-
-        While Not timerDecrement()
-            timerUpdate()
-            timer(1)
+        While Not TimerDecrement()
+            TimerUpdate()
+            Timer(1)
         End While
-        timerUpdate()
+        TimerUpdate()
 
         'Figure out a better way to do this
         If gameScreen.Visible = True Then
@@ -251,118 +239,57 @@ Public Class frmMain
     ''' Goes to the screen where players enter the words they found (just after the actual game)
     ''' </summary>
     Private Sub gotoEnterWords()
-        startScreen.Visible = False
-        nameScreen.Visible = False
-        gameScreen.Visible = False
-        inputScreen.Visible = True
-        scoreScreen.Visible = False
-
-        currentObject = inputScreen
-
-        Center(inputScreen, Me)
-        Me.AcceptButton = btnAddWord
+        ChangeScreen(3)
+        AcceptButton = btnAddWord
         txtPlayerXWord.Focus()
         tmpCurrentPlayer = 1
         lblPlayerX.Text = gameLogicManager.GetPlayers(0).GetName()
     End Sub
 
     ''' <summary>
-    ''' Goes to the screen where scores and words found are displayed
+    ''' Goes to the screen where scores and words found are displayed and loads data
     ''' </summary>
     Private Sub gotoResults()
         Dim players = gameLogicManager.GetPlayers()
-
-        startScreen.Visible = False
-        nameScreen.Visible = False
-        gameScreen.Visible = False
-        inputScreen.Visible = False
-        scoreScreen.Visible = True
-
-        currentObject = scoreScreen
-
-        Center(scoreScreen, Me)
-
-        rtbPlayer1Words.Text= ""
-        rtbPlayer2Words.Text = ""
-        rtbPlayer3Words.Text = ""
-        rtbPlayer4Words.Text = ""
-
-        lblP2Name.Hide()
-        lblP3Name.Hide()
-        lblP4Name.Hide()
-
-        lblP2Score.Hide()
-        lblP3Score.Hide()
-        lblP4Score.Hide()
-
-        rtbPlayer2Words.Hide()
-        rtbPlayer3Words.Hide()
-        rtbPlayer4Words.Hide()
-
+        ChangeScreen(4)
         gameLogicManager.ScorePlayers()
 
-
-        lblP1Name.Text = players(0).GetName()
-        lblP1Score.Text = players(0).GetScore() & " Points"
-        For Each i In players(0).GetWordList()
-            rtbPlayer1Words.Text += i + vbNewLine
+        For j As Integer = 0 To lblResultPlayerName.Count - 1
+            rtbResultPlayerNames(j).Text = ""
+            rtbResultPlayerNames(j).Hide()
+            lblResultPlayerName(j).Hide()
+            lblResultPlayerScores(j).Hide()
         Next
 
+        Dim i As Integer = 0
+        For Each player In players
 
-        If numberOfPlayers >= 2 Then
-            lblP2Name.Show()
-            lblP2Score.Show()
-            rtbPlayer2Words.Show()
+            lblResultPlayerName(i).Text = player.GetName()
+            lblResultPlayerName(i).Show()
 
-            lblP2Name.Text = players(1).GetName()
-            lblP2Score.Text = players(1).GetScore() & " Points"
-            For Each i In players(1).GetWordList()
-                rtbPlayer2Words.Text += i + vbNewLine
+            lblResultPlayerScores(i).Text = player.GetScore & " Points"
+            lblResultPlayerScores(i).Show()
+
+            Dim builder As StringBuilder = New StringBuilder
+            For Each word In player.GetWordList()
+                builder.Append(word & vbNewLine)
             Next
-        End If
+            rtbResultPlayerNames(i).Text = builder.ToString
+            rtbResultPlayerNames(i).Show()
 
-        If numberOfPlayers >= 3 Then
-            lblP3Name.Show()
-            lblP3Score.Show()
-            rtbPlayer3Words.Show()
-
-            lblP3Name.Text = players(2).GetName()
-            lblP3Score.Text = players(2).GetScore() & " Points"
-            For Each i In players(2).GetWordList()
-                rtbPlayer3Words.Text += i + vbNewLine
-            Next
-        End If
-
-        If numberOfPlayers >= 4 Then
-            lblP4Name.Show()
-            lblP4Score.Show()
-            rtbPlayer4Words.Show()
-
-            lblP4Name.Text = players(3).GetName()
-            lblP4Score.Text = players(3).GetScore() & " Points"
-            For Each i In players(3).GetWordList()
-                rtbPlayer4Words.Text += i + vbNewLine
-            Next
-        End If
-
-
-
+            i += 1
+        Next
 
     End Sub
 
-
-
-    ''' <summary>
-    ''' function that runs when the main form is loaded
-    ''' </summary>
-    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        gameLogicManager = New GameLogic()
-        Me.Width = 800
-        Me.Height = 600
-        Me.MinimumSize = New Drawing.Size(800, 600)
-        gotoMainMenu()
-
+    Private Sub ChangeScreen(ByVal index As Integer)
+        For Each panel In pnlScreens
+            panel.Visible = False
+        Next
+        pnlScreens(index).Visible = True
+        Center(pnlScreens(index), Me)
     End Sub
+
 
     ''' Button Handlers
 
@@ -371,6 +298,9 @@ Public Class frmMain
     End Sub
     Private Sub LblTaylorScafe_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblTaylorScafe.LinkClicked
         Process.Start("https://github.com/robosheep95")
+    End Sub
+    Private Sub lblSource_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblSource.LinkClicked
+        Process.Start("https://github.com/robosheep95/Boggle-VB.NET")
     End Sub
     Private Sub btnStartGame_Click(sender As Object, e As EventArgs) Handles btnStartGame.Click
         If radio1Player.Checked() Then
@@ -386,7 +316,7 @@ Public Class frmMain
     End Sub
     Private Sub btnQuit_Click(sender As Object, e As EventArgs) Handles btnQuit.Click
         If MsgBox("Are You Sure You Want to Quit?", vbQuestion + vbYesNo, "Quit") = vbYes Then
-            Me.Close()
+            Close()
         End If
     End Sub
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -400,7 +330,7 @@ Public Class frmMain
         Else
             nameList.Add(txtPlayerName.Text)
             txtPlayerName.Text = ""
-            lblEnterName.Text = "Player " + CStr(nameList.Count() + 1) + " enter your name"
+            lblEnterName.Text = "Player " & CStr(nameList.Count() + 1) & " enter your name"
         End If
         If nameList.Count() = numberOfPlayers Then
             gameLogicManager.CreatePlayers(nameList)
@@ -414,20 +344,15 @@ Public Class frmMain
 
     Private Sub btnAddWord_Click(sender As Object, e As EventArgs) Handles btnAddWord.Click
         Dim word = txtPlayerXWord.Text.ToLower
-
-        'Dim isOnBoard As Boolean = 
-        'Dim isOnBoard = True
-
         Dim alpha As Regex = New Regex("^[a-z]*$")
 
-
         If alpha.IsMatch(word) Then
-            If word.Length >= 3 And word.Length < 13 Then
+            If word.Length >= 3 AndAlso word.Length < 13 Then
                 If gameLogicManager.IsRealWord(word) Then
                     If gameLogicManager.SimpleIsOnBoard(word) Then
                         If Not tmpPlayerXWords.Contains(word) Then
                             tmpPlayerXWords.Add(txtPlayerXWord.Text.ToLower())
-                            rtbPlayerXWords.Text += word + vbNewLine
+                            rtbPlayerXWords.Text += word & vbNewLine
                             gameLogicManager.GetPlayers()(tmpCurrentPlayer - 1).AddWord(word)
                             txtPlayerXWord.Text = ""
                             Return
@@ -462,8 +387,6 @@ Public Class frmMain
         txtPlayerXWord.Text = ""
         tmpPlayerXWords.Clear()
         rtbPlayerXWords.Clear()
-        'gameLogicManager.
-        ' Set the score for a particular player
         If tmpCurrentPlayer < numberOfPlayers Then
             tmpCurrentPlayer += 1
             lblPlayerX.Text = gameLogicManager.GetPlayers(tmpCurrentPlayer - 1).GetName()
@@ -497,10 +420,14 @@ Public Class frmMain
     End Sub
 
     Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+        For Each player In gameLogicManager.GetPlayers
+            player.ClearWordList()
+        Next
         gotoGame()
     End Sub
 
     Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         Center(currentObject, Me)
     End Sub
+
 End Class

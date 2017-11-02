@@ -1,4 +1,7 @@
-﻿Public Class GameLogic
+﻿''' <summary>
+''' Primary Logic Class. Used as an interface between the game window and the stored data.
+''' </summary>
+Public Class GameLogic
 
     Private strDefaultDice As String = "AAAFRS AAEEEE AAFIRS ADENNN AEEEEM AEEGMU AEGMNN AFIRSY BJKQXZ CCNSTW CEIILT CEILPT CEIPST DHHNOT DHHLOR DHLNOR DDLNOR EIIITT EMOTTT ENSSSU FIPRSY GORRVW HIPRRY NOOTUW OOOTTU"
     Private scoreArray As Integer() = {0, 0, 0, 1, 1, 2, 3, 5, 11}
@@ -11,13 +14,15 @@
     ''' Creates the game with an array of player names
     ''' </summary>
     Public Sub New()
-
         gameBoard = New Board(strDefaultDice)
         wordList = New WordList
         gameBoard.ScrambleBoard()
-
     End Sub
 
+    ''' <summary>
+    ''' Creates a list of players with the players names passed in
+    ''' </summary>
+    ''' <param name="players"></param>
     Public Sub CreatePlayers(players As List(Of String))
         playerList = New List(Of Player)
         For Each playerName In players
@@ -29,35 +34,29 @@
     ''' Returns Letters of Dice on the Board
     ''' </summary>
     ''' <returns>Letters as Character Array</returns>
-    ReadOnly Property GetBoard() As Char()
-        Get
-            Return gameBoard.GetBoard()
-        End Get
-    End Property
+    Public Function GetBoard() As Char()
+        Return gameBoard.GetBoard()
+    End Function
 
     ''' <summary>
     ''' Returns Boolean Array indicating special dice
     ''' </summary>
     ''' <returns>Boolean Array</returns>
-    ReadOnly Property GetSpecial() As Boolean()
-        Get
-            Return gameBoard.GetSpecials().ToArray()
-        End Get
-    End Property
+    Public Function GetSpecial() As Boolean()
+        Return gameBoard.GetSpecials().ToArray()
+    End Function
 
     ''' <summary>
     ''' Returns Score of all players in order
     ''' </summary>
     ''' <returns>Score as Integer Array</returns>
-    ReadOnly Property GetScores() As Integer()
-        Get
-            Dim tempScore = New List(Of Integer)
-            For Each player In playerList
-                tempScore.Add(player.GetScore)
-            Next
-            Return tempScore.ToArray()
-        End Get
-    End Property
+    Public Function GetScores() As Integer()
+        Dim tempScore = New List(Of Integer)
+        For Each player In playerList
+            tempScore.Add(player.GetScore)
+        Next
+        Return tempScore.ToArray()
+    End Function
 
     ''' <summary>
     ''' Scrambles the board
@@ -66,6 +65,10 @@
         gameBoard.ScrambleBoard()
     End Sub
 
+    ''' <summary>
+    ''' Gets the list of player(s)
+    ''' </summary>
+    ''' <returns>Returns a List(Of Players)</returns>
     Public Function GetPlayers() As List(Of Player)
         Return playerList
     End Function
@@ -75,7 +78,6 @@
     ''' </summary>
     ''' <param name="input"></param>
     ''' <returns>True or False</returns>
-
     Public Function IsRealWord(ByVal input As String) As Boolean
         If (input.Length >= 3) Then
             Return wordList.ListOfWordLists.ElementAt(input.Length - 3).Contains(input)
@@ -106,9 +108,9 @@
         Next
 
         For i As Integer = 0 To 16
-            If gameBoard.GetLetter(i) = word(0) And word(0) <> "q" Then
+            If gameBoard.GetLetter(i) = word(0) AndAlso word(0) <> "q" Then
                 listOfPaths.Add(RabbitHole(word.Substring(1), i, 0, listOfUsed))
-            ElseIf gameBoard.GetLetter(i) = word(0) And word(0) = "q" And Len(word) > 1 And word(1) = "u" Then
+            ElseIf gameBoard.GetLetter(i) = word(0) AndAlso word(0) = "q" AndAlso Len(word) > 1 AndAlso word(1) = "u" Then
                 listOfPaths.Add(RabbitHole(word.Substring(2), i, 0, listOfUsed))
             End If
         Next
@@ -149,9 +151,9 @@
         Else
 
             For Each entry In letterDict
-                If entry.Value = word(0) And (Not listOfUsed.ElementAt(entry.Key)) And entry.Value <> "q" Then
+                If entry.Value = word(0) AndAlso (Not listOfUsed.ElementAt(entry.Key)) AndAlso entry.Value <> "q" Then
                     Return RabbitHole(word.Substring(1), entry.Key, intspecialCount, listOfUsed)
-                ElseIf entry.Value = word(0) And Not listOfUsed.ElementAt(entry.Key) And entry.Value = "q" And Len(word) > 1 Then
+                ElseIf entry.Value = word(0) AndAlso Not listOfUsed.ElementAt(entry.Key) AndAlso entry.Value = "q" AndAlso Len(word) > 1 Then
                     If word(1) = "u" Then
                         Return RabbitHole(word.Substring(2), entry.Key, intspecialCount, listOfUsed)
                     End If
@@ -175,30 +177,37 @@
         If index > intConstant Then
             letterList.Add(index - intConstant, gameBoard.GetLetter(index - intConstant))
         End If
+
         'South
         If index < ((intConstant ^ 2) - intConstant) Then
             letterList.Add(index + intConstant, gameBoard.GetLetter(index + intConstant))
         End If
+
         'East
         If (index Mod intConstant <> (intConstant - 1)) Then
             letterList.Add(index + 1, gameBoard.GetLetter(index + 1))
         End If
+
         'West
         If (index Mod intConstant) <> 0 Then
             letterList.Add(index - 1, gameBoard.GetLetter(index - 1))
         End If
+
         'North East
-        If index > intConstant And (index Mod intConstant <> (intConstant - 1)) Then
+        If index > intConstant AndAlso (index Mod intConstant <> (intConstant - 1)) Then
             letterList.Add(index - intConstant + 1, gameBoard.GetLetter(index - intConstant + 1))
         End If
+
         'North West
         If index > intConstant And (index Mod intConstant) Then
             letterList.Add(index - intConstant - 1, gameBoard.GetLetter(index - intConstant - 1))
         End If
+
         'South East
-        If index < ((intConstant ^ 2) - intConstant) And (index Mod intConstant <> (intConstant - 1)) Then
+        If index < ((intConstant ^ 2) - intConstant) AndAlso (index Mod intConstant <> (intConstant - 1)) Then
             letterList.Add(index + intConstant + 1, gameBoard.GetLetter(index + intConstant + 1))
         End If
+
         'South West
         If index < ((intConstant ^ 2) - intConstant) And (index Mod intConstant) Then
             letterList.Add(index + intConstant - 1, gameBoard.GetLetter(index + intConstant - 1))
@@ -207,12 +216,16 @@
         Return letterList
     End Function
 
+    ''' <summary>
+    ''' Checks to see if multple players have the same word, If they do the player is commanded to mark that word
+    ''' </summary>
     Private Sub MarkDuplicates()
         If playerList.Count <> 0 Then
             Dim wordList As List(Of String) = New List(Of String)
             For Each player In playerList
                 wordList.AddRange(player.GetWordList)
             Next
+
             wordList = wordList.GroupBy(Function(m) m) _
                  .Where(Function(g) g.Count() > 1) _
                  .Select(Function(g) g.Key).ToList
@@ -231,18 +244,16 @@
     Public Sub ScorePlayers()
         MarkDuplicates()
         For Each player In playerList
-
             For Each word In player.GetWordList
-
                 If Not word.Contains("*") Then
                     Dim wordLength As Integer = word.Length
                     If wordLength > 8 Then
                         wordLength = 8
                     End If
                     Dim tmpData As Tuple(Of Boolean, Integer) = IsOnBoard(word)
-                    If tmpData.Item1 And tmpData.Item2 = 0 Then
+                    If tmpData.Item1 AndAlso tmpData.Item2 = 0 Then
                         player.AddScore(scoreArray(wordLength))
-                    ElseIf tmpData.Item1 And tmpData.Item2 <> 0 Then
+                    ElseIf tmpData.Item1 AndAlso tmpData.Item2 <> 0 Then
                         player.AddScore(scoreArray(wordLength) * (2 * tmpData.Item2))
                     End If
                 End If

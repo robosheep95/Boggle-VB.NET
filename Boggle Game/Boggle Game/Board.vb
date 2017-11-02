@@ -1,6 +1,10 @@
-﻿Public Class Board
+﻿Imports System.Text
 
-    Private DiceList As List(Of Dice)
+Public Class Board
+
+    Public DiceList As List(Of Dice)
+
+
     ''' <summary>
     ''' Creates a board of 16 dice using a space seperated sting of dice
     ''' </summary>
@@ -31,11 +35,11 @@
     ''' </summary>
     ''' <returns>A string of characters</returns>
     Public Function GetBoard() As Char()
-        Dim strOuput As String = ""
+        Dim strOutput As StringBuilder = New StringBuilder
         For Each dice In DiceList
-            strOuput = strOuput + dice.GetTopLetter()
+            strOutput.Append(dice.GetTopLetter())
         Next
-        Return strOuput
+        Return strOutput.ToString
     End Function
 
     ''' <summary>

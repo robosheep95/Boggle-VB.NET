@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmMain
+Partial Class GameWindow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GameWindow))
         Me.lblP1Name = New System.Windows.Forms.Label()
         Me.lblP2Name = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -65,6 +65,7 @@ Partial Class frmMain
         Me.lblDie1 = New System.Windows.Forms.Label()
         Me.prgTimer = New System.Windows.Forms.ProgressBar()
         Me.scoreScreen = New System.Windows.Forms.Panel()
+        Me.btnContinue = New System.Windows.Forms.Button()
         Me.btnNewGame = New System.Windows.Forms.Button()
         Me.rtbPlayer4Words = New System.Windows.Forms.RichTextBox()
         Me.rtbPlayer3Words = New System.Windows.Forms.RichTextBox()
@@ -86,7 +87,7 @@ Partial Class frmMain
         Me.lblEnterName = New System.Windows.Forms.Label()
         Me.btnOk = New System.Windows.Forms.Button()
         Me.txtPlayerName = New System.Windows.Forms.TextBox()
-        Me.btnContinue = New System.Windows.Forms.Button()
+        Me.lblSource = New System.Windows.Forms.LinkLabel()
         Me.startScreen.SuspendLayout()
         Me.grpNumOfPlayers.SuspendLayout()
         Me.gameScreen.SuspendLayout()
@@ -154,6 +155,7 @@ Partial Class frmMain
         'startScreen
         '
         Me.startScreen.BackColor = System.Drawing.Color.Maroon
+        Me.startScreen.Controls.Add(Me.lblSource)
         Me.startScreen.Controls.Add(Me.btnQuit)
         Me.startScreen.Controls.Add(Me.btnStartGame)
         Me.startScreen.Controls.Add(Me.grpNumOfPlayers)
@@ -164,7 +166,7 @@ Partial Class frmMain
         Me.startScreen.Controls.Add(Me.Label1)
         Me.startScreen.Location = New System.Drawing.Point(3, 3)
         Me.startScreen.Name = "startScreen"
-        Me.startScreen.Size = New System.Drawing.Size(242, 349)
+        Me.startScreen.Size = New System.Drawing.Size(242, 364)
         Me.startScreen.TabIndex = 0
         '
         'btnQuit
@@ -589,6 +591,15 @@ Partial Class frmMain
         Me.scoreScreen.Size = New System.Drawing.Size(519, 315)
         Me.scoreScreen.TabIndex = 3
         '
+        'btnContinue
+        '
+        Me.btnContinue.Location = New System.Drawing.Point(200, 277)
+        Me.btnContinue.Name = "btnContinue"
+        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
+        Me.btnContinue.TabIndex = 17
+        Me.btnContinue.Text = "&Continue Game"
+        Me.btnContinue.UseVisualStyleBackColor = True
+        '
         'btnNewGame
         '
         Me.btnNewGame.Location = New System.Drawing.Point(349, 277)
@@ -803,16 +814,20 @@ Partial Class frmMain
         Me.txtPlayerName.Size = New System.Drawing.Size(293, 23)
         Me.txtPlayerName.TabIndex = 2
         '
-        'btnContinue
+        'lblSource
         '
-        Me.btnContinue.Location = New System.Drawing.Point(200, 277)
-        Me.btnContinue.Name = "btnContinue"
-        Me.btnContinue.Size = New System.Drawing.Size(143, 23)
-        Me.btnContinue.TabIndex = 17
-        Me.btnContinue.Text = "&Continue Game"
-        Me.btnContinue.UseVisualStyleBackColor = True
+        Me.lblSource.AutoSize = True
+        Me.lblSource.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSource.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.lblSource.Location = New System.Drawing.Point(74, 335)
+        Me.lblSource.Name = "lblSource"
+        Me.lblSource.Size = New System.Drawing.Size(90, 17)
+        Me.lblSource.TabIndex = 8
+        Me.lblSource.TabStop = True
+        Me.lblSource.Text = "Source Code"
+        Me.lblSource.VisitedLinkColor = System.Drawing.Color.Blue
         '
-        'frmMain
+        'GameWindow
         '
         Me.AcceptButton = Me.btnStartGame
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -827,7 +842,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.gameScreen)
         Me.Controls.Add(Me.startScreen)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frmMain"
+        Me.Name = "GameWindow"
         Me.Text = "Boggle Game"
         Me.startScreen.ResumeLayout(False)
         Me.startScreen.PerformLayout()
@@ -909,4 +924,5 @@ Partial Class frmMain
     Friend WithEvents btnRescramble As Button
     Friend WithEvents btnFinish As Button
     Friend WithEvents btnContinue As Button
+    Friend WithEvents lblSource As LinkLabel
 End Class
