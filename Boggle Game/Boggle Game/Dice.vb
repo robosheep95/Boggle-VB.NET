@@ -4,30 +4,30 @@
     Private specialLetter As Char
 
     Public Sub New(ByVal input As String)
-        'TO DO: Make Constructor
         specialLetter = CheckForSpecial(input)
+        Console.WriteLine(specialLetter)
         letterList = New List(Of Char)
         For Each letter As Char In input
             letterList.Add(Char.ToLower(letter))
         Next
         Randomize()
-        ScrambleDice() 'Temp
+        ScrambleDice()
     End Sub
 
     Private Function CheckForSpecial(ByVal input As String) As Char
         Select Case input
             Case "AEEGMU"
-                Return "G"
+                Return "g"
             Case "AEGMNN"
-                Return "G"
+                Return "g"
             Case "BJKQXZ"
-                Return "B"
+                Return "b"
             Case "DHHLOR"
-                Return "L"
+                Return "l"
             Case "EMOTTT"
-                Return "E"
+                Return "e"
             Case "DHHNOT"
-                Return "O"
+                Return "o"
         End Select
         Return " "
     End Function
