@@ -23,11 +23,11 @@ Public Class GameWindow
     Private timerMax As UInt32 = timerMinutes * 60 + timerSeconds
     Private timerHalted = False
 
-    'Bad Variables
+    'Player Trackers
     Private tmpCurrentPlayer = 1
     Private tmpPlayerXWords As List(Of String) = New List(Of String)
 
-    'No Idea what this is
+    'Resize Reference
     Private currentObject As Object = startScreen
 
     'Game Window Element Collections
@@ -56,7 +56,7 @@ Public Class GameWindow
         Width = 800
         Height = 600
         MinimumSize = New Drawing.Size(800, 600)
-        gotoMainMenu()
+        GotoMainMenu()
     End Sub
 
     ''' <summary>
@@ -128,21 +128,21 @@ Public Class GameWindow
     ''' <summary>
     ''' Stops the timer from counting down
     ''' </summary>
-    Private Sub timerHalt()
+    Private Sub TimerHalt()
         timerHalted = True
     End Sub
 
     ''' <summary>
     ''' Allows the timer to function if it were halted
     ''' </summary>
-    Private Sub timerReset()
+    Private Sub TimerReset()
         timerHalted = False
     End Sub
 
     ''' <summary>
     ''' Goes to the Main Menu Screen
     ''' </summary>
-    Private Sub gotoMainMenu()
+    Private Sub GotoMainMenu()
         ChangeScreen(0)
         AcceptButton = btnStartGame
         btnStartGame.Focus()
@@ -151,7 +151,7 @@ Public Class GameWindow
     ''' <summary>
     ''' Goes to the screen where the players enter their names (just before the actual game)
     ''' </summary>
-    Private Sub gotoEnterNames()
+    Private Sub GotoEnterNames()
         ChangeScreen(1)
         AcceptButton = btnOk
         txtPlayerName.Text = ""
@@ -163,7 +163,7 @@ Public Class GameWindow
     ''' <summary>
     ''' Goes to the actual game and starts it
     ''' </summary>
-    Private Sub gotoGame()
+    Private Sub GotoGame()
         ChangeScreen(2)
 
         btnRescramble.Visible = False
@@ -187,13 +187,10 @@ Public Class GameWindow
 
         prgTimer.Value = 0
 
-
         timerMinutes = timerMax \ 60
         timerSeconds = timerMax - (60 * timerMinutes)
-
         TimerUpdate()
-        timerReset()
-
+        TimerReset()
 
         'Scrambeling The Board
         For t = 0 To 20
@@ -229,7 +226,7 @@ Public Class GameWindow
 
         'Figure out a better way to do this
         If gameScreen.Visible = True Then
-            gotoEnterWords()
+            GotoEnterWords()
         End If
 
 
@@ -238,7 +235,7 @@ Public Class GameWindow
     ''' <summary>
     ''' Goes to the screen where players enter the words they found (just after the actual game)
     ''' </summary>
-    Private Sub gotoEnterWords()
+    Private Sub GotoEnterWords()
         ChangeScreen(3)
         AcceptButton = btnAddWord
         txtPlayerXWord.Focus()
@@ -249,7 +246,7 @@ Public Class GameWindow
     ''' <summary>
     ''' Goes to the screen where scores and words found are displayed and loads data
     ''' </summary>
-    Private Sub gotoResults()
+    Private Sub GotoResults()
         Dim players = gameLogicManager.GetPlayers()
         ChangeScreen(4)
         gameLogicManager.ScorePlayers()
@@ -282,27 +279,47 @@ Public Class GameWindow
 
     End Sub
 
+    ''' <summary>
+    ''' Swaps panels to the selected panel
+    ''' </summary>
+    ''' <param name="index">Index of panel to display</param>
     Private Sub ChangeScreen(ByVal index As Integer)
         For Each panel In pnlScreens
             panel.Visible = False
         Next
         pnlScreens(index).Visible = True
         Center(pnlScreens(index), Me)
+        currentObject = CType(pnlScreens(index), Object)
     End Sub
 
 
-    ''' Button Handlers
+    '================Button Handlers====================
 
+    ''' <summary>
+    ''' Opens Allen Retzler's GitHub page
+    ''' </summary>
     Private Sub LblAllenRetzler_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblAllenRetzler.LinkClicked
         Process.Start("https://github.com/allenretz")
     End Sub
+
+    ''' <summary>
+    ''' Opens Taylor Scafe's GitHub page
+    ''' </summary>
     Private Sub LblTaylorScafe_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblTaylorScafe.LinkClicked
         Process.Start("https://github.com/robosheep95")
     End Sub
-    Private Sub lblSource_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblSource.LinkClicked
+
+    ''' <summary>
+    ''' Opens project's GitHub page
+    ''' </summary>
+    Private Sub LblSource_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblSource.LinkClicked
         Process.Start("https://github.com/robosheep95/Boggle-VB.NET")
     End Sub
-    Private Sub btnStartGame_Click(sender As Object, e As EventArgs) Handles btnStartGame.Click
+
+    ''' <summary>
+    ''' Starts the game with the number of players selected
+    ''' </summary>
+    Private Sub BtnStartGame_Click(sender As Object, e As EventArgs) Handles btnStartGame.Click
         If radio1Player.Checked() Then
             numberOfPlayers = 1
         ElseIf Radio2Players.Checked() Then
@@ -312,17 +329,29 @@ Public Class GameWindow
         Else
             numberOfPlayers = 4
         End If
-        gotoEnterNames()
+        GotoEnterNames()
     End Sub
-    Private Sub btnQuit_Click(sender As Object, e As EventArgs) Handles btnQuit.Click
-        If MsgBox("Are You Sure You Want to Quit?", vbQuestion + vbYesNo, "Quit") = vbYes Then
+
+    ''' <summary>
+    ''' Prompts if player wants to quit and quits if selected.
+    ''' </summary>
+    Private Sub BtnQuit_Click(sender As Object, e As EventArgs) Handles btnQuit.Click
+        If MsgBox("Are you sure you want to quit?", vbQuestion + vbYesNo, "Quit") = vbYes Then
             Close()
         End If
     End Sub
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        gotoMainMenu()
+
+    ''' <summary>
+    ''' Returns to start screen
+    ''' </summary>
+    Private Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        GotoMainMenu()
     End Sub
-    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
+
+    ''' <summary>
+    ''' Takes and valadates player name. Starts game if last player has entered a name else it asks for another name
+    ''' </summary>
+    Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
         If txtPlayerName.Text = "" Then
             MsgBox("Your name must be at least 1 character long", vbExclamation + vbOKOnly, "Invalid Name")
         ElseIf nameList.Contains(txtPlayerName.Text) Then
@@ -334,22 +363,29 @@ Public Class GameWindow
         End If
         If nameList.Count() = numberOfPlayers Then
             gameLogicManager.CreatePlayers(nameList)
-            gotoGame()
+            GotoGame()
         End If
     End Sub
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        timerHalt()
-        gotoMainMenu()
+
+    ''' <summary>
+    ''' Returns to start screen
+    ''' </summary>
+    Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        TimerHalt()
+        GotoMainMenu()
     End Sub
 
-    Private Sub btnAddWord_Click(sender As Object, e As EventArgs) Handles btnAddWord.Click
+    ''' <summary>
+    ''' Checks to see if word entered meets all requirements
+    ''' </summary>
+    Private Sub BtnAddWord_Click(sender As Object, e As EventArgs) Handles btnAddWord.Click
         Dim word = txtPlayerXWord.Text.ToLower
         Dim alpha As Regex = New Regex("^[a-z]*$")
 
         If alpha.IsMatch(word) Then
             If word.Length >= 3 AndAlso word.Length < 13 Then
-                If gameLogicManager.IsRealWord(word) Then
-                    If gameLogicManager.SimpleIsOnBoard(word) Then
+                If gameLogicManager.SimpleIsOnBoard(word) Then
+                    If gameLogicManager.IsRealWord(word) Then
                         If Not tmpPlayerXWords.Contains(word) Then
                             tmpPlayerXWords.Add(txtPlayerXWord.Text.ToLower())
                             rtbPlayerXWords.Text += word & vbNewLine
@@ -360,12 +396,15 @@ Public Class GameWindow
                             MsgBox("You already entered this word.", vbExclamation + vbOKOnly, "Word Already Entered")
                         End If
                     Else
-                        MsgBox("The word you entered is not on the board.", vbExclamation + vbOKOnly, "Invalid Word")
+                        MsgBox("The word you entered is not in the dictionary. -1 point", vbExclamation + vbOKOnly, "Invalid Word")
+                        gameLogicManager.GetPlayers()(tmpCurrentPlayer - 1).AddScore(-1)
+                        tmpPlayerXWords.Add("- " + txtPlayerXWord.Text.ToLower())
+                        rtbPlayerXWords.Text += "- " + word & vbNewLine
+                        gameLogicManager.GetPlayers()(tmpCurrentPlayer - 1).AddWord("- " + word)
+                        txtPlayerXWord.Text = ""
                     End If
                 Else
-                    MsgBox("The word you entered is not in the dictionary. -1 point", vbExclamation + vbOKOnly, "Invalid Word")
-                    gameLogicManager.GetPlayers()(tmpCurrentPlayer - 1).AddScore(-1)
-
+                    MsgBox("The word you entered is not on the board.", vbExclamation + vbOKOnly, "Invalid Word")
                 End If
             Else
                 MsgBox("All words must be between 3 and 13 characters long", vbExclamation + vbOKOnly, "Invalid Word")
@@ -379,11 +418,14 @@ Public Class GameWindow
     ''' <summary>
     ''' Clean up
     ''' </summary>
-    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        timerHalt()
+    Private Sub FrmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        TimerHalt()
     End Sub
 
-    Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
+    ''' <summary>
+    ''' Opens text entry for next player or goes to score page if there are no more players
+    ''' </summary>
+    Private Sub BtnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
         txtPlayerXWord.Text = ""
         tmpPlayerXWords.Clear()
         rtbPlayerXWords.Clear()
@@ -391,11 +433,14 @@ Public Class GameWindow
             tmpCurrentPlayer += 1
             lblPlayerX.Text = gameLogicManager.GetPlayers(tmpCurrentPlayer - 1).GetName()
         Else
-            gotoResults()
+            GotoResults()
         End If
     End Sub
 
-    Private Sub txtPlayerXWord_TextChanged(sender As Object, e As EventArgs) Handles txtPlayerXWord.TextChanged
+    ''' <summary>
+    ''' Checks to see if word it syntactactly coorect and changes the text color to red if incorrect
+    ''' </summary>
+    Private Sub TxtPlayerXWord_TextChanged(sender As Object, e As EventArgs) Handles txtPlayerXWord.TextChanged
         Dim alpha As Regex = New Regex("^[a-zA-Z]{0,13}$")
 
         If alpha.IsMatch(txtPlayerXWord.Text) Then
@@ -405,28 +450,43 @@ Public Class GameWindow
         End If
     End Sub
 
-    Private Sub btnNewGame_Click(sender As Object, e As EventArgs) Handles btnNewGame.Click
+    ''' <summary>
+    ''' Clears user data and moves to the start screen
+    ''' </summary>
+    Private Sub BtnNewGame_Click(sender As Object, e As EventArgs) Handles btnNewGame.Click
         nameList.clear()
-        gotoMainMenu()
+        GotoMainMenu()
     End Sub
 
-    Private Sub btnFinish_Click(sender As Object, e As EventArgs) Handles btnFinish.Click
-        timerHalt()
-        gotoEnterWords()
+    ''' <summary>
+    ''' Stops the timer and opens the word submission screen
+    ''' </summary>
+    Private Sub BtnFinish_Click(sender As Object, e As EventArgs) Handles btnFinish.Click
+        TimerHalt()
+        GotoEnterWords()
     End Sub
 
-    Private Sub btnRescramble_Click(sender As Object, e As EventArgs) Handles btnRescramble.Click
-        gotoGame()
+    ''' <summary>
+    ''' Loads a new board
+    ''' </summary>
+    Private Sub BtnRescramble_Click(sender As Object, e As EventArgs) Handles btnRescramble.Click
+        GotoGame()
     End Sub
 
-    Private Sub btnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
+    ''' <summary>
+    ''' Brings up a new board without clearing player data
+    ''' </summary>
+    Private Sub BtnContinue_Click(sender As Object, e As EventArgs) Handles btnContinue.Click
         For Each player In gameLogicManager.GetPlayers
             player.ClearWordList()
         Next
-        gotoGame()
+        GotoGame()
     End Sub
 
-    Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+    ''' <summary>
+    ''' Moves the primary panel to the center of the screen
+    ''' </summary>
+    Private Sub FrmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         Center(currentObject, Me)
     End Sub
 

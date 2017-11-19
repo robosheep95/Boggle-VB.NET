@@ -117,13 +117,15 @@ Public Class GameLogic
         If listOfPaths.Count = 0 Then
             Return New Tuple(Of Boolean, Integer)(False, 0)
         Else
-            Dim specialCount = 0
+            Dim specialCount As Integer = -1
+            Dim hasPath As Boolean
             For Each element In listOfPaths
-                If element.Item2 > specialCount Then
+                If element.Item2 > specialCount AndAlso element.Item1 Then
+                    hasPath = True
                     specialCount = element.Item2
                 End If
             Next
-            Return New Tuple(Of Boolean, Integer)(True, specialCount)
+            Return New Tuple(Of Boolean, Integer)(hasPath, specialCount)
         End If
 
     End Function
@@ -133,18 +135,18 @@ Public Class GameLogic
     ''' </summary>
     ''' <param name="word"></param>
     ''' <param name="index"></param>
-    ''' <param name="intspecialCount"></param>
+    ''' <param name="intSpecialCount"></param>
     ''' <param name="listOfUsed"></param>
     ''' <returns>Tuple of Boolean and Integer</returns>
-    Private Function RabbitHole(ByVal word As String, ByVal index As Integer, ByVal intspecialCount As Integer, ByRef listOfUsed As List(Of Boolean)) As Tuple(Of Boolean, Integer)
+    Private Function RabbitHole(ByVal word As String, ByVal index As Integer, ByVal intSpecialCount As Integer, ByVal listOfUsed As List(Of Boolean)) As Tuple(Of Boolean, Integer)
         listOfUsed(index) = True
         If gameBoard.GetSpecials(index) Then
-            intspecialCount += 1
+            intSpecialCount += 1
         End If
         Dim letterDict As Dictionary(Of Integer, Char) = GetNeighbors(index)
 
         If word = "" Then
-            Return New Tuple(Of Boolean, Integer)(True, intspecialCount)
+            Return New Tuple(Of Boolean, Integer)(True, intSpecialCount)
 
         ElseIf Not letterDict.ContainsValue(word(0)) Then
             Return New Tuple(Of Boolean, Integer)(False, 0)
@@ -152,10 +154,10 @@ Public Class GameLogic
 
             For Each entry In letterDict
                 If entry.Value = word(0) AndAlso (Not listOfUsed.ElementAt(entry.Key)) AndAlso entry.Value <> "q" Then
-                    Return RabbitHole(word.Substring(1), entry.Key, intspecialCount, listOfUsed)
+                    Return RabbitHole(word.Substring(1), entry.Key, intSpecialCount, listOfUsed)
                 ElseIf entry.Value = word(0) AndAlso Not listOfUsed.ElementAt(entry.Key) AndAlso entry.Value = "q" AndAlso Len(word) > 1 Then
                     If word(1) = "u" Then
-                        Return RabbitHole(word.Substring(2), entry.Key, intspecialCount, listOfUsed)
+                        Return RabbitHole(word.Substring(2), entry.Key, intSpecialCount, listOfUsed)
                     End If
                 End If
             Next
@@ -245,7 +247,7 @@ Public Class GameLogic
         MarkDuplicates()
         For Each player In playerList
             For Each word In player.GetWordList
-                If Not word.Contains("*") Then
+                If Not word.Contains("*") Or word.Contains("-") Then
                     Dim wordLength As Integer = word.Length
                     If wordLength > 8 Then
                         wordLength = 8
